@@ -33,11 +33,11 @@ To cite this profile, please use the following (formulated in [BibTex](http://ww
 
 ```
 @software{vocpub-profile,
-  author = {{SURROUND Australia Pty Ltd}},
+  author = {{Nicholas J. Car}},
   title = {{Vocabulary Publication Profile}},
-  version = {1.0},
+  version = {2.0},
   date = {2021},
-  publisher = {{SURROUND Australia Pty Ltd}},
+  publisher = {{Australian Government Linked Data Working Group}},
   url = {https://w3id.org/profile/vocpub}
 }
 ``` 
@@ -51,7 +51,8 @@ To cite this profile, please use the following (formulated in [BibTex](http://ww
 
 *creator:*  
 **Dr Nicholas J. Car**  
-*Data Systems Architect*  
-SURROUND Australia Pty. Ltd.  
-<nicholas.car@surroudaustralia.com>  
-<https://orcid.org/0000-0002-8742-7730>
+*Honorary Lecturer*  
+Australian National University    
+<nicholas.car@anu.edu.au>  
+<https://orcid.org/0000-0002-8742-7730>  
+<https://cecs.anu.edu.au/people/nicholas-car>
