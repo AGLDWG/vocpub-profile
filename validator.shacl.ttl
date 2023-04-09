@@ -24,7 +24,7 @@ BASE <https://w3id.org/profile/vocpub/validator/>
     owl:versionInfo "3.0: Removed Requirement-2.3.5 (identifiers) as these are auto-generated in systems like VocPrez; Added Requirement-2.1.10 & 2.1.11 and sub parts to test for qualifiedDerivation and status of a ConceptScheme" ;
 .
 
-<https://linked.data.gov.au/org``/agldwg> a sdo:Organization ;
+<https://linked.data.gov.au/org/agldwg> a sdo:Organization ;
     sdo:name "Australian Government Linked Data Working Group" ;
     sdo:url "https://www.linked.data.gov.au"^^xsd:anyURI ;
 .
