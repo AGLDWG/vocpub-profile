@@ -30,7 +30,14 @@
         <dt>Created</dt>
         <dd>2020-06-14</dd>
         <dt>Modified</dt>
-        <dd>2022-04-24</dd>
+        <dd>2023-06-11</dd>
+        <dt>Version IRI</dt>
+        <dd><a href="https://w3id.org/profile/vocpub/spec/3.1">https://w3id.org/profile/vocpub/spec/3.1</a></dd>
+        <dt>Version Information</dt>
+        <dd>
+          <p>3.1: Changed <code>dcterms:provenance</code> to skos:historyNote</p>
+          <p>3.0: Removed Requirement-2.3.5 (identifiers) as these are auto-generated in systems like VocPrez; Added Requirement-2.1.10 & 2.1.11 and sub parts to test for qualifiedDerivation and status of a <code>ConceptScheme</code></p>
+        </dd>
         <dt>Creator</dt>
         <dd><a href="https://orcid.org/0000-0002-8742-7730">Nicholas J. Car</a></dd>
         <dt>Contributor</dt>
@@ -155,10 +162,10 @@
           To be able to link SKOS vocabularies to their non-vocabulary source information:
         </p>
         <p class="req">
-          2.1.7 Provenance for a <code>skos:ConceptScheme</code> <em>MUST</em> be indicated by at least one of the following properties: <code>dcterms:provenance</code>, <code>dcterms:source</code> or <code>prov:wasDerivedFrom</code>.
+          2.1.7 The origins of a <code>skos:ConceptScheme</code> <em>MUST</em> be indicated by at least one of the following properties: <code>skos:historyNote</code>, <code>dcterms:source</code> or <code>prov:wasDerivedFrom</code>.
         </p>
         <p>
-          If a vocabulary is based on another Semantic Web resource, such as an ontology or another vocabulary, <code>prov:wasDerivedFrom</code> should be used to indicate that resource's IRI. If the vocabulary is based on a resource that is identified by a IRI but which is not a Semantic Web resource, <code>dcterms:source</code> should be used to indicate the resource's IRI. If the vocabulary is based on something which cannot be identified by IRI, a statement about the thing should be given in a literal value indicated with the <code>dcterms:provenance</code> property. If the vocabulary is not based on any other resource or source of information, i.e. this vocabulary is its only expression, this should be communicated by use of the <code>dcterms:provenance</code> indicating the phrase "This vocabulary is expressed for the first time here".
+          If a vocabulary is based on another Semantic Web resource, such as an ontology or another vocabulary, <code>prov:wasDerivedFrom</code> should be used to indicate that resource's IRI. If the vocabulary is based on a resource that is identified by a IRI but which is not a Semantic Web resource, <code>dcterms:source</code> should be used to indicate the resource's IRI. If the vocabulary is based on something which cannot be identified by IRI, a statement about the thing should be given in a literal value indicated with the <code>skos:historyNote</code> property. If the vocabulary is not based on any other resource or source of information, i.e. this vocabulary is its only expression, this should be communicated by use of the <code>skos:historyNote</code> indicating the phrase "This vocabulary is expressed for the first time here".
         </p>
         <p>
           To ensure that all the terms within a vocabulary are linked to the main vocabulary object, the <code>skos:ConceptScheme</code>:
@@ -194,7 +201,7 @@
           If a <code>skos:Collection</code> is derived from an existing resource:
         </p>
         <p class="req">
-          2.2.2 Provenance for a <code>skos:Collection</code> <em>SHOULD</em> be indicated by at least one of the following properties: <code>dcterms:provenance</code>, <code>dcterms:source</code> or <code>prov:wasDerivedFrom</code>.
+          2.2.2 The origins of a <code>skos:Collection</code> <em>SHOULD</em> be indicated by at least one of the following properties: <code>skos:historyNote</code>, <code>dcterms:source</code> or <code>prov:wasDerivedFrom</code>.
         </p>
       </section>
       <section id="concept">
@@ -234,10 +241,7 @@
           If a <code>skos:Concept</code> is derived from an existing resource and that derivation is not already covered by source information for the vocabulary that it is within:
         </p>
         <p class="req">
-          2.3.4 Provenance for a <code>skos:Concept</code>, if different from that of its containing <code>skos:ConceptScheme</code>, <em>SHOULD</em> be indicated by at least one of the following properties: <code>dcterms:provenance</code>, <code>dcterms:source</code> or <code>prov:wasDerivedFrom</code>.
-        </p>
-        <p class="req">
-          2.3.5 Each <code>skos:Concept</code> in a vocabulary <em>SHOULD</em> indicate its permanent identifier as the value of a <code>dcterms:identifier</code> property. If the permanent identifier is a URI, the value may have the datatype <code>^^xsd:anyURI</code>
+          2.3.4 The origins of a <code>skos:Concept</code>, if different from that of its containing <code>skos:ConceptScheme</code>, <em>SHOULD</em> be indicated by at least one of the following properties: <code>skos:historyNote</code>, <code>dcterms:source</code> or <code>prov:wasDerivedFrom</code>.
         </p>
       </section>
     </section>
