@@ -16,8 +16,10 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 <https://w3id.org/profile/vocpub/validator-combined>
     a owl:Ontology ;
-    owl:versionIRI <https://w3id.org/profile/vocpub/validator/4.3> ;
-    owl:versionInfo """4.3 Improved validator error messages by using more named Property Shapes
+    owl:versionIRI <https://w3id.org/profile/vocpub/validator-combined/4.4> ;
+    owl:versionInfo """4.4 Fixed versions across multiple Resources
+
+4.3 Improved validator error messages by using more named Property Shapes
 
 4.2: Included CONSTRUCT-based pre-validation inference in validator. First Git tagged version
 

@@ -8,7 +8,7 @@ validator.ttl
 
 from pathlib import Path
 from rdflib import Graph, URIRef, Literal
-from rdflib.namespace import SDO, SKOS
+from rdflib.namespace import OWL, SDO, SKOS
 
 validators_dir = Path(__file__).parent.parent.absolute() / "validators"
 
@@ -27,6 +27,11 @@ for p, o in g3.predicate_objects(original_validator_iri):
 for s, p in g3.subject_predicates(original_validator_iri):
     g3.remove((s, p, original_validator_iri))
     g3.add((s, p, new_validator_iri))
+
+for o in g3.objects(new_validator_iri, OWL.versionIRI):
+    new_version_iri = URIRef(str(o).replace("/validator/", "/validator-combined/"))
+    g3.remove((new_validator_iri, OWL.versionIRI, o))
+    g3.add((new_validator_iri, OWL.versionIRI, new_version_iri))
 
 # update this validator's name
 g3.remove((original_validator_iri, SDO.name, None))
