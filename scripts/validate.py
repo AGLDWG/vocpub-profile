@@ -29,7 +29,7 @@ if __name__ == "__main__":
 
     if expand:
         # load the combined validator (inference + validation)
-        s = Graph().parse(validators_dir / "combined.ttl")
+        s = Graph().parse(validators_dir / "validator-combined.ttl")
 
         # validate, applying SHACL inferencing
         v = validate(g, shacl_graph=s, advanced=True)

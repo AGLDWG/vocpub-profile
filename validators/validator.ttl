@@ -20,8 +20,10 @@ BASE <https://w3id.org/profile/vocpub/validator/>
     sdo:publisher <https://linked.data.gov.au/org/agldwg> ;
     sdo:dateCreated "2020-06-14"^^xsd:date ;
     sdo:dateModified "2023-10-04"^^xsd:date ;
-    owl:versionIRI <https://w3id.org/profile/vocpub/validator/4.2> ;
-    owl:versionInfo """4.2: Included CONSTRUCT-based pre-validation inference in validator. First Git tagged version
+    owl:versionIRI <https://w3id.org/profile/vocpub/validator/4.3> ;
+    owl:versionInfo """4.3 Improved validator error messages by using more named Property Shapes
+
+4.2: Included CONSTRUCT-based pre-validation inference in validator. First Git tagged version
 
 4.1: Added Requirements 2.1.10, 2.1.11 & 2.1.12 and example RDF
 
@@ -61,12 +63,7 @@ BASE <https://w3id.org/profile/vocpub/validator/>
 <Requirement-2.1.2+3>
     a sh:NodeShape ;
     sh:targetNode skos:ConceptScheme ;
-    sh:property [
-        sh:path [ sh:inversePath rdf:type ] ;
-        sh:minCount 1 ;
-        sh:maxCount 1 ;
-        sh:message "Requirement 2.1.2 Each vocabulary MUST be presented as a single Concept Scheme object & Requirement 2.1.3 Each vocabulary MUST be presented in a single RDF file which does not contain information other than that which is directly part of the vocabulary" ;
-    ] ;
+    sh:property <ConceptSchemeType> ;
 .
 
 <Requirement-2.1.4>
@@ -112,23 +109,17 @@ BASE <https://w3id.org/profile/vocpub/validator/>
 <Requirement-2.1.8>
 	a sh:NodeShape ;
 	sh:targetClass skos:Concept ;
-    sh:property [
-        sh:path skos:inScheme ;
-        sh:minCount 1 ;
-        sh:maxCount 1 ;
-        sh:class skos:ConceptScheme ;
-        sh:message "Requirement 2.1.8 All Concept instances within a Concept Scheme MUST be contained in a single term hierarchy using skos:hasTopConcept / skos:topConceptOf predicates indicating the broadest Concepts in the vocabulary and then skos:broader and/or skos:narrower predicates for all non-broadest Concepts in a hierarchy that contains no cycles" ;
-    ] ;
+    sh:property <minConcepts> ;
 .
 
 <Requirement-2.1.9>
 	a sh:NodeShape ;
 	sh:targetClass skos:ConceptScheme ;
     sh:property [
+        sh:message "Requirement 2.1.9 Each vocabulary's Concept Scheme MUST link to at least one Concept within the vocabulary with the skos:hasTopConcept predicate" ;
         sh:path skos:hasTopConcept ;
         sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
-        sh:message "Requirement 2.1.9 Each vocabulary's Concept Scheme MUST link to at least one Concept within the vocabulary with the skos:hasTopConcept predicate" ;
     ] ;
 .
 
@@ -136,10 +127,10 @@ BASE <https://w3id.org/profile/vocpub/validator/>
 	a sh:NodeShape ;
 	sh:targetClass skos:ConceptScheme ;
     sh:property [
+        sh:message "Requirement 2.1.10 The status of the vocabulary as a whole, according to the Registry Status standard, SHOULD be given with the predicate reg:status indicating a Concept from the Registry Statuses vocabulary (https://linked.data.gov.au/def/reg-statuses)" ;
         sh:path reg:status ;
         sh:maxCount 1 ;
         sh:nodeKind sh:IRI ;
-        sh:message "Requirement 2.1.10 The status of the vocabulary as a whole, according to the Registry Status standard, SHOULD be given with the predicate reg:status indicating a Concept from the Registry Statuses vocabulary (https://linked.data.gov.au/def/reg-statuses)" ;
     ] ;
     sh:severity sh:Warning ;
 .
@@ -147,51 +138,26 @@ BASE <https://w3id.org/profile/vocpub/validator/>
 <Requirement-2.1.11>
 	a sh:NodeShape ;
 	sh:targetClass skos:ConceptScheme ;
-    sh:property [
-        sh:path prov:qualifiedDerivation ;
-        sh:nodeKind sh:BlankNodeOrIRI ;
-        sh:message "Requirement 2.1.11 The derivation status of the vocabulary SHOULD be given should be given with the predicate prov:qualifiedDerivation indicating a Blank Node that contains the predicated prov:entity, to indicate the vocabulary derived from and prov:hadRole to indicate the mode of derivation which SHOULD be taken from the Vocabulary Derivation Modes vocabulary (https://linked.data.gov.au/def/vocab-derivation-modes)" ;
-    ] ;
+    sh:property <qualifiedDerivation> ;
     sh:severity sh:Warning ;
 .
 
 <Requirement-2.1.11b>
 	a sh:NodeShape ;
 	sh:targetObjectsOf prov:qualifiedDerivation ;
-    sh:property [
-        sh:path prov:entity ;
-        sh:nodeKind sh:IRI ;
-        sh:minCount 1 ;
-        sh:maxCount 1 ;
-        sh:message "Requirement 2.1.11 If a vocabulary has a qualified derivation given, it must then give a prove:entity predicate within the derivation" ;
-    ] ;
+    sh:property <qualifiedDerivation-entity> ;
 .
 
 <Requirement-2.1.11c>
 	a sh:NodeShape ;
 	sh:targetObjectsOf prov:qualifiedDerivation ;
-    sh:property [
-        sh:path prov:hadRole ;
-        sh:nodeKind sh:IRI ;
-        sh:minCount 1 ;
-        sh:maxCount 1 ;
-        sh:message "Requirement 2.1.11 If a vocabulary has a qualified derivation given, it must then give a prove:hadRole predicate within the derivation" ;
-    ] ;
+    sh:property <qualifiedDerivation-hadRole> ;
 .
 
 <Requirement-2.1.12>
 	a sh:NodeShape ;
 	sh:targetClass skos:ConceptScheme ;
-    sh:property [
-        sh:path [
-            sh:alternativePath (
-                sdo:keywords
-                dcat:theme
-            ) ;
-        ] ;
-        sh:nodeKind sh:IRI ;
-        sh:message "Requirement 2.1.12 High-level theming of a vocabulary SHOULD be given by using the sdo:keyword predicate indicating Concepts from another vocabulary. Alternatively, dcat:theme MAY be used. Text literal values for either predicate SHOULD NOT be used" ;
-    ] ;
+    sh:property <theming> ;
     sh:severity sh:Warning ;
 .
 
@@ -209,8 +175,8 @@ BASE <https://w3id.org/profile/vocpub/validator/>
 
 <Requirement-2.2.2>
     a sh:NodeShape ;
-    sh:targetClass skos:Collection ;
     sh:message "Requirement 2.2.2 The origins of a Collection, if different from its containing Concept Scheme, SHOULD be indicated by at least one of the following predicates: skos:historyNote, sdo:citation, prov:wasDerivedFrom. dcterms:source MAY be used instead of sdo:citation and dcterms:provenance MAY be used instead of skos:historyNote but the schema.org and SKOS predicates are preferred" ;
+    sh:targetClass skos:Collection ;
     sh:or (
         <provenance-properties-01>
         <provenance-properties-02>
@@ -278,12 +244,7 @@ BASE <https://w3id.org/profile/vocpub/validator/>
 <Requirement-2.3.3>
 	a sh:NodeShape ;
 	sh:targetClass skos:Concept ;
-    sh:property [
-        sh:path skos:inScheme ;
-        sh:minCount 1 ;
-        sh:nodeKind sh:IRI ;
-        sh:message "Requirement 2.3.3 Each Concept in a vocabulary MUST indicate that it appears within that vocabulary's hierarchy of Concepts either directly by use of the skos:topConceptOf predicate indicating the vocabulary or indirectly by use of one or more skos:broader / skos:narrower predicates placing the Concept within a chain of other Concepts, the top concept of which uses the skos:topConceptOf predicate to indicate the vocabulary" ;
-    ] ;
+    sh:property <inScheme> ;
 .
 
 <Requirement-2.3.4>
@@ -342,6 +303,13 @@ BASE <https://w3id.org/profile/vocpub/validator/>
 #
 #   Property Shapes
 #
+<ConceptSchemeType>
+    sh:path [ sh:inversePath rdf:type ] ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:message "Requirement 2.1.2 Each vocabulary MUST be presented as a single Concept Scheme object & Requirement 2.1.3 Each vocabulary MUST be presented in a single RDF file which does not contain information other than that which is directly part of the vocabulary" ;
+.
+
 <prefLabel>
     a sh:PropertyShape ;
     sh:path skos:prefLabel ;
@@ -356,6 +324,7 @@ BASE <https://w3id.org/profile/vocpub/validator/>
 
 <definition>
     a sh:PropertyShape ;
+    sh:message "Requirement 2.1.4, 2.2.1 or 2.3.1 Each vocabulary, Collection or Concept MUST have exactly one title and at least one definition indicated using the skos:prefLabel and the skos:definition predicates respectively that must give textual literal values. Only one definition per language is allowed" ;
     sh:path skos:definition ;
     sh:minCount 1 ;
     sh:uniqueLang true ;
@@ -367,6 +336,7 @@ BASE <https://w3id.org/profile/vocpub/validator/>
 
 <created>
     a sh:PropertyShape ;
+    sh:message "Requirement 2.15 - created date - violated" ;
     sh:path [
         sh:alternativePath (
             sdo:dateCreated
@@ -384,6 +354,7 @@ BASE <https://w3id.org/profile/vocpub/validator/>
 
 <modified>
     a sh:PropertyShape ;
+    sh:message "Requirement 2.15 - modified date - violated" ;
     sh:path [
         sh:alternativePath (
             sh:path sdo:dateModified
@@ -401,6 +372,7 @@ BASE <https://w3id.org/profile/vocpub/validator/>
 
 <creator>
     a sh:PropertyShape ;
+    sh:message "Requirement 2.15 voilated for modified date" ;
     sh:path [
         sh:alternativePath (
             sdo:creator
@@ -476,4 +448,58 @@ BASE <https://w3id.org/profile/vocpub/validator/>
         [ sh:datatype rdf:langString ]
         [ sh:datatype xsd:string ]
     ) ;
+.
+
+<inScheme>
+    a sh:PropertyShape ;
+    sh:path skos:inScheme ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:message "Requirement 2.3.3 Each Concept in a vocabulary MUST indicate that it appears within that vocabulary's hierarchy of Concepts either directly by use of the skos:topConceptOf predicate indicating the vocabulary or indirectly by use of one or more skos:broader / skos:narrower predicates placing the Concept within a chain of other Concepts, the top concept of which uses the skos:topConceptOf predicate to indicate the vocabulary" ;
+.
+
+<minConcepts>
+    a sh:PropertyShape ;
+    sh:message "Requirement 2.1.8 All Concept instances within a Concept Scheme MUST be contained in a single term hierarchy using skos:hasTopConcept / skos:topConceptOf predicates indicating the broadest Concepts in the vocabulary and then skos:broader and/or skos:narrower predicates for all non-broadest Concepts in a hierarchy that contains no cycles" ;
+    sh:path skos:inScheme ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+        sh:class skos:ConceptScheme ;
+.
+
+<qualifiedDerivation>
+    a sh:PropertyShape ;
+    sh:message "Requirement 2.1.11 The derivation status of the vocabulary SHOULD be given should be given with the predicate prov:qualifiedDerivation indicating a Blank Node that contains the predicated prov:entity, to indicate the vocabulary derived from and prov:hadRole to indicate the mode of derivation which SHOULD be taken from the Vocabulary Derivation Modes vocabulary (https://linked.data.gov.au/def/vocab-derivation-modes)" ;
+    sh:path prov:qualifiedDerivation ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+.
+
+<qualifiedDerivation-entity>
+    a sh:PropertyShape ;
+    sh:message "Requirement 2.1.11 If a vocabulary has a qualified derivation given, it must then give a prove:entity predicate within the derivation" ;
+    sh:path prov:entity ;
+    sh:nodeKind sh:IRI ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+.
+
+<qualifiedDerivation-hadRole>
+    a sh:PropertyShape ;
+    sh:message "Requirement 2.1.11 If a vocabulary has a qualified derivation given, it must then give a prove:hadRole predicate within the derivation" ;
+    sh:path prov:hadRole ;
+    sh:nodeKind sh:IRI ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+.
+
+<theming>
+    a sh:PropertyShape ;
+    sh:message "Requirement 2.1.12 High-level theming of a vocabulary SHOULD be given by using the sdo:keyword predicate indicating Concepts from another vocabulary. Alternatively, dcat:theme MAY be used. Text literal values for either predicate SHOULD NOT be used" ;
+    sh:path [
+        sh:alternativePath (
+            sdo:keywords
+            dcat:theme
+        ) ;
+    ] ;
+    sh:nodeKind sh:IRI ;
 .

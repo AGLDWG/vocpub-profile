@@ -1,6 +1,6 @@
-# This is the same vocabulary as valid-3.ttl but the sdo:dateCreated predicate of the Concept Scheme, the
-# skos:definition of the :c1 Concept and the skos:broader & skos:narrower links between the Concepts :c4.2.2 &
-# :c4.2.2.1 as well :c4.2.2.1's skos:inScheme predicate as are commented out, leading to 4 errors
+# This is an new style vocabulary - it uses schema.org properties.
+# It is valid only using basic validation or expanded validation.
+# i.e. the validator.py validator or the validator-combined.py validators may be used to validate it
 
 PREFIX : <http://example.com/def/vocpub-4.x-test/>
 PREFIX astat: <https://linked.data.gov.au/def/reg-statuses/>
@@ -13,7 +13,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 :c1
     a skos:Concept ;
-    # skos:definition "Defn for C1"@en ;
+    skos:definition "Defn for C1"@en ;
     skos:historyNote "Just made up" ;
     skos:inScheme cs: ;
     skos:prefLabel "Concept 1"@en ;
@@ -73,10 +73,10 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 :c4.2.2.1
     a skos:Concept ;
-    # skos:broader :c4.2.2 ;
+    skos:broader :c4.2.2 ;
     skos:definition "Defn for C4.2.2.1"@en ;
     skos:historyNote "Created for testing VocPub profile only" ;
-    # skos:inScheme cs: ;
+    skos:inScheme cs: ;
     skos:prefLabel "Concept 4.2.2.1"@en ;
     sdo:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
 .
@@ -107,7 +107,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:definition "Defn for C4.2.2"@en ;
     skos:historyNote "Created for testing VocPub profile only" ;
     skos:inScheme cs: ;
-    # skos:narrower :c4.2.2.1 ;
+    skos:narrower :c4.2.2.1 ;
     skos:prefLabel "Concept 4.2.2"@en ;
     sdo:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
 .
@@ -184,7 +184,7 @@ cs:
     sdo:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
     sdo:creator <https://orcid.org/0000-0002-8742-7730> ;
     sdo:dateCreated "2019-04-03"^^xsd:date ;
-    # sdo:dateModified "2023-03-16"^^xsd:date ;
+    sdo:dateModified "2023-03-16"^^xsd:date ;
     sdo:publisher <https://kurrawong.ai> ;
     sdo:qualifiedAttribution [
             prov:agent <https://orcid.org/0000-0002-8742-7730> ;
