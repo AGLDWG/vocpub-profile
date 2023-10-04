@@ -4,21 +4,32 @@ body, html {
     width:100%;
 }
 
+#toc {
+    top: 0;
+    left: 0;
+    padding: 0 10px 0 10px;
+    width: 200px;
+    border-width: 0 2px 2px 0;
+    border-color: rgb(133, 25, 2);
+    border-style: solid;
+    position: fixed ;
+    z-index: 3000;
+    display: block;
+    background-color: white;
+}
+
 body {
     display:grid;
     grid-template-columns: 1fr 3fr 1fr ;
-    grid-template-rows: 140px auto 400px;
+    grid-template-rows: 140px auto 200px;
 
     color: rgb(50, 50, 50);
     font-family: Spartan, Arial, sans-serif;
-    line-height: 1.2em;
+    line-height: 1.5em;
 }
 
 #header {
     overflow: hidden;
-}
-
-.header {
     background-color: white;
     height: 150px;
     border-bottom: solid 10px rgb(133, 25, 2);
@@ -69,8 +80,8 @@ h4 {
     font-size: 1.3em;
 }
 
-.footer {    
-    background: url("/style/comms_footer_bg.svg") top left no-repeat ;
+#footer {
+    /* background: url("/style/comms_footer_bg.svg") top left no-repeat ; */
     background-color: #e4e4e4;
     padding-top:30px;
 }
@@ -99,9 +110,15 @@ p.quote {
 }
 
 p.req {
-    color: red;
+    color: darkred;
 }
 
 code {
+    font-size: 1.2em;
+}
+
+pre {
+    padding:10px;
+    background-color: #eeeeee;
     font-size: 1.2em;
 }

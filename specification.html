@@ -6,17 +6,39 @@
   <link href='//fonts.googleapis.com/css?family=Spartan:300,400' rel='stylesheet' type='text/css'>
   <link href='//fonts.googleapis.com/css?family=Bebas+Neue:300,400' rel='stylesheet' type='text/css'>  
   <link href="style/agldwg.css" rel="stylesheet" type="text/css">
-  <title>VocPub Profile</title>
+  <title>VocPub Specification</title>
 </head>
 <body>
-  <div class="header" style="grid-column:1;"></div>
-  <div id="header" class="header" style="grid-column:2; display:grid; grid-template-columns:180px auto; grid-template-rows:50% 50%;">
-    <div id="logo" style="grid-column:1; grid-row:1/3">
+  <div id="toc">
+    <h4>Table of Contents</h4>
+    <ul>
+      <li><a href="#metadata">Metadata</a></li>
+      <li><a href="#abstract">Abstract</a></li>
+      <li><a href="#namespaces">Namespaces</a></li>
+      <li>
+        <a href="#intro">Introduction</a>
+        <ul>
+          <li><a href="#inference">Inference</a></li>
+          <li><a href="#dependencies">Dependencies</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#elements-reqs">Eements &amp; Reqs</a>
+        <ul>
+          <li><a href="#vocabulary">Vocabulary</a></li>
+          <li><a href="#collection">Collection</a></li>
+          <li><a href="#concept">Concept</a></li>
+          <li><a href="#agent">Agent</a></li>
+        </ul>
+      </li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </div>
+  <div id="header" style="grid-column:1/4; padding: 0 0 0 20%;">
       <a href="https://www.linked.data.gov.au">
-        <img alt="AGLDWG Logo" style="width:150px; margin-top:10px" src="style/agldwg-logo-ochre-150.png" /></a>
-    </div>
+        <img alt="AGLDWG Logo" style="width:150px; margin-top:10px" src="style/agldwg-logo-ochre-150.png" />
+      </a>
   </div><!-- #header -->
-  <div class="header" style="grid-column:3;"></div>
   <div id="content" style="grid-column:2;">
     <h1>VocPub Profile - Specification</h1>
     <section id="metadata">
@@ -30,18 +52,21 @@
         <dt>Created</dt>
         <dd>2020-06-14</dd>
         <dt>Modified</dt>
-        <dd>2023-06-11</dd>
+        <dd>2023-10-04</dd>
         <dt>Version IRI</dt>
-        <dd><a href="https://w3id.org/profile/vocpub/spec/3.1">https://w3id.org/profile/vocpub/spec/3.1</a></dd>
+        <dd><a href="https://w3id.org/profile/vocpub/spec/4.0">https://w3id.org/profile/vocpub/spec/4.0</a></dd>
         <dt>Version Information</dt>
         <dd>
-          <p>3.1: Changed <code>dcterms:provenance</code> to skos:historyNote</p>
+          <p>4.2: Included CONSTRUCT-based pre-validation inference in validator. First Git tagged version</p>
+          <p>4.1: Added Requirements 2.1.10, 2.1.11 & 2.1.12 and example RDF</p>
+          <p>4.0: Added a SPARQL function to allow for the inferenceing of <code>skos:inScheme</code> predicates, <code>skos:broader</code> / <code>skos:narrower</code> and <code>skos:topConceptOf</code>/<code>skos:hasTopConcept</code> pairs of inverse predicates</p>
+          <p>3.3: Converted validator metadata to schema.org, enabled bibliographic references for Concepts, enabled DCTERMS or schema.org for many ConceptScheme predicates; simplified 2.1.6 from two Requirements to one; included <code>skos:topConceptOf</code> in 2.1.8 for Concepts at the top of the hierarchy; collapsed title & definition requirement pairs to single requirements</p>
+          <p>3.2: Allowed <code>dcterms:provenance</code> and <code>skos:historyNote</code>; removed max restriction on <code>dcterms:source</code> & <code>prov:wasDerivedFrom</code></p>
+          <p>3.1: Changed <code>dcterms:provenance</code> to <code>skos:historyNote</code></p>
           <p>3.0: Removed Requirement-2.3.5 (identifiers) as these are auto-generated in systems like VocPrez; Added Requirement-2.1.10 & 2.1.11 and sub parts to test for qualifiedDerivation and status of a <code>ConceptScheme</code></p>
         </dd>
         <dt>Creator</dt>
         <dd><a href="https://orcid.org/0000-0002-8742-7730">Nicholas J. Car</a></dd>
-        <dt>Contributor</dt>
-        <dd><a href="https://orcid.org/0000-0002-3884-3420">Simon J D Cox</a></dd>
         <dt>Publisher</dt>
         <dd><a href="https://linked.data.gov.au/org/agldwg">Australian Government Linked Data Working Group</a></dd>
         <dt>Further metadata</dt>
@@ -58,7 +83,7 @@
         This is the specification document of the VocPub <a href="https://www.w3.org/TR/dx-prof/#definitions">profile</a> of <a href="https://www.w3.org/TR/skos-reference/">SKOS</a>. It defines the requirements that data must satisfy to be considered conformant with this profile.
       </p>
       <p>
-        This specification is not to be used for testing conformance of RDF resoruces to this profile. That role belongs to the <em>validation</em> resource within this profile:
+        This specification document cannot be used for testing conformance of RDF resources to this profile: that role belongs to the <em>validation</em> resource within this profile:
       </p>
       <ul>
         <li><a href="https://w3id.org/profile/vocpub/validation">https://w3id.org/profile/vocpub/validation</a></li>
@@ -82,6 +107,8 @@
         <dd><code>http://www.w3.org/ns/dx/prof/</code></dd>
         <dt>prov</dt>
         <dd><code>http://www.w3.org/ns/prov#</code></dd>
+        <dt>reg</dt>
+        <dd><code>http://purl.org/linked-data/registry#></code></dd>
         <dt>sdo</dt>
         <dd><code>https://schema.org/</code></dd>
         <dt>skos</dt>
@@ -93,13 +120,13 @@
     <section id="intro">
       <h2>1. Introduction</h2>
       <p>
-        This profile defines a <em>vocabulary</em> as a controlled collection of defined terms that may or may not contain relationships between terms and relationships to terms in other vocabularies.
-      </p>
-      <p>
         Many organisations use the Simple Knowledge Organization System Reference (SKOS)<sup><a href="#skos">ref</a></sup> to represent vocabularies in a form that can be read by humans and consumed by machines; that is, in <em>Semantic Web</em> form<sup><a href="#semantic-web">ref</a></sup>.
       </p>
       <p>
-        This document specifies a <em>profile</em> of SKOS and by profile, the definition of from the <em>Profiles Vocabulary</em><sup><a href="#prof">ref</a></sup> is used. A <em>profile</em> is:
+        This profile defines a <em>vocabulary</em> as a controlled collection of defined terms - Concepts - that may or may not contain relationships between Cocnepts and relationships to Concepts in other vocabularies.
+      </p>
+      <p>
+        This document specifies a <em>profile</em> of SKOS and for profile, the definition of from the <em>Profiles Vocabulary</em><sup><a href="#prof">ref</a></sup> is used. A <em>profile</em> is:
       </p>
       <p class="quote">A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications.
       </p>
@@ -107,18 +134,66 @@
         Here, the <em>other specification</em> being profiled is SKOS.
       </p>
       <p>
-        In the next section, this document describes how SKOS's elements must be presented to make a vocabulary that conforms to this profile.
+        In the next section, this document describes how SKOS's elements must be presented - in certain arrangements wth respect to one another and with certain predicates to indicate properties - to make a vocabulary that conforms to this profile.
       </p>
       <p>
         This specification's rules/requirements - are numbered and <span style="color:darkred;">indicated in red text</span>.
       </p>
+      <section id="inference">
+        <h3>1.1 Inference</h3>
+        <p>
+          Many SKOS predicates have defined relations to other predicates, for example <code>skos:broader</code> and <code>skos:narrower</code> are inverse predicates. Given the rules of these predicate relations (from OWL<sup><a href="#owl">ref</a></sup>, some predicates may be deterministically calculable, given others, through a rule-based process known as <em>inference</em>. The implication of this is that a vocabulary developer may supply, for example, <code>skos:narrower</code> predicates for Concepts to create a hierarchy however a <code>skos:broader</code>-based hierarchy will also be understood.
+        </p>
+        <p>
+          A script with the calculation logic for all the predicates relevant to this profile is also supplied with this profile, see:
+        </p>
+        <ul>
+          <li><a href="https://w3id.org/profile/vocpub/inference">https://w3id.org/profile/vocpub/inference</a></li>
+        </ul>
+        <p>
+          This script should be run against any vocabulary before validating them with this profile's validator to ensure predicates are calculated correctly.
+        </p>
+        <p>
+          A further script is supplied that incorporates the inference logic in the script above and then validates the result:
+        </p>
+        <ul>
+          <li><a href="https://w3id.org/profile/vocpub/validate">https://w3id.org/profile/vocpub/validate</a></li>
+        </ul>
+      </section>
+      <section id="dependencies">
+        <h3>1.2 Dependencies</h3>
+        <p>
+          To characterise vocabularies according to the mandatory and suggested Requirements of this Profile, several other vocabularies will need to be used. This profile is therefore dependent on those vocabularies. For this reason, copies of these vocabularies are maintained within the repository of this profile and are accessible as per the details table below.
+        </p>
+        <table style="font-size: small;">
+          <tr>
+            <th>Vocabulary</th><th>Description</th><th>Where used</th><th>Local Copy</th>
+          </tr>
+          <tr>
+            <td>
+              <a href="https://linked.data.gov.au/def/reg-statuses">Registry Statuses</a>
+            </td>
+            <td>The registration statuses of items in a Register, as per ISO19135</td>
+            <td>For the suggested vocabulary predicate <code>reg:status</code>, as per <span style="color:darkred;">Requirement 2.1.11</span> </td>
+            <td><a href="https://w3id.org/profile/vocpub/voc/vocab-derivation-modes">https://w3id.org/profile/vocpub/voc/reg-statuses</a></td>
+          </tr>
+          <tr>
+            <td>
+              <a href="https://linked.data.gov.au/def/vocab-derivation-modes">Vocab Derivation Modes</a>
+            </td>
+            <td>The modes by which one vocabulary may derive from another</td>
+            <td>For the suggested vocabulary predicate <code>prov:qualifiedDerivation</code>, as per <span style="color:darkred;">Requirement 2.1.12</span> </td>
+            <td><a href="https://w3id.org/profile/vocpub/voc/vocab-derivation-modes">https://w3id.org/profile/vocpub/voc/vocab-derivation-modes</a></td>
+          </tr>
+        </table>
+      </section>
     </section>
     <section id="elements-reqs">
       <h2>2. Elements &amp; Requirements</h2>
       <section id="vocabulary">
         <h3>2.1 Vocabulary</h3>
         <p>
-          this profile identifies Semantic Web objects with URI-based persistent identifiers. For this reason:
+          This profile identifies Semantic Web objects with URI-based persistent identifiers. For this reason:
         </p>
         <p class="req">
           2.1.1 Each vocabulary <em>MUST</em> be identified by a IRI
@@ -132,52 +207,72 @@
           For this reason, this profile requires that:
         </p>
         <p class="req">
-          2.1.2 Each vocabulary <em>MUST</em> be presented as a single <code>skos:ConceptScheme</code> object
+          2.1.2 Each vocabulary <em>MUST</em> be presented as a single Concept Scheme object
         </p>
         <p>
           For ease of data management:
         </p>
         <p class="req">
-          2.1.3 Each vocabulary <em>MUST</em> be presented in a single file which does not contain information other than that which is directly part of the vocabulary and the file is considered the point-of-truth
+          2.1.3 Each vocabulary <em>MUST</em> be presented in a single RDF file which does not contain information other than that which is directly part of the vocabulary
         </p>
         <p>
           To ensure vocabularies can be catalogued effectively and governed:
         </p>
         <p class="req">
-          2.1.4a Each vocabulary <em>MUST</em> have one and only one title indicated using the <code>skos:prefLabel</code> property that must be a text literal value
+          2.1.4 Each vocabulary <em>MUST</em> have exactly one title and at least one definition indicated using the <code>skos:prefLabel</code> and the <code>skos:definition</code> predicates respectively that must give textual literal values. Only one definition per language is allowed
+        </p>
+        <p><strong>NOTE</strong>: Unlike the general directions for the use of SKOS (the <a href="https://www.w3.org/TR/skos-primer/">SKOS "Primer"</a>) labels in multiple languages should be indicated with <code>skos:altLabel</code> predicates, not all with <code>skos:prefLabel</code>, i.e. there should only ever be one <code>skos:prefLabel</code> value. If multiple definitions are given, the one in the language of the label is considered primary.</p>
+        <p class="req">
+          2.1.5 Each vocabulary <em>MUST</em> have exactly one created date and exactly one modified date indicated using the <code>sdo:dateCreated</code> and <code>sdo:dateModified</code> or <code>dcterms:created</code> and <code>dcterms:modified</code> predicates respectively that must be either an <code>xsd:date</code>, <code>xsd:dateTime</code> or <code>xsd:dateTimeStamp</code> literal value
         </p>
         <p class="req">
-          2.1.4b Each vocabulary <em>MUST</em> have one and only one definition value indicated using the <code>skos:definition</code> property that must be a text literal values
-        </p>
-        <p class="req">
-          2.1.5 Each vocabulary <em>MUST</em> have one and only one created date and one and only one modified date indicated using the <code>dcterms:created</code> and <code>dcterms:modified</code> properties respectively that must be either an xsd:date, xsd:dateTime or xsd:dateTimeStamp literal value
-        </p>
-        <p class="req">
-          2.1.6a Each vocabulary <em>MUST</em> have at least one creator, indicated using <code>dcterms:creator</code> property that must be a IRI value indicating an instances of <code>sdo:Person</code>, <code>sdo:Organization</code> or <code>sdo:GovernmentOrganization</code>
-        </p>
-        <p class="req">
-          2.1.6b Each vocabulary <em>MUST</em> have at least one publisher, indicated using <code>dcterms:publisher</code> property that must be a IRI value indicating an instance of <code>sdo:Person</code>, <code>sdo:Organization</code> or <code>sdo:GovernmentOrganization</code>
+          2.1.6 Each vocabulary <em>MUST</em> have at least one creator, indicated using <code>sdo:creator</code> or <code>dcterms:creator</code> predicate and exactly one publisher, indicated using <code>sdo:publisher</code> or <code>dcterms:publisher</code>, all of which MUST be IRIs indicating instances of <code>sdo:Person</code>, or <code>sdo:Organization</code>
         </p>
         <p>
           To be able to link SKOS vocabularies to their non-vocabulary source information:
         </p>
         <p class="req">
-          2.1.7 The origins of a <code>skos:ConceptScheme</code> <em>MUST</em> be indicated by at least one of the following properties: <code>skos:historyNote</code>, <code>dcterms:source</code> or <code>prov:wasDerivedFrom</code>.
+          2.1.7 The origins of a Concept Scheme <em>MUST</em> be indicated by at least one of the following predicates: <code>skos:historyNote</code>, <code>sdo:citation</code>, <code>prov:wasDerivedFrom</code>. <code>dcterms:source</code> <em>MAY</em> be used instead of <code>sdo:citation</code> and <code>dcterms:provenance</code> <em>MAY</em> be used instead of <code>skos:historyNote</code> but the schema.org and SKOS predicates are preferred.
         </p>
         <p>
-          If a vocabulary is based on another Semantic Web resource, such as an ontology or another vocabulary, <code>prov:wasDerivedFrom</code> should be used to indicate that resource's IRI. If the vocabulary is based on a resource that is identified by a IRI but which is not a Semantic Web resource, <code>dcterms:source</code> should be used to indicate the resource's IRI. If the vocabulary is based on something which cannot be identified by IRI, a statement about the thing should be given in a literal value indicated with the <code>skos:historyNote</code> property. If the vocabulary is not based on any other resource or source of information, i.e. this vocabulary is its only expression, this should be communicated by use of the <code>skos:historyNote</code> indicating the phrase "This vocabulary is expressed for the first time here".
+          If a vocabulary is based on another Semantic Web resource, such as an ontology or another vocabulary, <code>prov:wasDerivedFrom</code> should be used to indicate that resource's IRI. If the vocabulary is based on a resource that is identified by a IRI but which is not a Semantic Web resource, <code>sdo:citation</code> should be used to indicate the resource's IRI with the <code>xsd:anyURI</code> datatype. If the vocabulary is based on something which cannot be identified by IRI, a statement about the vocabulary's origins should be given in a literal value indicated with the <code>skos:historyNote</code> predicate. If the vocabulary is not based on any other resource or source of information, i.e. this vocabulary is its only expression, this should be communicated by use of the <code>skos:historyNote</code> indicating the phrase "This vocabulary is expressed for the first time here".
         </p>
+        <p><em>The use of <code>dcterms:source</code> &amp; <code>dcterms:provenance</code> is to maintain compatability with previous versions of VocPub only and may eventually be disallowed.</em></p>
         <p>
-          To ensure that all the terms within a vocabulary are linked to the main vocabulary object, the <code>skos:ConceptScheme</code>:
+          To ensure that all the terms within a vocabulary are linked to the main vocabulary object, the Concept Scheme:
         </p>
         <p class="req">
-          2.1.8 All <code>skos:Concept</code> instances within a <code>skos:ConceptScheme</code> <em>MUST</em> be ordered in a single, term hierarchy using <code>skos:broader</code> and/or <code>skos:narrower</code> properties and which contains no cycles.
+          2.1.8 All Concept instances within a Concept Scheme <em>MUST</em> be contained in a single term hierarchy using <code>skos:hasTopConcept</code> / <code>skos:topConceptOf</code> predicates indicating the broadest Concepts in the vocabulary and then <code>skos:broader</code> and/or <code>skos:narrower</code> predicates for all non-broadest Concepts in a hierarchy that contains no cycles.
         </p>
         <p>
           To unambiguously link the term hierarchy within a vocabulary to the vocabulary itself:
         </p>
         <p class="req">
-          2.1.9 Each vocabulary's <code>skos:ConceptScheme</code> <em>MUST</em> link to at least one <code>skos:Concept</code> within the vocabulary as with the property <code>skos:hasTopConcept</code>
+          2.1.9 Each vocabulary's Concept Scheme <em>MUST</em> link to at least one Concept within the vocabulary with the <code>skos:hasTopConcept</code> predicate
+        </p>
+        <p>To communicate the <em>Registry Status</em> of the vocabulary:</p>
+        <p class="req">
+          2.1.10 The status of the vocabulary as a whole, according to the Registry Status standard<sup><a href="#iso19135">ref</a></sup>, <em>SHOULD</em> be given with the predicate <code>reg:status</code> indicating a Concept from the <em>Registry Statuses</em> vocabulary (<a href="https://linked.data.gov.au/def/reg-statuses">https://linked.data.gov.au/def/reg-statuses</a>).
+        </p>
+        <p>To indicate whether and if so how this vocabulary has been derived from another vocabulary:</p>
+        <p class="req">
+          2.1.11 The derivation status of the vocabulary <em>SHOULD</em> be given should be given with the predicate <code>prov:qualifiedDerivation</code> indicating a Blank Node that contains the predicated <code>prov:entity</code>, to indicate the vocabulary derived from and <code>prov:hadRole</code> to indicate the mode of derivation which <em>SHOULD</em> be taken from the <em>Vocabulary Derivation Modes</em> vocabulary (<a href="https://linked.data.gov.au/def/vocab-derivation-modes">https://linked.data.gov.au/def/vocab-derivation-modes</a>).
+        </p>
+        <p>Example data for a vocabulary indicating that it is an extension to another vocabulary using the mechanism defined in Requirement 2.1.2 is:</p>
+        <pre>
+# Vocab X is derived from Vocab Y and is an extension of it
+&lt;http://example.com/vocab/x>
+    a skos:ConceptScheme ;
+    skos:prefLabel "Vocab X"@en ;
+    ...
+    prov:qualifiedDerivation [
+        prov:entity &lt;http://example.com/vocab/y> ;  # Vocab Y
+        prov:hadRole &lt;https://linked.data.gov.au/def/vocab-derivation-modes/extension> ;
+    ] ;
+.</pre>
+        <p>To high-level theming of a vocabulary:</p>
+        <p class="req">
+          2.1.12 High-level theming of a vocabulary <em>SHOULD</em> be given by using the <code>sdo:keyword</code> predicate indicating Concepts from another vocabulary. Alternatively, <code>dcat:theme</code> <em>MAY</em> be used. Text literal values for either predicate <em>SHOULD NOT</em> be used.
         </p>
       </section>
       <section id="collection">
@@ -186,22 +281,29 @@
           From the SKOS Primer<sup><a href="#skos-primer">ref</a></sup>:
         </p>
         <p class="quote">
-          SKOS makes it possible to define meaningful groupings or "collections" of concepts
+          SKOS makes it possible to define meaningful groupings or "collections" of concepts. Collections may contain Concepts defined in any vocabulary, not just the one the Collection itself is defined in.
         </p>
         <p>
-          To ensure that <code>skos:Collection</code> instances are identifiable and their meaning isn't obscure or lost:
+          To ensure that Collection instances are identifiable and their meaning isn't obscure or lost:
         </p>
         <p class="req">
-          2.2.1a Each <code>skos:Collection</code> instance <em>MUST</em> have one and only one title indicated using the <code>skos:prefLabel</code> property that must be a text literal value
+          2.2.1 Each Collection <em>MUST</em> have exactly one title and at least one definition indicated using the <code>skos:prefLabel</code> and the <code>skos:definition</code> predicates respectively that must give textual literal values. Only one definition per language is allowed
         </p>
-        <p class="req">
-          2.2.1b Each <code>skos:Collection</code> instance <em>MUST</em> have one and only one definition indicated using the <code>skos:definition</code> property that must be a text literal value
-        </p>
+        <p><strong>NOTE</strong>: Unlike the general directions for the use of SKOS (the <a href="https://www.w3.org/TR/skos-primer/">SKOS "Primer"</a>) labels in multiple languages should be indicated with <code>skos:altLabel</code> predicates, not all with <code>skos:prefLabel</code>, i.e. there should only ever be one <code>skos:prefLabel</code> value. If multiple definitions are given, the one in the language of the label is considered primary.</p>
         <p>
-          If a <code>skos:Collection</code> is derived from an existing resource:
+          If a Collection's grouping of Concepts is derived from an existing resource that is different from the ConceptScheme it is defined within:
         </p>
         <p class="req">
-          2.2.2 The origins of a <code>skos:Collection</code> <em>SHOULD</em> be indicated by at least one of the following properties: <code>skos:historyNote</code>, <code>dcterms:source</code> or <code>prov:wasDerivedFrom</code>.
+          2.2.2 The origins of a Collection, if different from its containing Concept Scheme, <em>SHOULD</em> be indicated by at least one of the following predicates: <code>skos:historyNote</code>, <code>sdo:citation</code>, <code>prov:wasDerivedFrom</code>. <code>dcterms:source</code> <em>MAY</em> be used instead of <code>sdo:citation</code> and <code>dcterms:provenance</code> <em>MAY</em> be used instead of <code>skos:historyNote</code> but the schema.org and SKOS predicates are preferred.
+        </p>
+        <p><em>For compatability with previous versions of this Specification, <code>dcterms:provenance</code> MAY be used instead of <code>skos:historyNote</code> but the latter is the preferred predicate.</em></p>
+        <p>To help list Collections within vocabularies:</p>
+        <p class="req">
+          2.2.3 A Collection exists within a vocabulary <em>SHOULD</em> indicate that it is within the vocabulary by use of the <code>skos:inScheme</code> predicate. If it is defined for the first time in the vocabulary, it should also indicate this with the <code>rdfs:isDefinedBy</code> predicate
+        </p>
+        <p>To ensure that a Collection isn't empty:</p>
+        <p class="req">
+          2.2.4 A Collection <em>MUST</em> indicate at least one Concept instance that is within the collection with use of the <code>skos:member</code> predicate. The Concept need not be defined by the Concept Scheme that defines the Collection
         </p>
       </section>
       <section id="concept">
@@ -213,65 +315,81 @@
           The fundamental element of the SKOS vocabulary is the concept. Concepts are the units of thought — ideas, meanings, or (categories of) objects and events—which underlie many knowledge organization systems
         </p>
         <p>
-          Vocabularies conforming to this profile must present at least one <code>skos:Concept</code> within the vocabulary file and, as per requirements in Section 2.1, at least once <code>skos:Concept</code> must be indicated as the top concept of the vocabulary.
+          Vocabularies conforming to this profile must present at least one Concept within the vocabulary file and, as per requirements in Section 2.1, at least once Concept must be indicated as the top concept of the vocabulary.
         </p>
         <p>
-          To ensure that <code>skos:Concept</code> instances are identifiable and their meaning isn't obscure or lost:
+          To ensure that Concept instances are identifiable and their meaning isn't obscure or lost:
         </p>
         <p class="req">
-          2.3.1a Each <code>skos:Concept</code> instance <em>MUST</em> have one and only one title indicated using the <code>skos:prefLabel</code> property that must be a text literal value
+          2.3.1 Each Concept <em>MUST</em> have exactly one title and at least one definition indicated using the <code>skos:prefLabel</code> and the <code>skos:definition</code> predicates respectively that must give textual literal values. Only one definition per language is allowed
+        </p>
+        <p><strong>NOTE</strong>: Unlike the general directions for the use of SKOS (the <a href="https://www.w3.org/TR/skos-primer/">SKOS "Primer"</a>) labels in multiple languages should be indicated with <code>skos:altLabel</code> predicates, not all with <code>skos:prefLabel</code>, i.e. there should only ever be one <code>skos:prefLabel</code> value. If multiple definitions are given, the one in the language of the label is considered primary.</p>
+        <p>
+          To ensure that every Concept is linked to the vocabulary that defines it:
         </p>
         <p class="req">
-          2.3.1b Each <code>skos:Concept</code> instance <em>MUST</em> have one and only one definition indicated using the <code>skos:definition</code> property that must be a text literal value
+          2.3.2 Each Concept in a vocabulary <em>MAY</em> indicate the vocabulary that defines it by use of the <code>rdfs:isDefinedBy</code> predicate indicating a Concept Scheme instance. If no such predicate is given, the Concept Scheme in the file that a Concept is provided in is understood to be the defining Concept Scheme
+        </p>
+        <p>Note that the vocabulary that defines a Concept does not have to be the vocabulary in the file being validated. This is to allow for Concept instance reuse across multiple vocabularies.</p>
+        <p>
+          Since a Concept may be used in more than one vocabulary:
+        </p>
+        <p class="req">
+          2.3.3 Each Concept in a vocabulary <em>MUST</em> indicate that it appears within that vocabulary's hierarchy of Concepts either directly by use of the <code>skos:topConceptOf</code> predicate indicating the vocabulary or indirectly by use of one or more <code>skos:broader</code> / <code>skos:narrower</code> predicates placing the Concept within a chain of other Concepts, the top concept of which uses the <code>skos:topConceptOf</code> predicate to indicate the vocabulary.
         </p>
         <p>
-          To ensure that every <code>skos:Concept</code> is linked to the vocabulary that defines it:
+          If a Concept is derived from an existing resource and that derivation is not already covered by source information for the vocabulary that it is within:
         </p>
         <p class="req">
-          2.3.2 Each <code>skos:Concept</code> in a vocabulary <em>MAY</em> indicate the vocabulary that defines it by use of the <code>rdfs:isDefinedBy</code> property indicating a <code>skos:ConceptScheme</code> instance
-        </p>
-        <p>Note that the vocabulary that defines a <code>skos:Concept</code> does not have to be the vocabulary in the file being validated. This is to allow for <code>skos:Concept</code> instance reuse across multiple vocabularies.</p>
-        <p>
-          Since a <code>skos:Concept</code> may be used in more than one vocabulary:
-        </p>
-        <p class="req">
-          2.3.3 Each <code>skos:Concept</code> in a vocabulary <em>MUST</em> indicate that it appears within that vocabulary's hierarchy of terms by use of either or both <code>skos:inScheme</code> and <code>skos:topConceptOf</code> properties
+          2.3.4 The origins of a Concept, if different from its containing Concept Scheme, <em>SHOULD</em> be indicated by at least one of the following predicates: <code>skos:historyNote</code>, <code>sdo:citation</code>, <code>dcterms:source</code> or <code>prov:wasDerivedFrom</code> or <code>dcterms:provenance</code>.
         </p>
         <p>
-          If a <code>skos:Concept</code> is derived from an existing resource and that derivation is not already covered by source information for the vocabulary that it is within:
-        </p>
-        <p class="req">
-          2.3.4 The origins of a <code>skos:Concept</code>, if different from that of its containing <code>skos:ConceptScheme</code>, <em>SHOULD</em> be indicated by at least one of the following properties: <code>skos:historyNote</code>, <code>dcterms:source</code> or <code>prov:wasDerivedFrom</code>.
+          If a Concept is based on another Semantic Web resource, such as another Concept or other defined object, <code>prov:wasDerivedFrom</code> should be used to indicate that resource's IRI. If the Concept is based on a resource that is identified by a IRI but which is not a Semantic Web resource, <code>dcterms:source</code> should be used to indicate the resource's IRI. If the vocabulary is based on something which cannot be identified by IRI, a statement about the vocabulary's origins should be given in a literal value indicated with the <code>skos:historyNote</code> predicate. If the vocabulary is not based on any other resource or source of information, i.e. this vocabulary is its only expression, this should be communicated by use of the <code>skos:historyNote</code> indicating the phrase "This vocabulary is expressed for the first time here".
         </p>
       </section>
     </section>
     <section id="agent">
       <h3>2.4 Agent</h3>
       <p>
-        To be consistent with other Semantic Web representations of agents, vocabularies' associated agents, creator &amp; publisher must be certain typed RDF values:
+        To be consistent with other Semantic Web representations of Agents, vocabularies' associated Agents, creator &amp; publisher must be certain typed RDF values:
       </p>
       <p class="req">
-        2.4.1 Each agent associated with a vocabulary <em>MUST</em> be typed as an <code>sdo:Person</code>, <code>sdo:Organization</code> or <code>sdo:GovernmentOrganization</code>
+        2.4.1 Each Agent associated with a vocabulary <em>MUST</em> be typed as an <code>sdo:Person</code> or <code>sdo:Organization</code>
       </p>
       <p>
-        To ensure human readability and association of agents with their non-Semantic Web (real world) form:
+        To ensure human readability and association of Agents with their non-Semantic Web (real world) form:
       </p>
       <p class="req">
-        2.4.2 Each agent <em>MUST</em> indicate at least one name property with the <code>sdo:name</code> property that must be a text literal value
+        2.4.2 Each Agent <em>MUST</em> give exactly one name with the <code>sdo:name</code> predicate indicating a literal text value
       </p>
       <p>
-        To ensure that agents are linked to non-Semantic Web forms of identification:
+        To ensure that Agents are linked to non-Semantic Web forms of identification:
       </p>
       <p class="req">
-        2.4.3 Each agent <em>MUST</em> indicate either a <code>sdo:url</code> (for organizations) or a <code>sdo:email</code> (for people) property with a URL or email value
+        2.4.3 Each Agent <em>MUST</em> indicate either a <code>sdo:url</code> (for organizations) or a <code>sdo:email</code> (for people) predicate with a URL or email value
       </p>
+      <p>
+        To link to Agent registers using non-Semantic Web identifiers for Agents:
+      </p>
+      <p class="req">
+        2.4.4 Each Agent <em>SHOULD</em> indicate any non-Semantic Web identifiers for Agents with the <code>sdo:identifier</code> predicate with literal identifier values, preferentially with custom data types that define the form of the identifier.
+      </p>
+      <p><strong>NOTE</strong>: This method of providing identifiers with specialised datatypes is the same as that specified for <code>skos:notation</code> values in the <a href="https://www.w3.org/TR/skos-primer/#secnotations">SKOS Primer</a>.</p>
     </section>
     <section id="references">
   <h2>3. References</h2>
   <dl>
-    <dt><a id="prof"></a>PROV</dt>
+    <dt><a id="prof"></a>PROF</dt>
     <dd>
       Rob Atkinson; Nicholas J. Car (eds.). <em>The Profiles Vocabulary</em>. 18 December 2019. W3C Working Group Note. URL: <a href="https://www.w3.org/TR/dx-prof/">https://www.w3.org/TR/dx-prof/</a>
+    </dd>
+    <dt><a id="iso19135"></a>ISO 19135-1:2015</dt>
+    <dd>
+      International Organization for Standardization <em>ISO 19135-1:2015 - Geographic information - Procedures for item registration - Part 1: Fundamentals</em>. 2015. ISO Standard. URL: <a href="https://www.iso.org/standard/54721.html">https://www.iso.org/standard/54721.html</a>
+    </dd>
+    <dt><a id="owl"></a>OWL</dt>
+    <dd>
+      W3C OWL Working Group (eds.). <em>OWL 2 Web Ontology Language Document Overview (Second Edition)</em>. 11 December 2012. W3C Recommendation. URL: <a href="https://www.w3.org/TR/owl2-overview/">https://www.w3.org/TR/owl2-overview/</a>
     </dd>
     <dt><a id="skos"></a>SKOS</dt>
     <dd>
@@ -288,16 +406,8 @@
   </dl>
 </section>
 </div><!-- #content -->
-<div class="footer" style="grid-column:1;"></div>
-<div class="footer" style="grid-column:2; display:grid; grid-column:70% 30%;">
-  <div style="grid-column:1;">
+  <div id="footer" style="grid-column:1/4; text-align: center;">
     This web page content is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>
-  </div>
-  <div style="grid-column:2;">
-    <div style="float:right;">
-    </div>
-  </div>
-</div><!-- #footer -->
-<div class="footer" style="grid-column:3;"></div>
+  </div><!-- #footer -->
 </body>
 </html>

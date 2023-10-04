@@ -9,14 +9,11 @@
   <title>VocPub Profile</title>
 </head>
 <body>
-  <div class="header" style="grid-column:1;"></div>
-  <div id="header" class="header" style="grid-column:2; display:grid; grid-template-columns:180px auto; grid-template-rows:50% 50%;">
-    <div id="logo" style="grid-column:1; grid-row:1/3">
+  <div id="header" style="grid-column:1/4; padding: 0 0 0 20%;">
       <a href="https://www.linked.data.gov.au">
-        <img alt="AGLDWG Logo" style="width:150px; margin-top:10px" src="style/agldwg-logo-ochre-150.png" /></a>
-    </div>
+        <img alt="AGLDWG Logo" style="width:150px; margin-top:10px" src="style/agldwg-logo-ochre-150.png" />
+      </a>
   </div><!-- #header -->
-  <div class="header" style="grid-column:3;"></div>
   <div id="content" style="grid-column:2;">
     <h1>VocPub Profile</h1>
     <section id="metadata">
@@ -35,24 +32,26 @@
         <dt>Created</dt>
         <dd>2020-06-14</dd>
         <dt>Modified</dt>
-        <dd>2022-04-24</dd>
+        <dd>2023-10-04</dd>
         <dt>Creator</dt>
         <dd><a href="https://orcid.org/0000-0002-8742-7730">Nicholas J. Car</a></dd>
         <dt>Publisher</dt>
         <dd><a href="https://linked.data.gov.au/org/agldwg">Australian Government Linked Data Working Group</a></dd>
         <dt>Repository</dt>
-        <dd><a href="https://github.com/nicholascar/vocpub-profile">https://github.com/nicholascar/vocpub-profile</a></dd>
+        <dd><a href="https://github.com/AGLDWG/vocpub-profile/">https://github.com/AGLDWG/vocpub-profile/</a></dd>
         <dt><a href="https://w3c.github.io/dx-prof/prof/#Property:hasResource">Profile Resources</a></dt>
         <dd>
           <ol>
             <li><a href="#https://w3id.org/profile/vocpub/spec">Specification</a></li>
             <li><a href="#https://w3id.org/profile/vocpub/validator">Validator</a></li>
+            <li><a href="#https://w3id.org/profile/vocpub/expander">Expander</a></li>
+            <li><a href="#https://w3id.org/profile/vocpub/validator-combined">Combined Validator</a></li>
             <li><a href="#https://w3id.org/profile/vocpub/htv">How to validate instructions</a></li>
-            <li><a href="#https://w3id.org/profile/vocpub/example/valid">Valid example data</a></li>
-            <li><a href="#https://w3id.org/profile/vocpub/example/invalid">Invalid example data 1</a></li>
-            <li><a href="#https://w3id.org/profile/vocpub/example/invalid-2">Invalid example data 2</a></li>
-            <li><a href="#https://w3id.org/profile/vocpub/sdo">schema.org mapping</a></li>
-            <li><a href="#https://w3id.org/profile/vocpub/repo">Profile code repository</a></li>            
+            <li><a href="#https://w3id.org/profile/vocpub/validate">Validate Script</a></li>
+            <li><a href="#https://w3id.org/profile/vocpub/examples">Examples</a></li>
+            <li><a href="#https://w3id.org/profile/vocpub/voc/reg-statuses">Registry Statuses Vocabulary</a></li>
+            <li><a href="#https://w3id.org/profile/vocpub/voc/vocab-derivation-modes">Vocab Derivation Modes Vocabulary</a></li>
+            <li><a href="#https://w3id.org/profile/vocpub/repo/">Profile code repository</a></li>
           </ol>
         </dd>
       </dl>
@@ -99,10 +98,50 @@
         <tr>
           <th>Format</th><td><code><a href="https://w3id.org/mediatype/text/turtle">text/turtle</a></code></td>
         </tr>
-      </table>       
+      </table>
+      <table class="props" id="https://w3id.org/profile/vocpub/expander">
+        <tr>
+          <td colspan="2"><h3>3. SHACL Data Expander</h3></td>
+        </tr>
+        <tr>
+          <th>Description</th><td>A SHACL Shapes file to be used to expand data according to a series of SKOS rules</td>
+        </tr>
+        <tr>
+          <th>Artifact</th><td><a href="https://w3id.org/profile/vocpub/expander">https://w3id.org/profile/vocpub/expander</a></td>
+        </tr>
+        <tr>
+          <th>Role</th><td><code><a href="http://www.w3.org/ns/dx/prof/role/script">role:script</a></code></td>
+        </tr>
+        <tr>
+          <th>Conforms</th><td><a href="https://www.w3.org/TR/shacl/">SHACL</a></td>
+        </tr>
+        <tr>
+          <th>Format</th><td><code><a href="https://w3id.org/mediatype/text/turtle">text/turtle</a></code></td>
+        </tr>
+      </table>
+      <table class="props" id="https://w3id.org/profile/vocpub/validator-combined">
+        <tr>
+          <td colspan="2"><h3>4. Combined Expander & Validator in SHACL</h3></td>
+        </tr>
+        <tr>
+          <th>Description</th><td>The combined <a href="#https://w3id.org/profile/vocpub/validator">Validator</a> &amp; <a href="#https://w3id.org/profile/vocpub/expander">Expander</a></td>
+        </tr>
+        <tr>
+          <th>Artifact</th><td><a href="https://w3id.org/profile/vocpub/validator-combined">https://w3id.org/profile/vocpub/validator-combined</a></td>
+        </tr>
+        <tr>
+          <th>Role</th><td><code><a href="http://www.w3.org/ns/dx/prof/role/validation">role:validation</a></code></td>
+        </tr>
+        <tr>
+          <th>Conforms</th><td><a href="https://www.w3.org/TR/shacl/">SHACL</a></td>
+        </tr>
+        <tr>
+          <th>Format</th><td><code><a href="https://w3id.org/mediatype/text/turtle">text/turtle</a></code></td>
+        </tr>
+      </table>
       <table class="props" id="https://w3id.org/profile/vocpub/htv">
         <tr>
-          <td colspan="2"><h3>3. How to Validate instructions</h3></td>
+          <td colspan="2"><h3>5. How to Validate instructions</h3></td>
         </tr>
         <tr>
           <th>Description</th><td>Written instructions on how to use this profile's validator on data</td>
@@ -116,16 +155,36 @@
         <tr>
           <th>Format</th><td><code><a href="https://w3id.org/mediatype/text/html">text/html</a></code></td>
         </tr>
-      </table>     
-      <table class="props" id="https://w3id.org/profile/vocpub/example/valid">
+      </table>
+      <table class="props" id="https://w3id.org/profile/vocpub/validate">
         <tr>
-          <td colspan="2"><h3>4. Example of a valid vocabulary</h3></td>
+          <td colspan="2"><h3>6. Validation Script</h3></td>
         </tr>
         <tr>
-          <th>Description</th><td>A vocabulary that can shown to be valid - conforming to VocPub - using to the Validator in this profile</td>
+          <th>Description</th><td>A Python script that allows for basic validation or validation after expansion</td>
         </tr>
         <tr>
-          <th>Artifact</th><td><a href="https://w3id.org/profile/vocpub/example/valid">https://w3id.org/profile/vocpub/example/valid</a></td>
+          <th>Artifact</th><td><a href="https://w3id.org/profile/vocpub/validate">https://w3id.org/profile/vocpub/validate</a></td>
+        </tr>
+        <tr>
+          <th>Role</th><td><code><a href="http://www.w3.org/ns/dx/prof/role/script">role:script</a></code></td>
+        </tr>
+        <tr>
+          <th>Conforms</th><td>The <a href="https://www.python.org/">Python programming language</a> &amp; the <a href="https://pypi.org/project/rdflib/">RDFLib</a> library</td>
+        </tr>
+        <tr>
+          <th>Format</th><td><code><a href="https://w3id.org/mediatype/text/turtle">text/turtle</a></code></td>
+        </tr>
+      </table>
+      <table class="props" id="https://w3id.org/profile/vocpub/examples">
+        <tr>
+          <td colspan="2"><h3>7. Examples</h3></td>
+        </tr>
+        <tr>
+          <th>Description</th><td>A directory of valid and invalid vocabularies</td>
+        </tr>
+        <tr>
+          <th>Artifact</th><td><a href="https://w3id.org/profile/vocpub/examples">https://w3id.org/profile/vocpub/examples</a></td>
         </tr>
         <tr>
           <th>Role</th><td><code><a href="http://www.w3.org/ns/dx/prof/role/example">role:example</a></code></td>
@@ -137,65 +196,49 @@
           <th>Format</th><td><code><a href="https://w3id.org/mediatype/text/turtle">text/turtle</a></code></td>
         </tr>
       </table>
-      <table class="props" id="https://w3id.org/profile/vocpub/example/invalid">
+      <table class="props" id="https://w3id.org/profile/vocpub/voc/reg-statuses">
         <tr>
-          <td colspan="2"><h3>5. Example of an invalid vocabulary</h3></td>
+          <td colspan="2"><h3>8. Registry Statuses Vocabulary</h3></td>
         </tr>
         <tr>
-          <th>Description</th>
-          <td>This example vocabulary does not satisfy the Specification's Requirement 2.1.5 (the ConceptScheme is missing a dcterms:created date)</td>
+          <th>Description</th><td>A vocabulary of the registration statuses of items in a Register, as per ISO19135. This profile specifies optional use of these statuses for the <code>reg:status</code> predicate of a Concept Scheme</td>
         </tr>
         <tr>
-          <th>Artifact</th><td><a href="https://w3id.org/profile/vocpub/example/invalid">https://w3id.org/profile/vocpub/example/invalid</a></td>
+          <th>Artifact</th><td><a href="https://w3id.org/profile/vocpub/voc/reg-statuses">https://w3id.org/profile/vocpub/voc/reg-statuses</a></td>
         </tr>
         <tr>
-          <th>Role</th><td><code><a href="http://www.w3.org/ns/dx/prof/role/example">role:example</a></code></td>
+          <th>Role</th><td><code><a href="http://www.w3.org/ns/dx/prof/role/vocabulary">role:vocabulary</a></code></td>
         </tr>
         <tr>
-          <th>Format</th><td><code><a href="https://w3id.org/mediatype/text/turtle">text/turtle</a></code></td>
-        </tr>
-      </table>
-      <table class="props" id="https://w3id.org/profile/vocpub/example/invalid-2">
-        <tr>
-          <td colspan="2"><h3>6. Example of a second invalid vocabulary</h3></td>
-        </tr>
-        <tr>
-          <th>Description</th>
-          <td>This example vocabulary does not satisfy the Specification's Requirements 2.3.1 & 2.3.2 (one Concept has two titles, another is missing rdfs:isDefinedBy)</td>
-        </tr>
-        <tr>
-          <th>Artifact</th><td><a href="https://w3id.org/profile/vocpub/example/invalid-2">https://w3id.org/profile/vocpub/example/invalid-2</a></td>
-        </tr>
-        <tr>
-          <th>Role</th><td><code><a href="http://www.w3.org/ns/dx/prof/role/example">role:example</a></code></td>
+          <th>Conforms</th><td><a href="https://w3id.org/profile/vocpub">VocPub</a></td>
         </tr>
         <tr>
           <th>Format</th><td><code><a href="https://w3id.org/mediatype/text/turtle">text/turtle</a></code></td>
         </tr>
       </table>
-      <table class="props" id="https://w3id.org/profile/vocpub/sdo">
+      <table class="props" id="https://w3id.org/profile/vocpub/voc/vocab-derivation-modes">
         <tr>
-          <td colspan="2"><h3>7. schema.org mapping</h3></td>
+          <td colspan="2"><h3>9. Vocab Derivation Modes Vocabulary</h3></td>
         </tr>
         <tr>
-          <th>Description</th><td>A vocabulary of mappings of all the RDF, RDFS, OWL & SKOS etc. elements in this profile to the <a href="https://schema.org">schema.org</a> vocabulary.</td>
-        </tr>        
-        <tr>
-          <th>Artifact</th><td><a href="https://w3id.org/profile/vocpub/sdo">https://w3id.org/profile/vocpub/sdo</a></td>
+          <th>Description</th><td>A vocabulary of the modes by which one vocabulary may derive from another. This profile specifies optional use of these statuses within an Attribution assigned to the ConceptScheme by the <code>prov:qualifiedDerivation</code> predicate</td>
         </tr>
         <tr>
-          <th>Role</th><td><code><a href="http://www.w3.org/ns/dx/prof/role/mapping">role:mapping</a></code></td>
+          <th>Artifact</th><td><a href="https://w3id.org/profile/vocpub/voc/vocab-derivation-modes">https://w3id.org/profile/vocpub/voc/vocab-derivation-modes</a></td>
         </tr>
         <tr>
-          <th>Conforms</th><td><a href="http://www.w3.org/TR/owl-rdf-based-semantics">OWL 2 Web Ontology Language RDF-Based Semantics (Second Edition)</a></td>
+          <th>Role</th><td><code><a href="http://www.w3.org/ns/dx/prof/role/vocabulary">role:vocabulary</a></code></td>
+        </tr>
+        <tr>
+          <th>Conforms</th><td><a href="https://w3id.org/profile/vocpub">VocPub</a></td>
         </tr>
         <tr>
           <th>Format</th><td><code><a href="https://w3id.org/mediatype/text/turtle">text/turtle</a></code></td>
         </tr>
-      </table> 
+      </table>
       <table class="props" id="https://w3id.org/profile/vocpub/repo">
         <tr>
-          <td colspan="2"><h3>8. Profile code repository</h3></td>
+          <td colspan="2"><h3>10. Profile code repository</h3></td>
         </tr>
         <tr>
           <th>Description</th><td>Code repository storing all Profile artifacts</td>
@@ -210,16 +253,8 @@
     </section>    
     <p>&nbsp;</p>
   </div><!-- #content -->
-  <div class="footer" style="grid-column:1;"></div>
-  <div class="footer" style="grid-column:2; display:grid; grid-column:70% 30%;">
-    <div style="grid-column:1;">
-      This web page content is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>
-    </div>
-    <div style="grid-column:2;">
-      <div style="float:right;">
-      </div>
-    </div>
+  <div class="footer" style="grid-column:1/4; text-align: center;">
+    This web page content is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>
   </div><!-- #footer -->
-  <div class="footer" style="grid-column:3;"></div>
 </body>
 </html>

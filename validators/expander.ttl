@@ -1,0 +1,118 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX reg: <http://purl.org/linked-data/registry#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sdo: <https://schema.org/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+BASE <https://w3id.org/profile/vocpub/validator/>
+
+<Build-ConceptScheme>
+	a sh:NodeShape ;
+	sh:targetClass skos:ConceptScheme ;
+	sh:order 1 ;
+	sh:rule [
+		a sh:SPARQLRule ;
+		sh:prefixes skos: ;
+		sh:construct """
+            CONSTRUCT {
+                $this skos:hasTopConcept ?c .
+            }
+            WHERE {
+                ?c skos:topConceptOf $this .
+            }
+			""" ;
+	] ;
+.
+
+<Build-Concept>
+	a sh:NodeShape ;
+	sh:targetClass skos:Concept ;
+	sh:rule [
+		a sh:SPARQLRule ;
+		sh:order 1 ;
+		sh:prefixes skos: ;
+		sh:construct """
+            CONSTRUCT {
+                $this skos:topConceptOf ?cs .
+            }
+            WHERE {
+                ?cs skos:hasTopConcept $this .
+            }
+			""" ;
+	] ,
+	[
+		a sh:SPARQLRule ;
+		sh:order 2 ;
+		sh:prefixes skos: ;
+		sh:construct """
+            CONSTRUCT {
+                $this skos:broader ?n .
+            }
+            WHERE {
+                ?n skos:narrower $this .
+            }
+			""" ;
+	] ,
+	[
+		a sh:SPARQLRule ;
+		sh:order 3 ;
+		sh:prefixes skos: ;
+		sh:construct """
+            CONSTRUCT {
+                $this skos:narrower ?b .
+            }
+            WHERE {
+                ?b skos:broader $this .
+            }
+			""" ;
+	] ,
+	[
+		a sh:SPARQLRule ;
+		sh:order 4 ;
+		sh:prefixes skos: ;
+		sh:construct """
+            CONSTRUCT {
+                $this skos:inScheme ?cs .
+            }
+            WHERE {
+                $this skos:broader*/skos:topConceptOf ?cs .
+            }
+			""" ;
+	] ,
+	[
+		a sh:SPARQLRule ;
+		sh:order 4 ;
+		sh:prefixes skos: ;
+		sh:construct """
+            CONSTRUCT {
+                $this ?p ?o3
+            }
+            WHERE {
+                $this skos:inScheme ?cs .
+
+                VALUES ?p {
+                    prov:wasDerivedFrom
+                    skos:historyNote
+                    sdo:citation
+                    dcterms:source
+                    dcterms:provenance
+                }
+
+                ?cs ?p ?o .
+
+                OPTIONAL {
+                    $this ?p ?o2 .
+                }
+
+                BIND (COALESCE(?o2, ?o) AS ?o3)
+            }
+			""" ;
+	] ;
+
+.
+
