@@ -5,19 +5,21 @@ PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX reg: <http://purl.org/linked-data/registry#>
-PREFIX schema: <https://schema.org/>
+PREFIX sdo: <https://schema.org/>
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 <https://w3id.org/profile/vocpub/validator>
-    schema:name "VocPub Combined Validator" ;
+    sdo:name "VocPub Combined Validator" ;
 .
 
 <https://w3id.org/profile/vocpub/validator-combined>
     a owl:Ontology ;
-    owl:versionIRI <https://w3id.org/profile/vocpub/validator-combined/4.4> ;
-    owl:versionInfo """4.4 Fixed versions across multiple Resources
+    owl:versionIRI <https://w3id.org/profile/vocpub/validator-combined/4.5> ;
+    owl:versionInfo """4.5 Added suggested predicates of license & copyrightHolder
+
+4.4 Fixed versions across multiple Resources
 
 4.3 Improved validator error messages by using more named Property Shapes
 
@@ -35,12 +37,12 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 3.0: Removed Requirement-2.3.5 (identifiers) as these are auto-generated in systems like VocPrez; Added Requirement-2.1.10 & 2.1.11 and sub parts to test for qualifiedDerivation and status of a ConceptScheme""" ;
     skos:scopeNote "This validator applies a series of data expansion rules to a given data graph before validating it" ;
-    schema:creator <https://orcid.org/0000-0002-8742-7730> ;
-    schema:dateCreated "2020-06-14"^^xsd:date ;
-    schema:dateModified "2023-10-04"^^xsd:date ;
-    schema:definition "SHACL validator for the VocPub Profile"@en ;
-    schema:name "VocPub Validator"@en ;
-    schema:publisher <https://linked.data.gov.au/org/agldwg> ;
+    sdo:creator <https://orcid.org/0000-0002-8742-7730> ;
+    sdo:dateCreated "2020-06-14"^^xsd:date ;
+    sdo:dateModified "2023-10-05"^^xsd:date ;
+    sdo:definition "SHACL validator for the VocPub Profile"@en ;
+    sdo:name "VocPub Validator"@en ;
+    sdo:publisher <https://linked.data.gov.au/org/agldwg> ;
 .
 
 <https://w3id.org/profile/vocpub/validator/Build-Concept>
@@ -182,6 +184,20 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 <https://w3id.org/profile/vocpub/validator/Requirement-2.1.12>
     a sh:NodeShape ;
     sh:property <https://w3id.org/profile/vocpub/validator/theming> ;
+    sh:severity sh:Warning ;
+    sh:targetClass skos:ConceptScheme ;
+.
+
+<https://w3id.org/profile/vocpub/validator/Requirement-2.1.13>
+    a sh:NodeShape ;
+    sh:property <https://w3id.org/profile/vocpub/validator/license> ;
+    sh:severity sh:Warning ;
+    sh:targetClass skos:ConceptScheme ;
+.
+
+<https://w3id.org/profile/vocpub/validator/Requirement-2.1.14>
+    a sh:NodeShape ;
+    sh:property <https://w3id.org/profile/vocpub/validator/copyrightHolder> ;
     sh:severity sh:Warning ;
     sh:targetClass skos:ConceptScheme ;
 .
@@ -346,11 +362,11 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
             sh:maxCount 1 ;
             sh:message "Requirement 2.4.2 Each Agent MUST give exactly one name with the sdo:name predicate indicating a literal text value" ;
             sh:minCount 1 ;
-            sh:path schema:name
+            sh:path sdo:name
         ] ;
     sh:targetClass
-        schema:Organization ,
-        schema:Person ;
+        sdo:Organization ,
+        sdo:Person ;
 .
 
 <https://w3id.org/profile/vocpub/validator/Requirement-2.4.3a>
@@ -359,9 +375,9 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
             sh:datatype xsd:anyURI ;
             sh:message "Requirement 2.4.3 Each Agent MUST indicate either a sdo:url (for organizations) or a sdo:email (for people) predicate with a URL or email value. This error message is for Organizations" ;
             sh:minCount 1 ;
-            sh:path schema:url
+            sh:path sdo:url
         ] ;
-    sh:targetClass schema:Organization ;
+    sh:targetClass sdo:Organization ;
 .
 
 <https://w3id.org/profile/vocpub/validator/Requirement-2.4.3b>
@@ -370,22 +386,22 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
             sh:datatype xsd:anyURI ;
             sh:message "Requirement 2.4.3 Each Agent MUST indicate either a sdo:url (for organizations) or a sdo:email (for people) predicate with a URL or email value. This error message is for Persons" ;
             sh:minCount 1 ;
-            sh:path schema:email
+            sh:path sdo:email
         ] ;
-    sh:targetClass schema:Person ;
+    sh:targetClass sdo:Person ;
 .
 
 <https://linked.data.gov.au/org/agldwg>
-    a schema:Organization ;
-    schema:name "Australian Government Linked Data Working Group" ;
-    schema:url "https://www.linked.data.gov.au"^^xsd:anyURI ;
+    a sdo:Organization ;
+    sdo:name "Australian Government Linked Data Working Group" ;
+    sdo:url "https://www.linked.data.gov.au"^^xsd:anyURI ;
 .
 
 <https://orcid.org/0000-0002-8742-7730>
-    a schema:Person ;
-    schema:email "nicholas.car@anu.edu.au"^^xsd:anyURI ;
-    schema:identifier "https://orcid.org/0000-0002-8742-7730"^^xsd:anyURI ;
-    schema:name "Nicholas J. Car" ;
+    a sdo:Person ;
+    sdo:email "nicholas.car@anu.edu.au"^^xsd:anyURI ;
+    sdo:identifier "https://orcid.org/0000-0002-8742-7730"^^xsd:anyURI ;
+    sdo:name "Nicholas J. Car" ;
 .
 
 <https://w3id.org/profile/vocpub/validator/ConceptSchemeType>
@@ -395,6 +411,13 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:path [
             sh:inversePath rdf:type
         ] ;
+.
+
+<https://w3id.org/profile/vocpub/validator/copyrightHolder>
+    a sh:PropertyShape ;
+    sh:message "Requirement 2.1.14 The copyright holder for the vocabulary SHOULD be given using the sdo:copyrightHolder predicate preferentially indicating the IRI of an Agent or a Blank Node instance of an Agent containing details as per Agent requirements. A prov:qualifiedAttribution predicate indicating an Agent with the prov:hadRole predicate indicating the value isorole:rightsHolder may be used instead of sdo:copyrightHolder" ;
+    sh:nodeKind sh:IRI ;
+    sh:path sdo:copyrightHolder ;
 .
 
 <https://w3id.org/profile/vocpub/validator/created>
@@ -415,7 +438,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         ) ;
     sh:path [
             sh:alternativePath (
-                    schema:dateCreated
+                    sdo:dateCreated
                     dcterms:created
                 )
         ] ;
@@ -427,15 +450,15 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:minCount 1 ;
     sh:or (
             [
-                sh:class schema:Organization
+                sh:class sdo:Organization
             ]
             [
-                sh:class schema:Person
+                sh:class sdo:Person
             ]
         ) ;
     sh:path [
             sh:alternativePath (
-                    schema:creator
+                    sdo:creator
                     dcterms:creator
                 )
         ] ;
@@ -447,6 +470,24 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:minCount 1 ;
     sh:nodeKind sh:IRI ;
     sh:path skos:inScheme ;
+.
+
+<https://w3id.org/profile/vocpub/validator/license>
+    a sh:PropertyShape ;
+    sh:message "Requirement 2.1.13 Any licence pertaining to the reuse of a vocabulary's content SHOULD be given using the sdo:license predicate preferentially indicating the IRI of a license if in RDF form or a literal URL (datatype xsd:anyURI) if online but not in RDF form. If the licence is expressed in test, a literal text field may be indicated" ;
+    sh:nodeKind sh:IRI ;
+    sh:or (
+            [
+                sh:nodeKind sh:IRI
+            ]
+            [
+                sh:datatype xsd:anyURI
+            ]
+            [
+                sh:datatype xsd:string
+            ]
+        ) ;
+    sh:path sdo:license ;
 .
 
 <https://w3id.org/profile/vocpub/validator/minConcepts>
@@ -477,7 +518,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:path [
             sh:alternativePath (
                     sh:path
-                    schema:dateModified
+                    sdo:dateModified
                     sh:path
                     dcterms:modified
                 )
@@ -490,15 +531,15 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:minCount 1 ;
     sh:or (
             [
-                sh:class schema:Organization
+                sh:class sdo:Organization
             ]
             [
-                sh:class schema:Person
+                sh:class sdo:Person
             ]
         ) ;
     sh:path [
             sh:alternativePath (
-                    schema:publisher
+                    sdo:publisher
                     dcterms:publisher
                 )
         ] ;
@@ -535,7 +576,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:nodeKind sh:IRI ;
     sh:path [
             sh:alternativePath (
-                    schema:keywords
+                    sdo:keywords
                     dcat:theme
                 )
         ] ;
@@ -591,7 +632,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
                 sh:datatype xsd:string
             ]
         ) ;
-    sh:path schema:citation ;
+    sh:path sdo:citation ;
 .
 
 <https://w3id.org/profile/vocpub/validator/provenance-properties-03>
@@ -619,7 +660,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
                 sh:datatype xsd:string
             ]
         ) ;
-    sh:path schema:historyNote ;
+    sh:path sdo:historyNote ;
 .
 
 <https://w3id.org/profile/vocpub/validator/provenance-properties-05>

@@ -1,21 +1,22 @@
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix prof: <http://www.w3.org/ns/dx/prof/> .
-@prefix role: <http://www.w3.org/ns/dx/prof/role/> .
-@prefix sdo: <https://schema.org/> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX role: <http://www.w3.org/ns/dx/prof/role/>
+PREFIX sdo: <https://schema.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 
 <https://w3id.org/profile/vocpub>
     a prof:Profile ;
-    dcterms:created "2020-06-13"^^xsd:date ;
-    dcterms:creator <https://orcid.org/0000-0002-8742-7730> ;
-    dcterms:modified "2022-04-24"^^xsd:date ;
-    dcterms:publisher <https://linked.data.gov.au/org/agldwg> ;
-    skos:definition """This is a profile of taxonomy data model SKOS - i.e. SKOS with additional constraints. It defines some compulsory properties for SKOS's ConceptScheme, Concept and Collection classes and ensures that certain relationships between them are present, e.g. topConceptOf & inScheme linking Concepts to ConceptSchemes. It also requires goes a bit beyond 'pure' SKOS by ensuring that Concepts indicate the ConceptScheme they are defined in, which may be different to the ConceptScheme they re presented in. This allows VocPub-valid SKOS Concepts to be re-used in multiple of vocabularies efficiently.
-    
-This profile is used for multile Australian government and international vocabularies and is entirely generic, i.e. the additional constraints are not Australian or government-specific but just ensure certain technical model capabilities in the data."""@en ;
-    skos:prefLabel "VocPub profile of SKOS" ;
+    sdo:dateCreated "2020-06-13"^^xsd:date ;
+    sdo:creator <https://orcid.org/0000-0002-8742-7730> ;
+    sdo:dateModified "2023-10-04"^^xsd:date ;
+    sdo:publisher <https://linked.data.gov.au/org/agldwg> ;
+    sdo:definition """This is a profile of the taxonomy data model SKOS - i.e. SKOS with additional constraints. It defines some compulsory properties for SKOS's ConceptScheme, Concept and Collection classes and ensures that certain relationships between them are present, e.g. topConceptOf & inScheme linking Concepts to ConceptSchemes. It also requires goes a bit beyond 'pure' SKOS by ensuring that Concepts indicate the ConceptScheme they are defined in, which may be different to the ConceptScheme they re presented in. This allows VocPub-valid SKOS Concepts to be re-used in multiple of vocabularies efficiently.
+
+    This profile is used for multiple Australian government and international vocabularies and is entirely generic, i.e. the additional constraints are not Australian or government-specific but just ensure certain technical model capabilities in the data."""@en ;
+    sdo:name "VocPub profile of SKOS" ;
+    owl:versionIRI <https://w3id.org/profile/vocpub/4.5> ;
     prof:hasResource 
         <https://w3id.org/profile/vocpub/spec> ,
         <https://w3id.org/profile/vocpub/validator> ,
@@ -27,79 +28,58 @@ This profile is used for multile Australian government and international vocabul
         <https://w3id.org/profile/vocpub/repo> ;
     prof:isProfileOf <https://www.w3.org/TR/skos-reference/> ;
 .
-    
+
+<https://linked.data.gov.au/org/agldwg>
+    a sdo:Organization ;
+    sdo:name "Australian Government Linked Data Working Group" ;
+    sdo:url "https://www.linked.data.gov.au"^^xsd:anyURI ;
+.
+
+<https://orcid.org/0000-0002-8742-7730>
+    a sdo:Person ;
+    sdo:name "Nicholas J. Car" ;
+    sdo:email "nicholas.car@anu.edu.au"^^xsd:anyURI ;
+.
+
 <https://w3id.org/profile/vocpub/spec>
-    skos:prefLabel "Specification Document"@en ;
-    dcterms:description "The normative, human-readable, listing of profile requirements"@en ;
+    sdo:name "Specification Document"@en ;
+    sdo:description "The normative, human-readable, listing of profile requirements"@en ;
     dcterms:conformsTo <https://www.w3.org/TR/html52/> ;
-    dcterms:format "text/html" ;
+    sdo:encodingFormat "text/html" ;
     prof:hasArtifact "https://w3id.org/profile/vocpub/spec"^^xsd:anyURI ;
     prof:hasRole role:specification
 .
 
 <https://w3id.org/profile/vocpub/validator>
-    skos:prefLabel "Validator in SHACL"@en ;
-    dcterms:description "A SHACL Shapes file to be used to test the conformance of RDF data to this profile"@en ;
+    sdo:name "Validator in SHACL"@en ;
+    sdo:description "A SHACL Shapes file to be used to test the conformance of RDF data to this profile"@en ;
     dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
-    dcterms:format "text/turtle" ;
+    sdo:encodingFormat "text/turtle" ;
     prof:hasArtifact "https://w3id.org/profile/vocpub/validator"^^xsd:anyURI ;
     prof:hasRole role:validation
 .
 
 <https://w3id.org/profile/vocpub/htv>
-    skos:prefLabel "How to Validate"@en ;
-    dcterms:description "Written instructions on how to use this profile's validator on data"@en ;
-    dcterms:format "text/html" ;
+    sdo:name "How to Validate"@en ;
+    sdo:description "Written instructions on how to use this profile's validator on data"@en ;
+    sdo:encodingFormat "text/html" ;
     prof:hasArtifact "https://w3id.org/profile/vocpub/htv"^^xsd:anyURI ;
     prof:hasRole role:guidance
 .
 
-<https://w3id.org/profile/vocpub/examples/valid>
-    skos:prefLabel "Example of a valid vocabulary"@en ;
-    dcterms:description "A vocabulary that can shown to be valid - conforming to VocPub - using to the Validator in this profile"@en ;
-    dcterms:format "text/turtle" ;
-    prof:hasArtifact "https://w3id.org/profile/vocpub/examples/valid"^^xsd:anyURI ;
+<https://w3id.org/profile/vocpub/examples>
+    sdo:name "Examples"@en ;
+    sdo:description "A directory of valid and invalid vocabularies"@en ;
+    sdo:encodingFormat "text/turtle" ;
+    dcterms:conformsTo <https://w3id.org/profile/vocpub> ;
+    prof:hasArtifact "https://w3id.org/profile/vocpub/examples"^^xsd:anyURI ;
     prof:hasRole role:example
-.
-
-<https://w3id.org/profile/vocpub/examples/invalid>
-    skos:prefLabel "Example of an invalid vocabulary"@en ;
-    dcterms:description "This example vocabulary does not satisfy the Specification's Requirement 2.1.5 (the ConceptScheme is missing a dcterms:created date)"@en ;
-    dcterms:format "text/turtle" ;
-    prof:hasArtifact "https://w3id.org/profile/vocpub/examples/invalid"^^xsd:anyURI ;
-    prof:hasRole role:example
-.
-
-<https://w3id.org/profile/vocpub/examples/invalid-2>
-    skos:prefLabel "Example of a second invalid vocabulary"@en ;
-    dcterms:description "This example vocabulary does not satisfy the Specification's Requirements 2.3.1 & 2.3.2 (one Concept has two titles, another is missing rdfs:isDefinedBy)"@en ;
-    dcterms:format "text/turtle" ;
-    prof:hasArtifact "https://w3id.org/profile/vocpub/examples/invalid-2"^^xsd:anyURI ;
-    prof:hasRole role:example
-.
-
-<https://w3id.org/profile/vocpub/sdo>
-    skos:prefLabel "schema.org mapping"@en ;
-    dcterms:conformsTo <http://www.w3.org/TR/owl-rdf-based-semantics> ;
-    dcterms:description "A vocabulary of mappings of all the RDF, RDFS, OWL & SKOS etc. elements in this profile to the [schema.org](https://schema.org) vocabulary"@en ;
-    prof:hasArtifact "https://w3id.org/profile/vocpub/sdo"^^xsd:anyURI ;        
-    prof:hasRole role:mapping
 .
 
 <https://w3id.org/profile/vocpub/repo>
-    skos:prefLabel "Profile code repository"@en ;
-    dcterms:description "Code repository storing all Profile artifacts"@en ;
+    sdo:name "Profile code repository"@en ;
+    sdo:description "Code repository storing all Profile artifacts"@en ;
     prof:hasArtifact "https://w3id.org/profile/vocpub/repo"^^xsd:anyURI ;
     prof:hasRole role:repository
 .
 
-<https://linked.data.gov.au/org/agldwg> a sdo:Organization ;
-    sdo:name "Australian Government Linked Data Working Group" ;
-    sdo:url "https://www.linked.data.gov.au"^^xsd:anyURI ;
-.
-
-<https://orcid.org/0000-0002-8742-7730> a sdo:Person ;
-    sdo:name "Nicholas J. Car" ;
-    sdo:email "nicholas.car@anu.edu.au"^^xsd:anyURI ;
-    sdo:identifier "ttps://orcid.org/0000-0002-8742-7730"^^xsd:anyURI ;
-.

@@ -1,0 +1,331 @@
+PREFIX : <https://data.idnau.org/pid/vocab/idn-role-codes/>
+PREFIX cs: <https://data.idnau.org/pid/vocab/idn-role-codes>
+PREFIX iso: <http://def.isotc211.org/iso19115/-1/2018/CitationAndResponsiblePartyInformation/code/CI_RoleCode/>
+PREFIX isocs: <http://def.isotc211.org/iso19115/-1/2018/CitationAndResponsiblePartyInformation/code/CI_RoleCode>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX reg: <http://purl.org/linked-data/registry#>
+PREFIX schema: <https://schema.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX status: <http://def.isotc211.org/iso19135/-1/2015/CoreModel/code/RE_ItemStatus/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+cs:
+    a skos:ConceptScheme ;
+    dcterms:created "2022-06-11"^^xsd:date ;
+    dcterms:creator <https://linked.data.gov.au/org/idn> ;
+    dcterms:issued "2022-07-18"^^xsd:date ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:anyURI ;
+    dcterms:modified "2022-07-18"^^xsd:date ;
+    dcterms:provenance "Derived from the ISO 19115's CI Role Code vocabulary"@en ;
+    dcterms:publisher <https://linked.data.gov.au/org/idn> ;
+    dcterms:rights "(c) Indigenous Data Network, 2022" ;
+    dcterms:source "http://iso.kurrawong.net/vocab/CI_RoleCode"^^xsd:anyURI ;
+    skos:definition "The Indigenous Data Network's vocabulary of the types of roles Agents - People and Organisations - play in relation to data."@en ;
+    skos:hasTopConcept
+        iso:author ,
+        iso:coAuthor ,
+        iso:collaborator ,
+        iso:contributor ,
+        iso:custodian ,
+        iso:distributor ,
+        iso:editor ,
+        iso:funder ,
+        iso:mediator ,
+        iso:originator ,
+        iso:owner ,
+        iso:pointOfContact ,
+        iso:principalInvestigator ,
+        iso:processor ,
+        iso:publisher ,
+        iso:resourceProvider ,
+        iso:rightsHolder ,
+        iso:sponsor ,
+        iso:stakeholder ,
+        iso:user ,
+        :subjectAgent ,
+        :subjectAgentRepresentative ;
+    skos:prefLabel "IDN Role Codes"@en ;
+.
+
+<https://linked.data.gov.au/org/idn>
+    a schema:Organization ;
+    schema:description "The Indigenous Data Network (IDN) was established in 2018 to support and coordinate the governance of Indigenous data for Aboriginal and Torres Strait Islander peoples and empower Aboriginal and Torres Strait Islander communities to decide their own local data priorities."@en ;
+    schema:name "Indigenous Data Network" ;
+    schema:url "https://mspgh.unimelb.edu.au/centres-institutes/centre-for-health-equity/research-group/indigenous-data-network"^^xsd:anyURI ;
+.
+
+:subjectAgent
+    a skos:Concept ;
+    dcterms:provenance "Created for the IDN project, 2022"@en ;
+    reg:status status:addition ;
+    rdfs:isDefinedBy cs: ;
+    skos:definition "party that the resources contains information about" ;
+    skos:inScheme cs: ;
+    skos:prefLabel "subject agent"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:subjectAgentRepresentative
+    a skos:Concept ;
+    dcterms:provenance "Created for the IDN project, 2022"@en ;
+    reg:status status:addition ;
+    rdfs:isDefinedBy cs: ;
+    skos:broader iso:stakeholder ;
+    skos:definition "party who can be contacted who best represents the interests of the subject agent" ;
+    skos:inScheme cs: ;
+    skos:prefLabel "subject agent representative"@en ;
+.
+
+#
+#   Original ISO Concepts
+#
+
+iso:author
+    a skos:Concept ;
+    dcterms:provenance "Presented in the original standard's codelist"@en ;
+    reg:status status:stable ;
+    rdfs:isDefinedBy isocs: ;
+    skos:definition "party who authored the resource" ;
+    skos:inScheme cs: ;
+    skos:prefLabel "author"@en ;
+    skos:topConceptOf cs: ;
+.
+
+iso:coAuthor
+    a skos:Concept ;
+    dcterms:provenance "Presented in the original standard's codelist"@en ;
+    reg:status status:stable ;
+    rdfs:isDefinedBy isocs: ;
+    skos:definition "party who jointly authors the resource" ;
+    skos:inScheme cs: ;
+    skos:prefLabel "co author"@en ;
+    skos:topConceptOf cs: ;
+.
+
+iso:collaborator
+    a skos:Concept ;
+    dcterms:provenance "Presented in the original standard's codelist"@en ;
+    reg:status status:stable ;
+    rdfs:isDefinedBy isocs: ;
+    skos:definition "party who assists with the generation of the resource other than the principal investigator" ;
+    skos:inScheme cs: ;
+    skos:prefLabel "collaborator"@en ;
+    skos:topConceptOf cs: ;
+.
+
+iso:contributor
+    a skos:Concept ;
+    dcterms:provenance "Presented in the original standard's codelist"@en ;
+    reg:status status:stable ;
+    rdfs:isDefinedBy isocs: ;
+    skos:definition "party contributing to the resource" ;
+    skos:inScheme cs: ;
+    skos:prefLabel "contributor"@en ;
+    skos:topConceptOf cs: ;
+.
+
+iso:custodian
+    a skos:Concept ;
+    dcterms:provenance "Presented in the original standard's codelist"@en ;
+    reg:status status:stable ;
+    rdfs:isDefinedBy isocs: ;
+    skos:definition "party that accepts accountability and responsibility for the resource and ensures appropriate care and maintenance of the resource" ;
+    skos:inScheme cs: ;
+    skos:prefLabel "custodian"@en ;
+    skos:topConceptOf cs: ;
+.
+
+iso:distributor
+    a skos:Concept ;
+    dcterms:provenance "Presented in the original standard's codelist"@en ;
+    reg:status status:stable ;
+    rdfs:isDefinedBy isocs: ;
+    skos:definition "party who distributes the resource" ;
+    skos:inScheme cs: ;
+    skos:prefLabel "distributor"@en ;
+    skos:topConceptOf cs: ;
+.
+
+iso:editor
+    a skos:Concept ;
+    dcterms:provenance "Presented in the original standard's codelist"@en ;
+    reg:status status:stable ;
+    rdfs:isDefinedBy isocs: ;
+    skos:definition "party who reviewed or modified the resource to improve the content" ;
+    skos:inScheme cs: ;
+    skos:prefLabel "editor"@en ;
+    skos:topConceptOf cs: ;
+.
+
+iso:funder
+    a skos:Concept ;
+    dcterms:provenance "Presented in the original standard's codelist"@en ;
+    reg:status status:stable ;
+    rdfs:isDefinedBy isocs: ;
+    skos:definition "party providing monetary support for the resource" ;
+    skos:inScheme cs: ;
+    skos:prefLabel "funder"@en ;
+    skos:topConceptOf cs: ;
+.
+
+iso:mediator
+    a skos:Concept ;
+    dcterms:provenance "Presented in the original standard's codelist"@en ;
+    reg:status status:stable ;
+    rdfs:isDefinedBy isocs: ;
+    skos:definition "a class of entity that mediates access to the resource and for whom the resource is intended or useful" ;
+    skos:inScheme cs: ;
+    skos:prefLabel "mediator"@en ;
+    skos:topConceptOf cs: ;
+.
+
+iso:originator
+    a skos:Concept ;
+    dcterms:provenance "Presented in the original standard's codelist"@en ;
+    reg:status status:stable ;
+    rdfs:isDefinedBy isocs: ;
+    skos:definition "party who created the resource" ;
+    skos:inScheme cs: ;
+    skos:prefLabel "originator"@en ;
+    skos:topConceptOf cs: ;
+.
+
+iso:owner
+    a skos:Concept ;
+    dcterms:provenance "Presented in the original standard's codelist"@en ;
+    reg:status status:stable ;
+    rdfs:isDefinedBy isocs: ;
+    skos:definition "party that owns the resource" ;
+    skos:inScheme cs: ;
+    skos:prefLabel "owner"@en ;
+    skos:topConceptOf cs: ;
+.
+
+iso:pointOfContact
+    a skos:Concept ;
+    dcterms:provenance "Presented in the original standard's codelist"@en ;
+    reg:status status:stable ;
+    rdfs:isDefinedBy isocs: ;
+    skos:definition "party who can be contacted for acquiring knowledge about or acquisition of the resource" ;
+    skos:inScheme cs: ;
+    skos:prefLabel "point of contact"@en ;
+    skos:topConceptOf cs: ;
+.
+
+iso:principalInvestigator
+    a skos:Concept ;
+    dcterms:provenance "Presented in the original standard's codelist"@en ;
+    reg:status status:stable ;
+    rdfs:isDefinedBy isocs: ;
+    skos:definition "key party responsible for gathering information and conducting research" ;
+    skos:inScheme cs: ;
+    skos:prefLabel "principal investigator"@en ;
+    skos:topConceptOf cs: ;
+.
+
+iso:processor
+    a skos:Concept ;
+    dcterms:provenance "Presented in the original standard's codelist"@en ;
+    reg:status status:stable ;
+    rdfs:isDefinedBy isocs: ;
+    skos:definition "party who has processed the data in a manner such that the resource has been modified" ;
+    skos:inScheme cs: ;
+    skos:prefLabel "processor"@en ;
+    skos:topConceptOf cs: ;
+.
+
+iso:publisher
+    a skos:Concept ;
+    dcterms:provenance "Presented in the original standard's codelist"@en ;
+    reg:status status:stable ;
+    rdfs:isDefinedBy isocs: ;
+    skos:definition "party who published the resource" ;
+    skos:inScheme cs: ;
+    skos:prefLabel "publisher"@en ;
+    skos:topConceptOf cs: ;
+.
+
+iso:resourceProvider
+    a skos:Concept ;
+    dcterms:provenance "Presented in the original standard's codelist"@en ;
+    reg:status status:stable ;
+    rdfs:isDefinedBy isocs: ;
+    skos:definition "party that supplies the resource" ;
+    skos:inScheme cs: ;
+    skos:prefLabel "resource provider"@en ;
+    skos:topConceptOf cs: ;
+.
+
+iso:rightsHolder
+    a skos:Concept ;
+    dcterms:provenance "Presented in the original standard's codelist"@en ;
+    reg:status status:stable ;
+    rdfs:isDefinedBy isocs: ;
+    skos:definition "party owning or managing rights over the resource" ;
+    skos:inScheme cs: ;
+    skos:prefLabel "rights holder"@en ;
+    skos:topConceptOf cs: ;
+.
+
+iso:sponsor
+    a skos:Concept ;
+    dcterms:provenance "Presented in the original standard's codelist"@en ;
+    reg:status status:stable ;
+    rdfs:isDefinedBy isocs: ;
+    skos:definition "party who speaks for the resource" ;
+    skos:inScheme cs: ;
+    skos:prefLabel "sponsor"@en ;
+    skos:topConceptOf cs: ;
+.
+
+iso:stakeholder
+    a skos:Concept ;
+    dcterms:provenance "Presented in the original standard's codelist"@en ;
+    reg:status status:stable ;
+    rdfs:isDefinedBy isocs: ;
+    skos:definition "party who has an interest in the resource or the use of the resource" ;
+    skos:inScheme cs: ;
+    skos:prefLabel "stakeholder"@en ;
+    skos:topConceptOf cs: ;
+.
+
+iso:user
+    a skos:Concept ;
+    dcterms:provenance "Presented in the original standard's codelist"@en ;
+    reg:status status:stable ;
+    rdfs:isDefinedBy isocs: ;
+    skos:definition "party who uses the resource" ;
+    skos:inScheme cs: ;
+    skos:prefLabel "user"@en ;
+    skos:topConceptOf cs: ;
+.
+
+:iso-roles
+    a skos:Collection ;
+    dcterms:provenance "The list of Concepts from the original ISO CI Role Code vocabulary"@en ;
+    skos:definition "Codes from the original ISO CI Role Code codelist"@en ;
+    skos:prefLabel "ISO CI Role Code codes"@en ;
+    skos:member 
+        iso:author ,
+        iso:coAuthor ,
+        iso:collaborator ,
+        iso:contributor ,
+        iso:custodian ,
+        iso:distributor ,
+        iso:editor ,
+        iso:funder ,
+        iso:mediator ,
+        iso:originator ,
+        iso:owner ,
+        iso:pointOfContact ,
+        iso:principalInvestigator ,
+        iso:processor ,
+        iso:publisher ,
+        iso:resourceProvider ,
+        iso:rightsHolder ,
+        iso:sponsor ,
+        iso:stakeholder ,
+        iso:user ;
+.

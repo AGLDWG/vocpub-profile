@@ -19,9 +19,11 @@ BASE <https://w3id.org/profile/vocpub/validator/>
     sdo:creator <https://orcid.org/0000-0002-8742-7730> ;
     sdo:publisher <https://linked.data.gov.au/org/agldwg> ;
     sdo:dateCreated "2020-06-14"^^xsd:date ;
-    sdo:dateModified "2023-10-04"^^xsd:date ;
-    owl:versionIRI <https://w3id.org/profile/vocpub/validator/4.4> ;
-    owl:versionInfo """4.4 Fixed versions across multiple Resources
+    sdo:dateModified "2023-10-05"^^xsd:date ;
+    owl:versionIRI <https://w3id.org/profile/vocpub/validator/4.5> ;
+    owl:versionInfo """4.5 Added suggested predicates of license & copyrightHolder
+
+4.4 Fixed versions across multiple Resources
 
 4.3 Improved validator error messages by using more named Property Shapes
 
@@ -160,6 +162,20 @@ BASE <https://w3id.org/profile/vocpub/validator/>
 	a sh:NodeShape ;
 	sh:targetClass skos:ConceptScheme ;
     sh:property <theming> ;
+    sh:severity sh:Warning ;
+.
+
+<Requirement-2.1.13>
+	a sh:NodeShape ;
+	sh:targetClass skos:ConceptScheme ;
+    sh:property <license> ;
+    sh:severity sh:Warning ;
+.
+
+<Requirement-2.1.14>
+	a sh:NodeShape ;
+	sh:targetClass skos:ConceptScheme ;
+    sh:property <copyrightHolder> ;
     sh:severity sh:Warning ;
 .
 
@@ -314,6 +330,7 @@ BASE <https://w3id.org/profile/vocpub/validator/>
 
 <prefLabel>
     a sh:PropertyShape ;
+    sh:message "Requirement 2.1.4, 2.2.1 or 2.3.1 Each vocabulary, Collection or Concept MUST have exactly one title and at least one definition indicated using the skos:prefLabel and the skos:definition predicates respectively that must give textual literal values. Only one definition per language is allowed" ;
     sh:path skos:prefLabel ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
@@ -503,5 +520,25 @@ BASE <https://w3id.org/profile/vocpub/validator/>
             dcat:theme
         ) ;
     ] ;
+    sh:nodeKind sh:IRI ;
+.
+
+<license>
+    a sh:PropertyShape ;
+    sh:message "Requirement 2.1.13 Any licence pertaining to the reuse of a vocabulary's content SHOULD be given using the sdo:license predicate preferentially indicating the IRI of a license if in RDF form or a literal URL (datatype xsd:anyURI) if online but not in RDF form. If the licence is expressed in test, a literal text field may be indicated" ;
+    sh:path sdo:license ;
+    sh:nodeKind sh:IRI ;
+    sh:or (
+        [ sh:nodeKind sh:IRI ]
+        [ sh:datatype xsd:anyURI ]
+        [ sh:datatype xsd:string ]
+    )
+.
+
+<copyrightHolder>
+    a sh:PropertyShape ;
+    sh:message "Requirement 2.1.14 The copyright holder for the vocabulary SHOULD be given using the sdo:copyrightHolder predicate preferentially indicating the IRI of an Agent or a Blank Node instance of an Agent containing details as per Agent requirements. A prov:qualifiedAttribution predicate indicating an Agent with the prov:hadRole predicate indicating the value isorole:rightsHolder may be used instead of sdo:copyrightHolder" ;
+    sh:path sdo:copyrightHolder ;
+    sh:nodeKind sh:IRI ;
     sh:nodeKind sh:IRI ;
 .

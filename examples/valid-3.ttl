@@ -1,5 +1,5 @@
 # This is an new style vocabulary - it uses schema.org properties.
-# It is valid only using basic validation or expanded validation.
+# It is valid using basic validation or expanded validation.
 # i.e. the validator.py validator or the validator-combined.py validators may be used to validate it
 
 PREFIX : <http://example.com/def/vocpub-4.x-test/>

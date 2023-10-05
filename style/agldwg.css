@@ -122,3 +122,19 @@ pre {
     background-color: #eeeeee;
     font-size: 1.2em;
 }
+
+table.bordered {
+    border: solid 2px black;
+    border-collapse: collapse;
+    font-size: small;
+}
+
+table.bordered td,
+table.bordered th {
+    border: solid 1px black;
+    padding: 5px;
+}
+
+td pre {
+    margin: -5px;
+}

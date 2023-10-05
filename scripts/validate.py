@@ -5,7 +5,7 @@ Use:
 
     ~$ python validate.py {path-to-data-file} -e {true|false}
 
-    where -e means to expand the data before validation
+    where -e means to expand the data before validation, default is false
 """
 
 import sys
