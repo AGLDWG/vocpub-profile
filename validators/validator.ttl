@@ -451,7 +451,7 @@ BASE <https://w3id.org/profile/vocpub/validator/>
 
 <provenance-properties-04>
     a sh:PropertyShape ;
-    sh:path sdo:historyNote ;
+    sh:path skos:historyNote ;
     sh:minCount 1 ;
     sh:or (
         [ sh:datatype rdf:langString ]
