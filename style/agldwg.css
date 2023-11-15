@@ -113,6 +113,18 @@ p.req {
     color: darkred;
 }
 
+p.req:hover a.frag {
+
+    display: inline-block;
+}
+
+a.frag {
+    display: none;
+    font-weight: bold;
+    text-decoration: underline;
+    color: blue;
+}
+
 code {
     font-size: 1.2em;
 }

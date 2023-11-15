@@ -1,6 +1,6 @@
 """
 This Python script reads the SHACL validator validator.ttl and the data expander expander.ttl and combines them into one
-SHACL RDF file: expander.ttl
+SHACL RDF file: validator-combined.ttl
 
 It also alters the IRI and the name of the combined validator and adds a scope note, to distinguish it from the
 validator.ttl
