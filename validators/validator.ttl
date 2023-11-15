@@ -490,7 +490,7 @@ BASE <https://w3id.org/profile/vocpub/validator/>
 
 <qualifiedDerivation>
     a sh:PropertyShape ;
-    sh:message "Requirement 2.1.11 The derivation status of the vocabulary SHOULD be given should be given with the predicate prov:qualifiedDerivation indicating a Blank Node that contains the predicated prov:entity, to indicate the vocabulary derived from and prov:hadRole to indicate the mode of derivation which SHOULD be taken from the Vocabulary Derivation Modes vocabulary (https://linked.data.gov.au/def/vocab-derivation-modes)" ;
+    sh:message "Requirement 2.1.11 The derivation status of the vocabulary SHOULD be given should be given with the predicate prov:qualifiedDerivation indicating a Blank Node that contains the predicated prov:entity, to indicate the vocabulary derived from and prov:hadRole to indicate the mode of derivation which SHOULD be taken from the Vocabulary Derivation Modes vocabulary (https://linked.data.gov.au/def/vocdermods)" ;
     sh:path prov:qualifiedDerivation ;
     sh:nodeKind sh:BlankNodeOrIRI ;
 .
@@ -515,7 +515,7 @@ BASE <https://w3id.org/profile/vocpub/validator/>
 
 <theming>
     a sh:PropertyShape ;
-    sh:message "Requirement 2.1.12 High-level theming of a vocabulary SHOULD be given by using the sdo:keyword predicate indicating Concepts from another vocabulary. Alternatively, dcat:theme MAY be used. Text literal values for either predicate SHOULD NOT be used" ;
+    sh:message "Requirement 2.1.12 High-level theming of a vocabulary SHOULD be given by using the sdo:keywords predicate indicating Concepts from another vocabulary. Alternatively, dcat:theme MAY be used. Text literal values for either predicate SHOULD NOT be used" ;
     sh:path [
         sh:alternativePath (
             sdo:keywords

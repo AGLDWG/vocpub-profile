@@ -179,7 +179,7 @@ cs:
     skos:prefLabel "VocPub 4.x Test vocab"@en ;
     prov:qualifiedDerivation [
             prov:entity <http://example.com/vocab/dummy> ;
-            prov:hadRole <https://linked.data.gov.au/def/vocab-derivation-modes/direct>
+            prov:hadRole <https://linked.data.gov.au/def/vocdermods/direct>
         ] ;
     sdo:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
     sdo:creator <https://orcid.org/0000-0002-8742-7730> ;

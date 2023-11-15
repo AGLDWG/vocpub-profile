@@ -1,6 +1,6 @@
-PREFIX : <https://linked.data.gov.au/def/vocab-derivation-modes/>
+PREFIX : <https://linked.data.gov.au/def/vocdermods/>
 PREFIX agldwgstatus: <https://linked.data.gov.au/def/reg-statuses/>
-PREFIX cs: <https://linked.data.gov.au/def/vocab-derivation-modes>
+PREFIX cs: <https://linked.data.gov.au/def/vocdermods>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX reg: <http://purl.org/linked-data/registry#>
@@ -104,7 +104,7 @@ cs:
     dcterms:contributor <http://def.isotc211.org/org/tc211> ;
     dcterms:created "2022-12-05"^^xsd:date ;
     dcterms:creator <https://kurrawong.net> ;
-    dcterms:identifier "vocab-derivation-modes"^^xsd:token ;
+    dcterms:identifier "vocdermods"^^xsd:token ;
     dcterms:issued "2022-12-05"^^xsd:date ;
     dcterms:modified "2022-12-05"^^xsd:date ;
     dcterms:provenance "Created for the MER catalogue upgrade project, 2022"@en ;

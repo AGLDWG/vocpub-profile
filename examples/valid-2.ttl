@@ -159,6 +159,6 @@ cs:
     skos:prefLabel "VocPub 4.x Test vocab"@en ;
     prov:qualifiedDerivation [
         prov:entity <http://example.com/vocab/dummy> ;
-        prov:hadRole <https://linked.data.gov.au/def/vocab-derivation-modes/direct> ;
+        prov:hadRole <https://linked.data.gov.au/def/vocdermods/direct> ;
     ] ;
 .
