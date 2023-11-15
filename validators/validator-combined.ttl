@@ -41,7 +41,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:scopeNote "This validator applies a series of data expansion rules to a given data graph before validating it" ;
     sdo:creator <https://orcid.org/0000-0002-8742-7730> ;
     sdo:dateCreated "2020-06-14"^^xsd:date ;
-    sdo:dateModified "2023-10-05"^^xsd:date ;
+    sdo:dateModified "2023-11-15"^^xsd:date ;
     sdo:definition "SHACL validator for the VocPub Profile"@en ;
     sdo:name "VocPub Validator"@en ;
     sdo:publisher <https://linked.data.gov.au/org/agldwg> ;

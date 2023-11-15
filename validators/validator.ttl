@@ -19,7 +19,7 @@ BASE <https://w3id.org/profile/vocpub/validator/>
     sdo:creator <https://orcid.org/0000-0002-8742-7730> ;
     sdo:publisher <https://linked.data.gov.au/org/agldwg> ;
     sdo:dateCreated "2020-06-14"^^xsd:date ;
-    sdo:dateModified "2023-10-05"^^xsd:date ;
+    sdo:dateModified "2023-11-15"^^xsd:date ;
     owl:versionIRI <https://w3id.org/profile/vocpub/validator/4.6> ;
     owl:versionInfo """4.6 Fixed sdo:historyNote->skos:historyNote bug
 
