@@ -16,8 +16,10 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 <https://w3id.org/profile/vocpub/validator-combined>
     a owl:Ontology ;
-    owl:versionIRI <https://w3id.org/profile/vocpub/validator-combined/4.6> ;
-    owl:versionInfo """4.6 Fixed sdo:historyNote->skos:historyNote bug
+    owl:versionIRI <https://w3id.org/profile/vocpub/validator-combined/4.7> ;
+    owl:versionInfo """4.7 Fixed modified date alternate path listing bug
+
+4.6 Fixed sdo:historyNote->skos:historyNote bug
 
 4.5 Added suggested predicates of license & copyrightHolder
 
@@ -41,7 +43,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:scopeNote "This validator applies a series of data expansion rules to a given data graph before validating it" ;
     sdo:creator <https://orcid.org/0000-0002-8742-7730> ;
     sdo:dateCreated "2020-06-14"^^xsd:date ;
-    sdo:dateModified "2023-11-15"^^xsd:date ;
+    sdo:dateModified "2023-12-05"^^xsd:date ;
     sdo:definition "SHACL validator for the VocPub Profile"@en ;
     sdo:name "VocPub Validator"@en ;
     sdo:publisher <https://linked.data.gov.au/org/agldwg> ;
@@ -519,9 +521,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         ) ;
     sh:path [
             sh:alternativePath (
-                    sh:path
                     sdo:dateModified
-                    sh:path
                     dcterms:modified
                 )
         ] ;
