@@ -213,7 +213,7 @@ BASE <https://w3id.org/profile/vocpub/validator/>
             [ sh:nodeKind sh:IRI ]
             [ sh:datatype xsd:anyURI ]
             [ sh:datatype xsd:string ]
-        )
+        ) ;
         sh:severity sh:Warning ;
     ] ;
 .
