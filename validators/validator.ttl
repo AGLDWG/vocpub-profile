@@ -19,9 +19,11 @@ BASE <https://w3id.org/profile/vocpub/validator/>
     sdo:creator <https://orcid.org/0000-0002-8742-7730> ;
     sdo:publisher <https://linked.data.gov.au/org/agldwg> ;
     sdo:dateCreated "2020-06-14"^^xsd:date ;
-    sdo:dateModified "2024-04-03"^^xsd:date ;
-    owl:versionIRI <https://w3id.org/profile/vocpub/validator/4.8> ;
-    owl:versionInfo """4.8 Fixed Warning/Violation error for PropertyShapes
+    sdo:dateModified "2024-06-13"^^xsd:date ;
+    owl:versionIRI <https://w3id.org/profile/vocpub/validator/4.9> ;
+    owl:versionInfo """4.9 Fixed RDF syntax errors
+
+4.8 Fixed Warning/Violation error for PropertyShapes
 
 4.7 Fixed modified date alternate path listing bug
 
