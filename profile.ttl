@@ -10,13 +10,13 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a prof:Profile ;
     sdo:dateCreated "2020-06-13"^^xsd:date ;
     sdo:creator <https://orcid.org/0000-0002-8742-7730> ;
-    sdo:dateModified "2023-11-15"^^xsd:date ;
+    sdo:dateModified "2024-04-03"^^xsd:date ;
     sdo:publisher <https://linked.data.gov.au/org/agldwg> ;
     sdo:definition """This is a profile of the taxonomy data model SKOS - i.e. SKOS with additional constraints. It defines some compulsory properties for SKOS's ConceptScheme, Concept and Collection classes and ensures that certain relationships between them are present, e.g. topConceptOf & inScheme linking Concepts to ConceptSchemes. It also requires goes a bit beyond 'pure' SKOS by ensuring that Concepts indicate the ConceptScheme they are defined in, which may be different to the ConceptScheme they re presented in. This allows VocPub-valid SKOS Concepts to be re-used in multiple of vocabularies efficiently.
 
     This profile is used for multiple Australian government and international vocabularies and is entirely generic, i.e. the additional constraints are not Australian or government-specific but just ensure certain technical model capabilities in the data."""@en ;
     sdo:name "VocPub profile of SKOS" ;
-    owl:versionIRI <https://w3id.org/profile/vocpub/4.6> ;
+    owl:versionIRI <https://w3id.org/profile/vocpub/4.8> ;
     prof:hasResource 
         <https://w3id.org/profile/vocpub/spec> ,
         <https://w3id.org/profile/vocpub/validator> ,
