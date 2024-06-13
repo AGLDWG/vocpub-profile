@@ -16,7 +16,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
     This profile is used for multiple Australian government and international vocabularies and is entirely generic, i.e. the additional constraints are not Australian or government-specific but just ensure certain technical model capabilities in the data."""@en ;
     sdo:name "VocPub profile of SKOS" ;
-    owl:versionIRI <https://w3id.org/profile/vocpub/4.9> ;
+    owl:versionIRI <https://w3id.org/profile/vocpub/4.10> ;
     prof:hasResource 
         <https://w3id.org/profile/vocpub/spec> ,
         <https://w3id.org/profile/vocpub/validator> ,

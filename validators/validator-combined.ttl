@@ -16,8 +16,10 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 <https://w3id.org/profile/vocpub/validator-combined>
     a owl:Ontology ;
-    owl:versionIRI <https://w3id.org/profile/vocpub/validator-combined/4.9> ;
-    owl:versionInfo """4.9 Fixed RDF syntax errors
+    owl:versionIRI <https://w3id.org/profile/vocpub/validator-combined/4.10> ;
+    owl:versionInfo """4.10 move all warning from PropertyShapes to NodeShapes
+
+4.9 Fixed RDF syntax errors
 
 4.8 Fixed Warning/Violation error for PropertyShapes
 
@@ -167,8 +169,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
             sh:message "Requirement 2.1.10 The status of the vocabulary as a whole, according to the Registry Status standard, SHOULD be given with the predicate reg:status indicating a Concept from the Registry Statuses vocabulary (https://linked.data.gov.au/def/reg-statuses)" ;
             sh:nodeKind sh:IRI ;
             sh:path reg:status ;
-            sh:severity sh:Warning ;
         ] ;
+    sh:severity sh:Warning ;
     sh:targetClass skos:ConceptScheme ;
 .
 
@@ -179,8 +181,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
             sh:message "Requirement 2.1.11 The derivation status of the vocabulary SHOULD be given should be given with the predicate prov:qualifiedDerivation indicating a Blank Node that contains the predicated prov:entity, to indicate the vocabulary derived from and prov:hadRole to indicate the mode of derivation which SHOULD be taken from the Vocabulary Derivation Modes vocabulary (https://linked.data.gov.au/def/vocdermods)" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:path prov:qualifiedDerivation ;
-            sh:severity sh:Warning ;
         ] ;
+    sh:severity sh:Warning ;
     sh:targetClass skos:ConceptScheme ;
 .
 
@@ -223,8 +225,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
                         dcat:theme
                     ) ;
                 ] ;
-            sh:severity sh:Warning ;
         ] ;
+    sh:severity sh:Warning ;
     sh:targetClass skos:ConceptScheme ;
 .
 
@@ -261,8 +263,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
             sh:message "Requirement 2.1.14 The copyright holder for the vocabulary SHOULD be given using the sdo:copyrightHolder predicate preferentially indicating the IRI of an Agent or a Blank Node instance of an Agent containing details as per Agent requirements. A prov:qualifiedAttribution predicate indicating an Agent with the prov:hadRole predicate indicating the value isorole:rightsHolder may be used instead of sdo:copyrightHolder" ;
             sh:nodeKind sh:IRI ;
             sh:path sdo:copyrightHolder ;
-            sh:severity sh:Warning ;
         ] ;
+    sh:severity sh:Warning ;
     sh:targetClass skos:ConceptScheme ;
 .
 
@@ -360,6 +362,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         <https://w3id.org/profile/vocpub/validator/provenance-properties-04>
         <https://w3id.org/profile/vocpub/validator/provenance-properties-05>
     ) ;
+    sh:severity sh:Warning ;
     sh:targetClass skos:Collection ;
 .
 
@@ -371,15 +374,14 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
             sh:message "Requirement 2.2.3 A Collection exists within a vocabulary SHOULD indicate that it is within the vocabulary by use of the skos:inScheme predicate. If it is defined for the first time in the vocabulary, it should also indicate this with the rdfs:isDefinedBy predicate. This message is about skos:inScheme" ;
             sh:minCount 1 ;
             sh:path skos:inScheme ;
-            sh:severity sh:Warning ;
         ] ,
         [
             sh:maxCount 1 ;
             sh:message "Requirement 2.2.3 A Collection exists within a vocabulary SHOULD indicate that it is within the vocabulary by use of the skos:inScheme predicate. If it is defined for the first time in the vocabulary, it should also indicate this with the rdfs:isDefinedBy predicate. This message is about rdfs:isDefinedBy" ;
             sh:minCount 1 ;
             sh:path rdfs:isDefinedBy ;
-            sh:severity sh:Warning ;
         ] ;
+    sh:severity sh:Warning ;
     sh:targetClass skos:Collection ;
 .
 
@@ -431,6 +433,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         <https://w3id.org/profile/vocpub/validator/provenance-properties-04>
         <https://w3id.org/profile/vocpub/validator/provenance-properties-05>
     ) ;
+    sh:severity sh:Warning ;
     sh:targetClass skos:Concept ;
 .
 
