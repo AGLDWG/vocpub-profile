@@ -16,8 +16,10 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 <https://w3id.org/profile/vocpub/validator-combined>
     a owl:Ontology ;
-    owl:versionIRI <https://w3id.org/profile/vocpub/validator-combined/4.8> ;
-    owl:versionInfo """4.8 Fixed Warning/Violation error for PropertyShapes
+    owl:versionIRI <https://w3id.org/profile/vocpub/validator-combined/4.9> ;
+    owl:versionInfo """4.9 Fixed RDF syntax errors
+
+4.8 Fixed Warning/Violation error for PropertyShapes
 
 4.7 Fixed modified date alternate path listing bug
 
@@ -45,7 +47,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:scopeNote "This validator applies a series of data expansion rules to a given data graph before validating it" ;
     sdo:creator <https://orcid.org/0000-0002-8742-7730> ;
     sdo:dateCreated "2020-06-14"^^xsd:date ;
-    sdo:dateModified "2024-04-03"^^xsd:date ;
+    sdo:dateModified "2024-06-13"^^xsd:date ;
     sdo:definition "SHACL validator for the VocPub Profile"@en ;
     sdo:name "VocPub Validator"@en ;
     sdo:publisher <https://linked.data.gov.au/org/agldwg> ;
