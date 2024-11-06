@@ -1,3 +1,4 @@
+PREFIX dash: <http://datashapes.org/dash#>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -11,7 +12,6 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 BASE <https://w3id.org/profile/vocpub/validator/>
 
-
 <https://w3id.org/profile/vocpub/validator>
     a owl:Ontology ;
     sdo:name "VocPub Validator"@en ;
@@ -19,9 +19,11 @@ BASE <https://w3id.org/profile/vocpub/validator/>
     sdo:creator <https://orcid.org/0000-0002-8742-7730> ;
     sdo:publisher <https://linked.data.gov.au/org/agldwg> ;
     sdo:dateCreated "2020-06-14"^^xsd:date ;
-    sdo:dateModified "2024-06-13"^^xsd:date ;
-    owl:versionIRI <https://w3id.org/profile/vocpub/validator/4.10> ;
-    owl:versionInfo """4.10 move all warning from PropertyShapes to NodeShapes
+    sdo:dateModified "2024-11-06"^^xsd:date ;
+    owl:versionIRI <https://w3id.org/profile/vocpub/validator/4.11> ;
+    owl:versionInfo """4.11 Add VocEdit SHACL UI shapes and RDF statements
+
+4.10 move all warning from PropertyShapes to NodeShapes
 
 4.9 Fixed RDF syntax errors
 
@@ -66,6 +68,169 @@ BASE <https://w3id.org/profile/vocpub/validator/>
 .
 
 #
+# VocEdit SHACL UI
+#
+
+# Some label overrides until VocEdit implement sh:name on a PropertyShape.
+skos:prefLabel rdfs:label "preferred label" .
+skos:historyNote rdfs:label "history note" .
+owl:versionIRI rdfs:label "version IRI" .
+sdo:dateCreated rdfs:label "date created" .
+sdo:dateModified rdfs:label "date modified" .
+
+<Shui-Concept> a sh:NodeShape ;
+    sh:targetClass skos:Concept ;
+    dash:defaultViewForRole dash:all ;
+    sh:property <prefLabel> ;
+    sh:property <definition> ;
+    sh:property [
+        sh:path skos:inScheme ;
+        sh:nodeKind sh:IRI ;
+        sh:class skos:ConceptScheme ;
+        sh:group <Group-concept-scheme-relationships> ;
+    ] ;
+    sh:property [
+        sh:path skos:topConceptOf ;
+        sh:nodeKind sh:IRI ;
+        sh:class skos:ConceptScheme ;
+        sh:group <Group-concept-scheme-relationships> ;
+    ] ;
+    sh:property [
+        sh:path rdfs:isDefinedBy ;
+        sh:nodeKind sh:IRI ;
+        sh:class skos:ConceptScheme ;
+        sh:group <Group-concept-scheme-relationships> ;
+    ] ;
+    sh:property [
+        sh:path skos:narrower ;
+        sh:nodeKind sh:IRI ;
+        sh:class skos:Concept ;
+        sh:group <Group-concept-relationships> ;
+    ] ;
+    sh:property [
+        sh:path skos:broader ;
+        sh:nodeKind sh:IRI ;
+        sh:class skos:Concept ;
+        sh:group <Group-concept-relationships> ;
+    ] ;
+.
+
+<Shui-ConceptScheme> a sh:NodeShape ;
+    sh:targetClass skos:ConceptScheme ;
+    dash:defaultViewForRole dash:all ;
+    sh:property [
+        sh:path owl:versionIRI ;
+        sh:nodeKind sh:IRI ;
+        sh:group <Group-metadata> ;
+        sh:order 3 ;
+    ] ;
+    sh:property [
+        sh:path sdo:version ;
+        sh:nodeKind sh:Literal ;
+        sh:group <Group-metadata> ;
+        sh:order 2 ;
+    ] ;
+    sh:property [
+        sh:path sdo:dateCreated ;
+        sh:datatype xsd:date ;
+        sh:group <Group-metadata> ;
+        sh:order 0 ;
+    ] ;
+    sh:property [
+        sh:path sdo:dateModified ;
+        sh:datatype xsd:date ;
+        sh:group <Group-metadata> ;
+        sh:order 1
+    ] ;
+    sh:property [
+        sh:group <Group-metadata> ;
+        sh:path sdo:creator ;
+        dash:editor dash:DetailsEditor ;
+        sh:node [
+            sh:property [
+                sh:path sdo:name ;
+                sh:datatype xsd:string ;
+            ] ;
+            sh:property [
+                sh:path sdo:url ;
+                sh:datatype xsd:anyURI ;
+            ] ;
+        ] ;
+    ] ;
+    sh:property [
+        sh:group <Group-metadata> ;
+        sh:path sdo:publisher ;
+        dash:editor dash:DetailsEditor ;
+        sh:node [
+            sh:property [
+                sh:path sdo:name ;
+                sh:datatype xsd:string ;
+            ] ;
+            sh:property [
+                sh:path sdo:url ;
+                sh:datatype xsd:anyURI ;
+            ] ;
+        ] ;
+    ] ;
+    sh:property [
+        sh:group <Group-metadata> ;
+        sh:path prov:qualifiedAttribution ;
+        dash:editor dash:DetailsEditor ;
+        sh:node [
+            sh:property [
+                sh:path prov:hadRole ;
+                sh:nodeKind sh:IRI ;
+            ] ;
+            sh:property [
+                sh:path prov:agent ;
+                sh:node [
+                    sh:property [
+                        sh:path sdo:name ;
+                        sh:datatype xsd:string ;
+                    ] ;
+                    sh:property [
+                        sh:path sdo:email ;
+                        sh:datatype xsd:anyURI ;
+                    ] ;
+                ] ;
+            ] ;
+        ] ;
+    ] ;
+    sh:property <prefLabel> ;
+    sh:property <definition> ;
+    sh:property <provenance-properties-04> ;
+    sh:property <Requirement-2.1.9> ;
+.
+
+<prefLabel> sh:group <Group-annotations> .
+<definition> sh:group <Group-annotations> ;
+    dash:singleLine false ;
+.
+<provenance-properties-04> sh:group <Group-annotations> ;
+    dash:singleLine false ;
+.
+
+<Group-metadata> a sh:PropertyGroup ;
+    rdfs:label "Metadata" ;
+    sh:order 1 ;
+.
+
+<Group-annotations> a sh:PropertyGroup ;
+    rdfs:label "Annotations" ;
+    sh:order 0 ;
+.
+
+<Group-concept-scheme-relationships> a sh:PropertyGroup ;
+    rdfs:label "Concept Scheme relationships" ;
+    sh:order 1 ;
+.
+
+<Group-concept-relationships> a sh:PropertyGroup ;
+    rdfs:label "Concept relationships" ;
+    sh:order 2 ;
+.
+
+#
 #   Node Shapes
 #
 
@@ -95,7 +260,7 @@ BASE <https://w3id.org/profile/vocpub/validator/>
 	sh:message "Requirement 2.1.5 Each vocabulary MUST have exactly one created date and exactly one modified date indicated using the sdo:dateCreated and sdo:dateModified or dcterms:created and dcterms:modified predicates respectively that must be either an xsd:date, xsd:dateTime or xsd:dateTimeStamp literal value" ;
 	sh:property
         <created> ,
-        <modified> ;    
+        <modified> ;
 .
 
 <Requirement-2.1.6>
@@ -136,6 +301,9 @@ BASE <https://w3id.org/profile/vocpub/validator/>
 	a sh:NodeShape ;
 	sh:targetClass skos:ConceptScheme ;
     sh:property [
+        dash:editor dash:AutoCompleteEditor ;
+        sh:group <Group-concept-relationships> ;
+        sh:class skos:Concept ;
         sh:message "Requirement 2.1.9 Each vocabulary's Concept Scheme MUST link to at least one Concept within the vocabulary with the skos:hasTopConcept predicate" ;
         sh:path skos:hasTopConcept ;
         sh:minCount 1 ;
@@ -445,7 +613,7 @@ BASE <https://w3id.org/profile/vocpub/validator/>
         [ sh:datatype xsd:dateTime ]
         [ sh:datatype xsd:date ]
         [ sh:datatype xsd:dateTimeStamp ]
-    ) ;        
+    ) ;
 .
 
 <creator>
