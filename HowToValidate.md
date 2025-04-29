@@ -1,13 +1,13 @@
 # VocPub Profile
 ## How to validate
 
-This document describes how you can use validators, such as the [VocPub Profile](https://w3id.org/profile/vocpub)'s validator, to test whether data is valid according to it a specification.
+This document describes how you can use validators, such as the [VocPub Profile](https://linked.data.gov.au/def/vocpub)'s validator, to test whether data is valid according to it a specification.
 
-Validation using SHACL validators involves applying a [SHACL](https://www.w3.org/TR/shacl/) validator file, such as [the one provided in this profile](https://w3id.org/profile/vocpub/validator) to data using one of many available validator tools. Different approaches and tools are:
+Validation using SHACL validators involves applying a [SHACL](https://www.w3.org/TR/shacl/) validator file, such as [the one provided in this profile](https://linked.data.gov.au/def/vocpub/validator) to data using one of many available validator tools. Different approaches and tools are:
 
 1. **Online validation**
     * [KurrawongAI's RDFTools](http://rdftools.dev.kurrawong.ai)
-      * Pre-loaded with a number of validators, including [the one provided in this profile](https://w3id.org/profile/vocpub/validator)
+      * Pre-loaded with a number of validators, including [the one provided in this profile](https://linked.data.gov.au/def/vocpub/validator)
       * You can supply your own validator too
       * You can past in RDF data or upload a data file
     * [SHACL Playground](https://shacl.org/playground/)

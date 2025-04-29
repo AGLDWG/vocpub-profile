@@ -5,18 +5,18 @@ PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX reg: <http://purl.org/linked-data/registry#>
-PREFIX sdo: <https://schema.org/>
+PREFIX schema: <https://schema.org/>
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-<https://w3id.org/profile/vocpub/validator>
-    sdo:name "VocPub Combined Validator" ;
+<https://linked.data.gov.au/def/vocpub/validator>
+    schema:name "VocPub Combined Validator" ;
 .
 
-<https://w3id.org/profile/vocpub/validator-combined>
+<https://linked.data.gov.au/def/vocpub/validator-combined>
     a owl:Ontology ;
-    owl:versionIRI <https://w3id.org/profile/vocpub/validator-combined/4.10> ;
+    owl:versionIRI <https://linked.data.gov.au/def/vocpub/validator-combined/4.10> ;
     owl:versionInfo """4.10 move all warning from PropertyShapes to NodeShapes
 
 4.9 Fixed RDF syntax errors
@@ -25,7 +25,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 4.7 Fixed modified date alternate path listing bug
 
-4.6 Fixed sdo:historyNote->skos:historyNote bug
+4.6 Fixed schema:historyNote->skos:historyNote bug
 
 4.5 Added suggested predicates of license & copyrightHolder
 
@@ -47,15 +47,15 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 3.0: Removed Requirement-2.3.5 (identifiers) as these are auto-generated in systems like VocPrez; Added Requirement-2.1.10 & 2.1.11 and sub parts to test for qualifiedDerivation and status of a ConceptScheme""" ;
     skos:scopeNote "This validator applies a series of data expansion rules to a given data graph before validating it" ;
-    sdo:creator <https://orcid.org/0000-0002-8742-7730> ;
-    sdo:dateCreated "2020-06-14"^^xsd:date ;
-    sdo:dateModified "2024-06-13"^^xsd:date ;
-    sdo:definition "SHACL validator for the VocPub Profile"@en ;
-    sdo:name "VocPub Validator"@en ;
-    sdo:publisher <https://linked.data.gov.au/org/agldwg> ;
+    schema:creator <https://orcid.org/0000-0002-8742-7730> ;
+    schema:dateCreated "2020-06-14"^^xsd:date ;
+    schema:dateModified "2024-06-13"^^xsd:date ;
+    schema:definition "SHACL validator for the VocPub Profile"@en ;
+    schema:name "VocPub Validator"@en ;
+    schema:publisher <https://linked.data.gov.au/org/agldwg> ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Build-Concept>
+<https://linked.data.gov.au/def/vocpub/validator/Build-Concept>
     a sh:NodeShape ;
     sh:rule
         [
@@ -122,7 +122,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
                 VALUES ?p {
                     prov:wasDerivedFrom
                     skos:historyNote
-                    sdo:citation
+                    schema:citation
                     dcterms:source
                     dcterms:provenance
                 }
@@ -142,7 +142,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:targetClass skos:Concept ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Build-ConceptScheme>
+<https://linked.data.gov.au/def/vocpub/validator/Build-ConceptScheme>
     a sh:NodeShape ;
     sh:order 1 ;
     sh:rule
@@ -161,7 +161,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:targetClass skos:ConceptScheme ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.1.10>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.1.10>
     a sh:NodeShape ;
     sh:property
         [
@@ -174,7 +174,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:targetClass skos:ConceptScheme ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.1.11>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.1.11>
     a sh:NodeShape ;
     sh:property
         [
@@ -186,7 +186,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:targetClass skos:ConceptScheme ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.1.11b>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.1.11b>
     a sh:NodeShape ;
     sh:property
         [
@@ -199,7 +199,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:targetObjectsOf prov:qualifiedDerivation ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.1.11c>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.1.11c>
     a sh:NodeShape ;
     sh:property
         [
@@ -212,16 +212,16 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:targetObjectsOf prov:qualifiedDerivation ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.1.12>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.1.12>
     a sh:NodeShape ;
     sh:property
         [
-            sh:message "Requirement 2.1.12 High-level theming of a vocabulary SHOULD be given by using the sdo:keywords predicate indicating Concepts from another vocabulary. Alternatively, dcat:theme MAY be used. Text literal values for either predicate SHOULD NOT be used" ;
+            sh:message "Requirement 2.1.12 High-level theming of a vocabulary SHOULD be given by using the schema:keywords predicate indicating Concepts from another vocabulary. Alternatively, dcat:theme MAY be used. Text literal values for either predicate SHOULD NOT be used" ;
             sh:nodeKind sh:IRI ;
             sh:path
                 [
                     sh:alternativePath (
-                        sdo:keywords
+                        schema:keywords
                         dcat:theme
                     ) ;
                 ] ;
@@ -230,11 +230,11 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:targetClass skos:ConceptScheme ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.1.13>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.1.13>
     a sh:NodeShape ;
     sh:property
         [
-            sh:message "Requirement 2.1.13 Any licence pertaining to the reuse of a vocabulary's content SHOULD be given using the sdo:license predicate preferentially indicating the IRI of a license if in RDF form or a literal URL (datatype xsd:anyURI) if online but not in RDF form. If the licence is expressed in test, a literal text field may be indicated" ;
+            sh:message "Requirement 2.1.13 Any licence pertaining to the reuse of a vocabulary's content SHOULD be given using the schema:license predicate preferentially indicating the IRI of a license if in RDF form or a literal URL (datatype xsd:anyURI) if online but not in RDF form. If the licence is expressed in test, a literal text field may be indicated" ;
             sh:nodeKind sh:IRI ;
             sh:or (
                 
@@ -250,71 +250,71 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
                     sh:datatype xsd:string ;
                 ]
             ) ;
-            sh:path sdo:license ;
+            sh:path schema:license ;
             sh:severity sh:Warning ;
         ] ;
     sh:targetClass skos:ConceptScheme ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.1.14>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.1.14>
     a sh:NodeShape ;
     sh:property
         [
-            sh:message "Requirement 2.1.14 The copyright holder for the vocabulary SHOULD be given using the sdo:copyrightHolder predicate preferentially indicating the IRI of an Agent or a Blank Node instance of an Agent containing details as per Agent requirements. A prov:qualifiedAttribution predicate indicating an Agent with the prov:hadRole predicate indicating the value isorole:rightsHolder may be used instead of sdo:copyrightHolder" ;
+            sh:message "Requirement 2.1.14 The copyright holder for the vocabulary SHOULD be given using the schema:copyrightHolder predicate preferentially indicating the IRI of an Agent or a Blank Node instance of an Agent containing details as per Agent requirements. A prov:qualifiedAttribution predicate indicating an Agent with the prov:hadRole predicate indicating the value isorole:rightsHolder may be used instead of schema:copyrightHolder" ;
             sh:nodeKind sh:IRI ;
-            sh:path sdo:copyrightHolder ;
+            sh:path schema:copyrightHolder ;
         ] ;
     sh:severity sh:Warning ;
     sh:targetClass skos:ConceptScheme ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.1.2+3>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.1.2+3>
     a sh:NodeShape ;
-    sh:property <https://w3id.org/profile/vocpub/validator/ConceptSchemeType> ;
+    sh:property <https://linked.data.gov.au/def/vocpub/validator/ConceptSchemeType> ;
     sh:targetNode skos:ConceptScheme ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.1.4>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.1.4>
     a sh:NodeShape ;
     sh:message "Requirement 2.1.4 Each vocabulary MUST have exactly one title and at least one definition indicated using the skos:prefLabel and the skos:definition predicates respectively that must give textual literal values. Only one definition per language is allowed" ;
     sh:property
-        <https://w3id.org/profile/vocpub/validator/definition> ,
-        <https://w3id.org/profile/vocpub/validator/prefLabel> ;
+        <https://linked.data.gov.au/def/vocpub/validator/definition> ,
+        <https://linked.data.gov.au/def/vocpub/validator/prefLabel> ;
     sh:targetClass skos:ConceptScheme ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.1.5>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.1.5>
     a sh:NodeShape ;
-    sh:message "Requirement 2.1.5 Each vocabulary MUST have exactly one created date and exactly one modified date indicated using the sdo:dateCreated and sdo:dateModified or dcterms:created and dcterms:modified predicates respectively that must be either an xsd:date, xsd:dateTime or xsd:dateTimeStamp literal value" ;
+    sh:message "Requirement 2.1.5 Each vocabulary MUST have exactly one created date and exactly one modified date indicated using the schema:dateCreated and schema:dateModified or dcterms:created and dcterms:modified predicates respectively that must be either an xsd:date, xsd:dateTime or xsd:dateTimeStamp literal value" ;
     sh:property
-        <https://w3id.org/profile/vocpub/validator/created> ,
-        <https://w3id.org/profile/vocpub/validator/modified> ;
+        <https://linked.data.gov.au/def/vocpub/validator/created> ,
+        <https://linked.data.gov.au/def/vocpub/validator/modified> ;
     sh:targetClass skos:ConceptScheme ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.1.6>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.1.6>
     a sh:NodeShape ;
-    sh:message "Requirement 2.1.6 Each vocabulary MUST have at least one creator, indicated using sdo:creator or dcterms:creator predicate and exactly one publisher, indicated using sdo:publisher or dcterms:publisher, all of which MUST be IRIs indicating instances of sdo:Person, or sdo:Organization" ;
+    sh:message "Requirement 2.1.6 Each vocabulary MUST have at least one creator, indicated using schema:creator or dcterms:creator predicate and exactly one publisher, indicated using schema:publisher or dcterms:publisher, all of which MUST be IRIs indicating instances of schema:Person, or schema:Organization" ;
     sh:property
-        <https://w3id.org/profile/vocpub/validator/creator> ,
-        <https://w3id.org/profile/vocpub/validator/publisher> ;
+        <https://linked.data.gov.au/def/vocpub/validator/creator> ,
+        <https://linked.data.gov.au/def/vocpub/validator/publisher> ;
     sh:targetClass skos:ConceptScheme ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.1.7>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.1.7>
     a sh:NodeShape ;
-    sh:message "Requirement 2.1.7 The origins of a Concept Scheme MUST be indicated by at least one of the following predicates: skos:historyNote, sdo:citation, prov:wasDerivedFrom. dcterms:source MAY be used instead of sdo:citation and dcterms:provenance MAY be used instead of skos:historyNote but the schema.org and SKOS predicates are preferred" ;
+    sh:message "Requirement 2.1.7 The origins of a Concept Scheme MUST be indicated by at least one of the following predicates: skos:historyNote, schema:citation, prov:wasDerivedFrom. dcterms:source MAY be used instead of schema:citation and dcterms:provenance MAY be used instead of skos:historyNote but the schema.org and SKOS predicates are preferred" ;
     sh:or (
-        <https://w3id.org/profile/vocpub/validator/provenance-properties-01>
-        <https://w3id.org/profile/vocpub/validator/provenance-properties-02>
-        <https://w3id.org/profile/vocpub/validator/provenance-properties-03>
-        <https://w3id.org/profile/vocpub/validator/provenance-properties-04>
-        <https://w3id.org/profile/vocpub/validator/provenance-properties-05>
+        <https://linked.data.gov.au/def/vocpub/validator/provenance-properties-01>
+        <https://linked.data.gov.au/def/vocpub/validator/provenance-properties-02>
+        <https://linked.data.gov.au/def/vocpub/validator/provenance-properties-03>
+        <https://linked.data.gov.au/def/vocpub/validator/provenance-properties-04>
+        <https://linked.data.gov.au/def/vocpub/validator/provenance-properties-05>
     ) ;
     sh:targetClass skos:ConceptScheme ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.1.8>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.1.8>
     a sh:NodeShape ;
     sh:property
         [
@@ -327,7 +327,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:targetClass skos:Concept ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.1.9>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.1.9>
     a sh:NodeShape ;
     sh:property
         [
@@ -339,34 +339,34 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:targetClass skos:ConceptScheme ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.2.1>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.2.1>
     a sh:NodeShape ;
     sh:message
         "Requirement 2.1.4 Each Collection MUST have exactly one title and at least one definition indicated using the skos:prefLabel and the skos:definition predicates respectively that must give textual literal values. Only one definition per language is allowed" ,
         "Requirement 2.1.4 Each Concept MUST have exactly one title and at least one definition indicated using the skos:prefLabel and the skos:definition predicates respectively that must give textual literal values. Only one definition per language is allowed" ;
     sh:property
-        <https://w3id.org/profile/vocpub/validator/definition> ,
-        <https://w3id.org/profile/vocpub/validator/prefLabel> ;
+        <https://linked.data.gov.au/def/vocpub/validator/definition> ,
+        <https://linked.data.gov.au/def/vocpub/validator/prefLabel> ;
     sh:targetClass
         skos:Collection ,
         skos:Concept ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.2.2>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.2.2>
     a sh:NodeShape ;
-    sh:message "Requirement 2.2.2 The origins of a Collection, if different from its containing Concept Scheme, SHOULD be indicated by at least one of the following predicates: skos:historyNote, sdo:citation, prov:wasDerivedFrom. dcterms:source MAY be used instead of sdo:citation and dcterms:provenance MAY be used instead of skos:historyNote but the schema.org and SKOS predicates are preferred" ;
+    sh:message "Requirement 2.2.2 The origins of a Collection, if different from its containing Concept Scheme, SHOULD be indicated by at least one of the following predicates: skos:historyNote, schema:citation, prov:wasDerivedFrom. dcterms:source MAY be used instead of schema:citation and dcterms:provenance MAY be used instead of skos:historyNote but the schema.org and SKOS predicates are preferred" ;
     sh:or (
-        <https://w3id.org/profile/vocpub/validator/provenance-properties-01>
-        <https://w3id.org/profile/vocpub/validator/provenance-properties-02>
-        <https://w3id.org/profile/vocpub/validator/provenance-properties-03>
-        <https://w3id.org/profile/vocpub/validator/provenance-properties-04>
-        <https://w3id.org/profile/vocpub/validator/provenance-properties-05>
+        <https://linked.data.gov.au/def/vocpub/validator/provenance-properties-01>
+        <https://linked.data.gov.au/def/vocpub/validator/provenance-properties-02>
+        <https://linked.data.gov.au/def/vocpub/validator/provenance-properties-03>
+        <https://linked.data.gov.au/def/vocpub/validator/provenance-properties-04>
+        <https://linked.data.gov.au/def/vocpub/validator/provenance-properties-05>
     ) ;
     sh:severity sh:Warning ;
     sh:targetClass skos:Collection ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.2.3>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.2.3>
     a sh:NodeShape ;
     sh:property
         [
@@ -385,7 +385,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:targetClass skos:Collection ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.2.4>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.2.4>
     a sh:NodeShape ;
     sh:property
         [
@@ -397,7 +397,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:targetClass skos:Collection ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.3.2>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.3.2>
     a sh:NodeShape ;
     sh:message "Requirement 2.3.2 Each Concept in a vocabulary MAY indicate the vocabulary that defines it by use of the rdfs:isDefinedBy predicate indicating a Concept Scheme instance. If no such predicate is given, the Concept Scheme in the file that a Concept is provided in is understood to be the defining Concept Scheme" ;
     sh:property
@@ -411,7 +411,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:targetClass skos:Concept ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.3.3>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.3.3>
     a sh:NodeShape ;
     sh:property
         [
@@ -423,73 +423,73 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:targetClass skos:Concept ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.3.4>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.3.4>
     a sh:NodeShape ;
-    sh:message "Requirement 2.2.2 The origins of a Concept, if different from its containing Concept Scheme, SHOULD be indicated by at least one of the following predicates: skos:historyNote, sdo:citation, prov:wasDerivedFrom. dcterms:source MAY be used instead of sdo:citation and dcterms:provenance MAY be used instead of skos:historyNote but the schema.org and SKOS predicates are preferred" ;
+    sh:message "Requirement 2.2.2 The origins of a Concept, if different from its containing Concept Scheme, SHOULD be indicated by at least one of the following predicates: skos:historyNote, schema:citation, prov:wasDerivedFrom. dcterms:source MAY be used instead of schema:citation and dcterms:provenance MAY be used instead of skos:historyNote but the schema.org and SKOS predicates are preferred" ;
     sh:or (
-        <https://w3id.org/profile/vocpub/validator/provenance-properties-01>
-        <https://w3id.org/profile/vocpub/validator/provenance-properties-02>
-        <https://w3id.org/profile/vocpub/validator/provenance-properties-03>
-        <https://w3id.org/profile/vocpub/validator/provenance-properties-04>
-        <https://w3id.org/profile/vocpub/validator/provenance-properties-05>
+        <https://linked.data.gov.au/def/vocpub/validator/provenance-properties-01>
+        <https://linked.data.gov.au/def/vocpub/validator/provenance-properties-02>
+        <https://linked.data.gov.au/def/vocpub/validator/provenance-properties-03>
+        <https://linked.data.gov.au/def/vocpub/validator/provenance-properties-04>
+        <https://linked.data.gov.au/def/vocpub/validator/provenance-properties-05>
     ) ;
     sh:severity sh:Warning ;
     sh:targetClass skos:Concept ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.4.2>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.4.2>
     a sh:NodeShape ;
     sh:property
         [
             sh:datatype xsd:string ;
             sh:maxCount 1 ;
-            sh:message "Requirement 2.4.2 Each Agent MUST give exactly one name with the sdo:name predicate indicating a literal text value" ;
+            sh:message "Requirement 2.4.2 Each Agent MUST give exactly one name with the schema:name predicate indicating a literal text value" ;
             sh:minCount 1 ;
-            sh:path sdo:name ;
+            sh:path schema:name ;
         ] ;
     sh:targetClass
-        sdo:Organization ,
-        sdo:Person ;
+        schema:Organization ,
+        schema:Person ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.4.3a>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.4.3a>
     a sh:NodeShape ;
     sh:property
         [
             sh:datatype xsd:anyURI ;
-            sh:message "Requirement 2.4.3 Each Agent MUST indicate either a sdo:url (for organizations) or a sdo:email (for people) predicate with a URL or email value. This error message is for Organizations" ;
+            sh:message "Requirement 2.4.3 Each Agent MUST indicate either a schema:url (for organizations) or a schema:email (for people) predicate with a URL or email value. This error message is for Organizations" ;
             sh:minCount 1 ;
-            sh:path sdo:url ;
+            sh:path schema:url ;
         ] ;
-    sh:targetClass sdo:Organization ;
+    sh:targetClass schema:Organization ;
 .
 
-<https://w3id.org/profile/vocpub/validator/Requirement-2.4.3b>
+<https://linked.data.gov.au/def/vocpub/validator/Requirement-2.4.3b>
     a sh:NodeShape ;
     sh:property
         [
             sh:datatype xsd:anyURI ;
-            sh:message "Requirement 2.4.3 Each Agent MUST indicate either a sdo:url (for organizations) or a sdo:email (for people) predicate with a URL or email value. This error message is for Persons" ;
+            sh:message "Requirement 2.4.3 Each Agent MUST indicate either a schema:url (for organizations) or a schema:email (for people) predicate with a URL or email value. This error message is for Persons" ;
             sh:minCount 1 ;
-            sh:path sdo:email ;
+            sh:path schema:email ;
         ] ;
-    sh:targetClass sdo:Person ;
+    sh:targetClass schema:Person ;
 .
 
 <https://linked.data.gov.au/org/agldwg>
-    a sdo:Organization ;
-    sdo:name "Australian Government Linked Data Working Group" ;
-    sdo:url "https://www.linked.data.gov.au"^^xsd:anyURI ;
+    a schema:Organization ;
+    schema:name "Australian Government Linked Data Working Group" ;
+    schema:url "https://www.linked.data.gov.au"^^xsd:anyURI ;
 .
 
 <https://orcid.org/0000-0002-8742-7730>
-    a sdo:Person ;
-    sdo:email "nicholas.car@anu.edu.au"^^xsd:anyURI ;
-    sdo:identifier "https://orcid.org/0000-0002-8742-7730"^^xsd:anyURI ;
-    sdo:name "Nicholas J. Car" ;
+    a schema:Person ;
+    schema:email "nicholas.car@anu.edu.au"^^xsd:anyURI ;
+    schema:identifier "https://orcid.org/0000-0002-8742-7730"^^xsd:anyURI ;
+    schema:name "Nicholas J. Car" ;
 .
 
-<https://w3id.org/profile/vocpub/validator/ConceptSchemeType>
+<https://linked.data.gov.au/def/vocpub/validator/ConceptSchemeType>
     sh:maxCount 1 ;
     sh:message "Requirement 2.1.2 Each vocabulary MUST be presented as a single Concept Scheme object & Requirement 2.1.3 Each vocabulary MUST be presented in a single RDF file which does not contain information other than that which is directly part of the vocabulary" ;
     sh:minCount 1 ;
@@ -499,7 +499,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         ] ;
 .
 
-<https://w3id.org/profile/vocpub/validator/created>
+<https://linked.data.gov.au/def/vocpub/validator/created>
     a sh:PropertyShape ;
     sh:maxCount 1 ;
     sh:message "Requirement 2.15 - created date - violated" ;
@@ -521,36 +521,36 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:path
         [
             sh:alternativePath (
-                sdo:dateCreated
+                schema:dateCreated
                 dcterms:created
             ) ;
         ] ;
 .
 
-<https://w3id.org/profile/vocpub/validator/creator>
+<https://linked.data.gov.au/def/vocpub/validator/creator>
     a sh:PropertyShape ;
-    sh:message "Requirement 2.1.6 Each vocabulary MUST have at least one creator, indicated using sdo:creator or dcterms:creator predicate and exactly one publisher, indicated using sdo:publisher or dcterms:publisher, all of which MUST be IRIs indicating instances of sdo:Person, or sdo:Organization. This error message is for creator" ;
+    sh:message "Requirement 2.1.6 Each vocabulary MUST have at least one creator, indicated using schema:creator or dcterms:creator predicate and exactly one publisher, indicated using schema:publisher or dcterms:publisher, all of which MUST be IRIs indicating instances of schema:Person, or schema:Organization. This error message is for creator" ;
     sh:minCount 1 ;
     sh:or (
         
         [
-            sh:class sdo:Organization ;
+            sh:class schema:Organization ;
         ]
         
         [
-            sh:class sdo:Person ;
+            sh:class schema:Person ;
         ]
     ) ;
     sh:path
         [
             sh:alternativePath (
-                sdo:creator
+                schema:creator
                 dcterms:creator
             ) ;
         ] ;
 .
 
-<https://w3id.org/profile/vocpub/validator/modified>
+<https://linked.data.gov.au/def/vocpub/validator/modified>
     a sh:PropertyShape ;
     sh:maxCount 1 ;
     sh:message "Requirement 2.15 - modified date - violated" ;
@@ -572,36 +572,36 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:path
         [
             sh:alternativePath (
-                sdo:dateModified
+                schema:dateModified
                 dcterms:modified
             ) ;
         ] ;
 .
 
-<https://w3id.org/profile/vocpub/validator/publisher>
+<https://linked.data.gov.au/def/vocpub/validator/publisher>
     a sh:PropertyShape ;
-    sh:message "Requirement 2.1.6 Each vocabulary MUST have at least one creator, indicated using sdo:creator or dcterms:creator predicate and exactly one publisher, indicated using sdo:publisher or dcterms:publisher, all of which MUST be IRIs indicating instances of sdo:Person, or sdo:Organization. This error message is for publisher" ;
+    sh:message "Requirement 2.1.6 Each vocabulary MUST have at least one creator, indicated using schema:creator or dcterms:creator predicate and exactly one publisher, indicated using schema:publisher or dcterms:publisher, all of which MUST be IRIs indicating instances of schema:Person, or schema:Organization. This error message is for publisher" ;
     sh:minCount 1 ;
     sh:or (
         
         [
-            sh:class sdo:Organization ;
+            sh:class schema:Organization ;
         ]
         
         [
-            sh:class sdo:Person ;
+            sh:class schema:Person ;
         ]
     ) ;
     sh:path
         [
             sh:alternativePath (
-                sdo:publisher
+                schema:publisher
                 dcterms:publisher
             ) ;
         ] ;
 .
 
-<https://w3id.org/profile/vocpub/validator/definition>
+<https://linked.data.gov.au/def/vocpub/validator/definition>
     a sh:PropertyShape ;
     sh:message "Requirement 2.1.4, 2.2.1 or 2.3.1 Each vocabulary, Collection or Concept MUST have exactly one title and at least one definition indicated using the skos:prefLabel and the skos:definition predicates respectively that must give textual literal values. Only one definition per language is allowed" ;
     sh:minCount 1 ;
@@ -619,7 +619,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:uniqueLang true ;
 .
 
-<https://w3id.org/profile/vocpub/validator/prefLabel>
+<https://linked.data.gov.au/def/vocpub/validator/prefLabel>
     a sh:PropertyShape ;
     sh:maxCount 1 ;
     sh:message "Requirement 2.1.4, 2.2.1 or 2.3.1 Each vocabulary, Collection or Concept MUST have exactly one title and at least one definition indicated using the skos:prefLabel and the skos:definition predicates respectively that must give textual literal values. Only one definition per language is allowed" ;
@@ -638,7 +638,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:uniqueLang true ;
 .
 
-<https://w3id.org/profile/vocpub/validator/provenance-properties-01>
+<https://linked.data.gov.au/def/vocpub/validator/provenance-properties-01>
     a sh:PropertyShape ;
     sh:minCount 1 ;
     sh:nodeKind sh:IRI ;
@@ -646,7 +646,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:severity sh:Warning ;
 .
 
-<https://w3id.org/profile/vocpub/validator/provenance-properties-02>
+<https://linked.data.gov.au/def/vocpub/validator/provenance-properties-02>
     a sh:PropertyShape ;
     sh:minCount 1 ;
     sh:or (
@@ -659,11 +659,11 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
             sh:datatype xsd:string ;
         ]
     ) ;
-    sh:path sdo:citation ;
+    sh:path schema:citation ;
     sh:severity sh:Warning ;
 .
 
-<https://w3id.org/profile/vocpub/validator/provenance-properties-03>
+<https://linked.data.gov.au/def/vocpub/validator/provenance-properties-03>
     a sh:PropertyShape ;
     sh:minCount 1 ;
     sh:or (
@@ -680,7 +680,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:severity sh:Warning ;
 .
 
-<https://w3id.org/profile/vocpub/validator/provenance-properties-04>
+<https://linked.data.gov.au/def/vocpub/validator/provenance-properties-04>
     a sh:PropertyShape ;
     sh:minCount 1 ;
     sh:or (
@@ -697,7 +697,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:severity sh:Warning ;
 .
 
-<https://w3id.org/profile/vocpub/validator/provenance-properties-05>
+<https://linked.data.gov.au/def/vocpub/validator/provenance-properties-05>
     a sh:PropertyShape ;
     sh:minCount 1 ;
     sh:or (

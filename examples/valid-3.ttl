@@ -7,7 +7,7 @@ PREFIX astat: <https://linked.data.gov.au/def/reg-statuses/>
 PREFIX cs: <http://example.com/def/vocpub-4.x-test>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX reg: <http://purl.org/linked-data/registry#>
-PREFIX sdo: <https://schema.org/>
+PREFIX schema: <https://schema.org/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
@@ -18,7 +18,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:inScheme cs: ;
     skos:prefLabel "Concept 1"@en ;
     skos:topConceptOf cs: ;
-    sdo:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
+    schema:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
 .
 
 :c2.1
@@ -28,7 +28,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:historyNote "Created for testing VocPub profile only" ;
     skos:inScheme cs: ;
     skos:prefLabel "Concept 2.1"@en ;
-    sdo:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
+    schema:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
 .
 
 :c2.2
@@ -38,7 +38,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:historyNote "Created for testing VocPub profile only" ;
     skos:inScheme cs: ;
     skos:prefLabel "Concept 2.2"@en ;
-    sdo:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
+    schema:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
 .
 
 :c3
@@ -48,7 +48,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:inScheme cs: ;
     skos:prefLabel "Concept 3"@en ;
     skos:topConceptOf cs: ;
-    sdo:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
+    schema:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
 .
 
 :c4.1
@@ -58,7 +58,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:historyNote "Created for testing VocPub profile only" ;
     skos:inScheme cs: ;
     skos:prefLabel "Concept 4.1"@en ;
-    sdo:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
+    schema:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
 .
 
 :c4.2.1
@@ -68,7 +68,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:historyNote "Created for testing VocPub profile only" ;
     skos:inScheme cs: ;
     skos:prefLabel "Concept 4.2.1"@en ;
-    sdo:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
+    schema:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
 .
 
 :c4.2.2.1
@@ -78,7 +78,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:historyNote "Created for testing VocPub profile only" ;
     skos:inScheme cs: ;
     skos:prefLabel "Concept 4.2.2.1"@en ;
-    sdo:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
+    schema:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
 .
 
 :c4.3
@@ -88,7 +88,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:historyNote "Created for testing VocPub profile only" ;
     skos:inScheme cs: ;
     skos:prefLabel "Concept 4.3"@en ;
-    sdo:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
+    schema:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
 .
 
 :c4.4
@@ -98,7 +98,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:historyNote "Created for testing VocPub profile only" ;
     skos:inScheme cs: ;
     skos:prefLabel "Concept 4.4"@en ;
-    sdo:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
+    schema:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
 .
 
 :c4.2.2
@@ -109,20 +109,20 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:inScheme cs: ;
     skos:narrower :c4.2.2.1 ;
     skos:prefLabel "Concept 4.2.2"@en ;
-    sdo:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
+    schema:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
 .
 
 <https://kurrawong.ai>
-    a sdo:Organization ;
-    sdo:name "KurrawongAI Pty Ltd" ;
-    sdo:url "https://kurrawong.ai"^^xsd:anyURI ;
+    a schema:Organization ;
+    schema:name "KurrawongAI Pty Ltd" ;
+    schema:url "https://kurrawong.ai"^^xsd:anyURI ;
 .
 
 <https://orcid.org/0000-0002-8742-7730>
-    a sdo:Person ;
-    sdo:email "nick@kurrawong.ai"^^xsd:anyURI ;
-    sdo:memberOf <https://kurrawong.ai> ;
-    sdo:name "Nicholas J. Car" ;
+    a schema:Person ;
+    schema:email "nick@kurrawong.ai"^^xsd:anyURI ;
+    schema:memberOf <https://kurrawong.ai> ;
+    schema:name "Nicholas J. Car" ;
 .
 
 :c2
@@ -135,7 +135,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         :c2.2 ;
     skos:prefLabel "Concept 2"@en ;
     skos:topConceptOf cs: ;
-    sdo:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
+    schema:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
 .
 
 :c4.2
@@ -148,7 +148,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         :c4.2.1 ,
         :c4.2.2 ;
     skos:prefLabel "Concept 4.2"@en ;
-    sdo:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
+    schema:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
 .
 
 :c4
@@ -163,7 +163,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         :c4.4 ;
     skos:prefLabel "Concept 4"@en ;
     skos:topConceptOf cs: ;
-    sdo:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
+    schema:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
 .
 
 cs:
@@ -181,12 +181,12 @@ cs:
             prov:entity <http://example.com/vocab/dummy> ;
             prov:hadRole <https://linked.data.gov.au/def/vocdermods/direct>
         ] ;
-    sdo:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
-    sdo:creator <https://orcid.org/0000-0002-8742-7730> ;
-    sdo:dateCreated "2019-04-03"^^xsd:date ;
-    sdo:dateModified "2023-03-16"^^xsd:date ;
-    sdo:publisher <https://kurrawong.ai> ;
-    sdo:qualifiedAttribution [
+    schema:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
+    schema:creator <https://orcid.org/0000-0002-8742-7730> ;
+    schema:dateCreated "2019-04-03"^^xsd:date ;
+    schema:dateModified "2023-03-16"^^xsd:date ;
+    schema:publisher <https://kurrawong.ai> ;
+    schema:qualifiedAttribution [
             prov:agent <https://orcid.org/0000-0002-8742-7730> ;
             prov:hadRole <http://def.isotc211.org/iso19115/-1/2018/CitationAndResponsiblePartyInformation/code/CI_RoleCode/author>
         ] ;

@@ -19,8 +19,8 @@ g2 = Graph().parse(validators_dir / "expander.ttl")
 g3 = g1 + g2
 
 # create new IRI for this validator
-original_validator_iri = URIRef("https://w3id.org/profile/vocpub/validator")
-new_validator_iri = URIRef("https://w3id.org/profile/vocpub/validator-combined")
+original_validator_iri = URIRef("https://linked.data.gov.au/def/vocpub/validator")
+new_validator_iri = URIRef("https://linked.data.gov.au/def/vocpub/validator-combined")
 for p, o in g3.predicate_objects(original_validator_iri):
     g3.remove((original_validator_iri, p, o))
     g3.add((new_validator_iri, p, o))

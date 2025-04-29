@@ -4,7 +4,7 @@ PREFIX cs: <https://linked.data.gov.au/def/vocdermods>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX reg: <http://purl.org/linked-data/registry#>
-PREFIX sdo: <https://schema.org/>
+PREFIX schema: <https://schema.org/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
@@ -88,15 +88,15 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 .
 
 <https://kurrawong.net>
-    a sdo:Organization ;
-    sdo:name "KurrawongAI" ;
-    sdo:url "https://kurrawong.net"^^xsd:anyURI ;
+    a schema:Organization ;
+    schema:name "KurrawongAI" ;
+    schema:url "https://kurrawong.net"^^xsd:anyURI ;
 .
 
 <https://linked.data.gov.au/org/mer>
-    a sdo:Organization ;
-    sdo:name "SA Minerals and Energy Resources" ;
-    sdo:url "https://www.energymining.sa.gov.au/industry/geological-survey"^^xsd:anyURI ;
+    a schema:Organization ;
+    schema:name "SA Minerals and Energy Resources" ;
+    schema:url "https://www.energymining.sa.gov.au/industry/geological-survey"^^xsd:anyURI ;
 .
 
 cs:

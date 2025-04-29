@@ -1,8 +1,8 @@
-PREFIX sdo: <https://schema.org/>
+PREFIX schema: <https://schema.org/>
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-BASE <https://w3id.org/profile/vocpub/validator/>
+BASE <https://linked.data.gov.au/def/vocpub/validator/>
 
 <Build-ConceptScheme>
 	a sh:NodeShape ;
@@ -91,7 +91,7 @@ BASE <https://w3id.org/profile/vocpub/validator/>
                 VALUES ?p {
                     prov:wasDerivedFrom
                     skos:historyNote
-                    sdo:citation
+                    schema:citation
                     dcterms:source
                     dcterms:provenance
                 }

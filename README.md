@@ -7,22 +7,22 @@ This profile is formulated according to the [Profiles Vocabulary](https://www.w3
 
 This profile is hosted online in [Linked Data](https://www.w3.org/standards/semanticweb/data) form using a persistent web address:
 
-* <https://w3id.org/profile/vocpub>
+* <https://linked.data.gov.au/def/vocpub>
 
 
 ## Profile Definition & Specification
 
 For an overview of all the elements of this Profile, see the Profile Definition:
 
-* <https://w3id.org/profile/vocpub>
+* <https://linked.data.gov.au/def/vocpub>
 
 For all the Profile's rules, see the Specification:
 
-* <https://w3id.org/profile/vocpub/spec>
+* <https://linked.data.gov.au/def/vocpub/spec>
 
 For the technical SHACL validator, see:
 
-* <https://w3id.org/profile/vocpub/validator>
+* <https://linked.data.gov.au/def/vocpub/validator>
 
 
 ## License  
@@ -41,7 +41,7 @@ To cite this profile, please use the following (formulated in [BibTex](http://ww
   version = {4.2},
   date = {2023},
   publisher = {{Australian Government Linked Data Working Group}},
-  url = {https://w3id.org/profile/vocpub}
+  url = {https://linked.data.gov.au/def/vocpub}
 }
 ``` 
 

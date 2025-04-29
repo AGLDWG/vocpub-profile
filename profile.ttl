@@ -2,84 +2,84 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX prof: <http://www.w3.org/ns/dx/prof/>
 PREFIX role: <http://www.w3.org/ns/dx/prof/role/>
-PREFIX sdo: <https://schema.org/>
+PREFIX schema: <https://schema.org/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 
-<https://w3id.org/profile/vocpub>
+<https://linked.data.gov.au/def/vocpub>
     a prof:Profile ;
-    sdo:dateCreated "2020-06-13"^^xsd:date ;
-    sdo:creator <https://orcid.org/0000-0002-8742-7730> ;
-    sdo:dateModified "2024-06-13"^^xsd:date ;
-    sdo:publisher <https://linked.data.gov.au/org/agldwg> ;
-    sdo:definition """This is a profile of the taxonomy data model SKOS - i.e. SKOS with additional constraints. It defines some compulsory properties for SKOS's ConceptScheme, Concept and Collection classes and ensures that certain relationships between them are present, e.g. topConceptOf & inScheme linking Concepts to ConceptSchemes. It also requires goes a bit beyond 'pure' SKOS by ensuring that Concepts indicate the ConceptScheme they are defined in, which may be different to the ConceptScheme they re presented in. This allows VocPub-valid SKOS Concepts to be re-used in multiple of vocabularies efficiently.
+    schema:dateCreated "2020-06-13"^^xsd:date ;
+    schema:creator <https://orcid.org/0000-0002-8742-7730> ;
+    schema:dateModified "2024-06-13"^^xsd:date ;
+    schema:publisher <https://linked.data.gov.au/org/agldwg> ;
+    schema:definition """This is a profile of the taxonomy data model SKOS - i.e. SKOS with additional constraints. It defines some compulsory properties for SKOS's ConceptScheme, Concept and Collection classes and ensures that certain relationships between them are present, e.g. topConceptOf & inScheme linking Concepts to ConceptSchemes. It also requires goes a bit beyond 'pure' SKOS by ensuring that Concepts indicate the ConceptScheme they are defined in, which may be different to the ConceptScheme they re presented in. This allows VocPub-valid SKOS Concepts to be re-used in multiple of vocabularies efficiently.
 
     This profile is used for multiple Australian government and international vocabularies and is entirely generic, i.e. the additional constraints are not Australian or government-specific but just ensure certain technical model capabilities in the data."""@en ;
-    sdo:name "VocPub profile of SKOS" ;
-    owl:versionIRI <https://w3id.org/profile/vocpub/4.10> ;
+    schema:name "VocPub profile of SKOS" ;
+    owl:versionIRI <https://linked.data.gov.au/def/vocpub/4.10> ;
     prof:hasResource 
-        <https://w3id.org/profile/vocpub/spec> ,
-        <https://w3id.org/profile/vocpub/validator> ,
-        <https://w3id.org/profile/vocpub/htv> ,
-        <https://w3id.org/profile/vocpub/examples/valid> ,
-        <https://w3id.org/profile/vocpub/examples/invalid> ,
-        <https://w3id.org/profile/vocpub/examples/invalid-2> ,
-        <https://w3id.org/profile/vocpub/sdo> ,
-        <https://w3id.org/profile/vocpub/repo> ;
+        <https://linked.data.gov.au/def/vocpub/spec> ,
+        <https://linked.data.gov.au/def/vocpub/validator> ,
+        <https://linked.data.gov.au/def/vocpub/htv> ,
+        <https://linked.data.gov.au/def/vocpub/examples/valid> ,
+        <https://linked.data.gov.au/def/vocpub/examples/invalid> ,
+        <https://linked.data.gov.au/def/vocpub/examples/invalid-2> ,
+        <https://linked.data.gov.au/def/vocpub/sdo> ,
+        <https://linked.data.gov.au/def/vocpub/repo> ;
     prof:isProfileOf <https://www.w3.org/TR/skos-reference/> ;
 .
 
 <https://linked.data.gov.au/org/agldwg>
-    a sdo:Organization ;
-    sdo:name "Australian Government Linked Data Working Group" ;
-    sdo:url "https://www.linked.data.gov.au"^^xsd:anyURI ;
+    a schema:Organization ;
+    schema:name "Australian Government Linked Data Working Group" ;
+    schema:url "https://www.linked.data.gov.au"^^xsd:anyURI ;
 .
 
 <https://orcid.org/0000-0002-8742-7730>
-    a sdo:Person ;
-    sdo:name "Nicholas J. Car" ;
-    sdo:email "nicholas.car@anu.edu.au"^^xsd:anyURI ;
+    a schema:Person ;
+    schema:name "Nicholas J. Car" ;
+    schema:email "nicholas.car@anu.edu.au"^^xsd:anyURI ;
 .
 
-<https://w3id.org/profile/vocpub/spec>
-    sdo:name "Specification Document"@en ;
-    sdo:description "The normative, human-readable, listing of profile requirements"@en ;
+<https://linked.data.gov.au/def/vocpub/spec>
+    schema:name "Specification Document"@en ;
+    schema:description "The normative, human-readable, listing of profile requirements"@en ;
     dcterms:conformsTo <https://www.w3.org/TR/html52/> ;
-    sdo:encodingFormat "text/html" ;
-    prof:hasArtifact "https://w3id.org/profile/vocpub/spec"^^xsd:anyURI ;
+    schema:encodingFormat "text/html" ;
+    prof:hasArtifact "https://linked.data.gov.au/def/vocpub/spec"^^xsd:anyURI ;
     prof:hasRole role:specification
 .
 
-<https://w3id.org/profile/vocpub/validator>
-    sdo:name "Validator in SHACL"@en ;
-    sdo:description "A SHACL Shapes file to be used to test the conformance of RDF data to this profile"@en ;
+<https://linked.data.gov.au/def/vocpub/validator>
+    schema:name "Validator in SHACL"@en ;
+    schema:description "A SHACL Shapes file to be used to test the conformance of RDF data to this profile"@en ;
     dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
-    sdo:encodingFormat "text/turtle" ;
-    prof:hasArtifact "https://w3id.org/profile/vocpub/validator"^^xsd:anyURI ;
+    schema:encodingFormat "text/turtle" ;
+    prof:hasArtifact "https://linked.data.gov.au/def/vocpub/validator"^^xsd:anyURI ;
     prof:hasRole role:validation
 .
 
-<https://w3id.org/profile/vocpub/htv>
-    sdo:name "How to Validate"@en ;
-    sdo:description "Written instructions on how to use this profile's validator on data"@en ;
-    sdo:encodingFormat "text/html" ;
-    prof:hasArtifact "https://w3id.org/profile/vocpub/htv"^^xsd:anyURI ;
+<https://linked.data.gov.au/def/vocpub/htv>
+    schema:name "How to Validate"@en ;
+    schema:description "Written instructions on how to use this profile's validator on data"@en ;
+    schema:encodingFormat "text/html" ;
+    prof:hasArtifact "https://linked.data.gov.au/def/vocpub/htv"^^xsd:anyURI ;
     prof:hasRole role:guidance
 .
 
-<https://w3id.org/profile/vocpub/examples>
-    sdo:name "Examples"@en ;
-    sdo:description "A directory of valid and invalid vocabularies"@en ;
-    sdo:encodingFormat "text/turtle" ;
-    dcterms:conformsTo <https://w3id.org/profile/vocpub> ;
-    prof:hasArtifact "https://w3id.org/profile/vocpub/examples"^^xsd:anyURI ;
+<https://linked.data.gov.au/def/vocpub/examples>
+    schema:name "Examples"@en ;
+    schema:description "A directory of valid and invalid vocabularies"@en ;
+    schema:encodingFormat "text/turtle" ;
+    dcterms:conformsTo <https://linked.data.gov.au/def/vocpub> ;
+    prof:hasArtifact "https://linked.data.gov.au/def/vocpub/examples"^^xsd:anyURI ;
     prof:hasRole role:example
 .
 
-<https://w3id.org/profile/vocpub/repo>
-    sdo:name "Profile code repository"@en ;
-    sdo:description "Code repository storing all Profile artifacts"@en ;
-    prof:hasArtifact "https://w3id.org/profile/vocpub/repo"^^xsd:anyURI ;
+<https://linked.data.gov.au/def/vocpub/repo>
+    schema:name "Profile code repository"@en ;
+    schema:description "Code repository storing all Profile artifacts"@en ;
+    prof:hasArtifact "https://linked.data.gov.au/def/vocpub/repo"^^xsd:anyURI ;
     prof:hasRole role:repository
 .
 

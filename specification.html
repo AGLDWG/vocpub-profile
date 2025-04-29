@@ -44,7 +44,7 @@
     <section id="metadata">
       <dl>
         <dt>URI</dt>
-        <dd><code><a href="https://w3id.org/profile/vocpub/spec">https://w3id.org/profile/vocpub/spec</a></code></dd>
+        <dd><code><a href="https://linked.data.gov.au/def/vocpub/spec">https://linked.data.gov.au/def/vocpub/spec</a></code></dd>
         <dt>Title</dt>
         <dd>VocPub Profile - Specification Document</dd>
         <dt>Definition</dt>
@@ -54,14 +54,14 @@
         <dt>Modified</dt>
         <dd>2024-06-13</dd>
         <dt>Version IRI</dt>
-        <dd><a href="https://w3id.org/profile/vocpub/spec/4.10">https://w3id.org/profile/vocpub/spec/4.10</a></dd>
+        <dd><a href="https://linked.data.gov.au/def/vocpub/spec/4.10">https://linked.data.gov.au/def/vocpub/spec/4.10</a></dd>
         <dt>Version Information</dt>
         <dd>
           <p>4.10 move all warning from PropertyShapes to NodeShapes</p>
           <p>4.9 Fixed RDF syntax errors</p>
           <p>4.8 Fixed Warning/Violation error for PropertyShapes</p>
           <p>4.7 Fixed modified date alternate path listing bug</p>
-          <p>4.6 Fixed sdo:historyNote->skos:historyNote bug</p>
+          <p>4.6 Fixed schema:historyNote->skos:historyNote bug</p>
           <p>4.5 Added suggested predicates of license & copyrightHolder</p>
           <p>4.4 Fixed versions across multiple Resources</p>
           <p>4.3 Improved validator error messages by using more named Property Shapes</p>
@@ -80,7 +80,7 @@
         <dt>Further metadata</dt>
         <dd>This specification is part of the <em>VocPub Profile</em>. See that profile's main document for License &amp; Rights information and other metadata not given here.</dd>
         <dt>Profile URI</dt>
-        <dd><code><a href="https://w3id.org/profile/vocpub">https://w3id.org/profile/vocpub</a></code></dd>
+        <dd><code><a href="https://linked.data.gov.au/def/vocpub">https://linked.data.gov.au/def/vocpub</a></code></dd>
         <dt>License</dt>
         <dd><a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a></dd>
       </dl>
@@ -94,13 +94,13 @@
         This specification document cannot be used for testing conformance of RDF resources to this profile: that role belongs to the <em>validation</em> resource within this profile:
       </p>
       <ul>
-        <li><a href="https://w3id.org/profile/vocpub/validation">https://w3id.org/profile/vocpub/validation</a></li>
+        <li><a href="https://linked.data.gov.au/def/vocpub/validation">https://linked.data.gov.au/def/vocpub/validation</a></li>
       </ul>
       <p>
         For the list of all resources within this profile, see the profile definition:
       </p>
       <ul>
-        <li><a href="https://w3id.org/profile/vocpub">https://w3id.org/profile/vocpub</a></li>
+        <li><a href="https://linked.data.gov.au/def/vocpub">https://linked.data.gov.au/def/vocpub</a></li>
       </ul>
     </section>
     <section id="namespaces">
@@ -240,7 +240,7 @@ WHERE {
     VALUES ?p {
         prov:wasDerivedFrom
         skos:historyNote
-        sdo:citation
+        schema:citation
         dcterms:source
         dcterms:provenance
     }
@@ -264,13 +264,13 @@ WHERE {
           The SHACL file containing all the expansion queries is available at:
         </p>
         <ul>
-          <li><a href="https://w3id.org/profile/vocpub/expander">https://w3id.org/profile/vocpub/expander</a></li>
+          <li><a href="https://linked.data.gov.au/def/vocpub/expander">https://linked.data.gov.au/def/vocpub/expander</a></li>
         </ul>
         <p>
           A Python script able to execute the expansion rule on RDF data before validation is available at:
         </p>
         <ul>
-          <li><a href="https://w3id.org/profile/vocpub/validate">https://w3id.org/profile/vocpub/validate</a></li>
+          <li><a href="https://linked.data.gov.au/def/vocpub/validate">https://linked.data.gov.au/def/vocpub/validate</a></li>
         </ul>
       </section>
       <section id="dependencies">
@@ -349,21 +349,21 @@ WHERE {
         <p><strong>NOTE</strong>: Unlike the general directions for the use of SKOS (the <a href="https://www.w3.org/TR/skos-primer/">SKOS "Primer"</a>) labels in multiple languages should be indicated with <code>skos:altLabel</code> predicates, not all with <code>skos:prefLabel</code>, i.e. there should only ever be one <code>skos:prefLabel</code> value. If multiple definitions are given, the one in the language of the label is considered primary.</p>
         <p class="req">
           <a class="frag" id="2.1.5" href="#2.1.5">&#167;</a>
-          2.1.5 Each vocabulary <em>MUST</em> have exactly one created date and exactly one modified date indicated using the <code>sdo:dateCreated</code> and <code>sdo:dateModified</code> or <code>dcterms:created</code> and <code>dcterms:modified</code> predicates respectively that must be either an <code>xsd:date</code>, <code>xsd:dateTime</code> or <code>xsd:dateTimeStamp</code> literal value
+          2.1.5 Each vocabulary <em>MUST</em> have exactly one created date and exactly one modified date indicated using the <code>schema:dateCreated</code> and <code>schema:dateModified</code> or <code>dcterms:created</code> and <code>dcterms:modified</code> predicates respectively that must be either an <code>xsd:date</code>, <code>xsd:dateTime</code> or <code>xsd:dateTimeStamp</code> literal value
         </p>
         <p class="req">
           <a class="frag" id="2.1.6" href="#2.1.6">&#167;</a>
-          2.1.6 Each vocabulary <em>MUST</em> have at least one creator, indicated using <code>sdo:creator</code> or <code>dcterms:creator</code> predicate and exactly one publisher, indicated using <code>sdo:publisher</code> or <code>dcterms:publisher</code>, all of which MUST be IRIs indicating instances of <code>sdo:Person</code>, or <code>sdo:Organization</code>. A <code>prov:qualifiedAttribution</code> predicate indicating an Agent with the <code>prov:hadRole</code> predicate indicating the value <code>isorole:originator</code> or <code>isorole:publisher</code> may be used instead of <code>sdo:creator</code> &amp; <code>sdo:publisher</code>, respectively
+          2.1.6 Each vocabulary <em>MUST</em> have at least one creator, indicated using <code>schema:creator</code> or <code>dcterms:creator</code> predicate and exactly one publisher, indicated using <code>schema:publisher</code> or <code>dcterms:publisher</code>, all of which MUST be IRIs indicating instances of <code>schema:Person</code>, or <code>schema:Organization</code>. A <code>prov:qualifiedAttribution</code> predicate indicating an Agent with the <code>prov:hadRole</code> predicate indicating the value <code>isorole:originator</code> or <code>isorole:publisher</code> may be used instead of <code>schema:creator</code> &amp; <code>schema:publisher</code>, respectively
         </p>
         <p>
           To be able to link SKOS vocabularies to their non-vocabulary source information:
         </p>
         <p class="req">
           <a class="frag" id="2.1.7" href="#2.1.7">&#167;</a>
-          2.1.7 The origins of a Concept Scheme <em>MUST</em> be indicated by at least one of the following predicates: <code>skos:historyNote</code>, <code>sdo:citation</code>, <code>prov:wasDerivedFrom</code>. <code>dcterms:source</code> <em>MAY</em> be used instead of <code>sdo:citation</code> and <code>dcterms:provenance</code> <em>MAY</em> be used instead of <code>skos:historyNote</code> but the schema.org and SKOS predicates are preferred.
+          2.1.7 The origins of a Concept Scheme <em>MUST</em> be indicated by at least one of the following predicates: <code>skos:historyNote</code>, <code>schema:citation</code>, <code>prov:wasDerivedFrom</code>. <code>dcterms:source</code> <em>MAY</em> be used instead of <code>schema:citation</code> and <code>dcterms:provenance</code> <em>MAY</em> be used instead of <code>skos:historyNote</code> but the schema.org and SKOS predicates are preferred.
         </p>
         <p>
-          If a vocabulary is based on another Semantic Web resource, such as an ontology or another vocabulary, <code>prov:wasDerivedFrom</code> should be used to indicate that resource's IRI. If the vocabulary is based on a resource that is identified by a IRI but which is not a Semantic Web resource, <code>sdo:citation</code> should be used to indicate the resource's IRI with the <code>xsd:anyURI</code> datatype. If the vocabulary is based on something which cannot be identified by IRI, a statement about the vocabulary's origins should be given in a literal value indicated with the <code>skos:historyNote</code> predicate. If the vocabulary is not based on any other resource or source of information, i.e. this vocabulary is its only expression, this should be communicated by use of the <code>skos:historyNote</code> indicating the phrase "This vocabulary is expressed for the first time here".
+          If a vocabulary is based on another Semantic Web resource, such as an ontology or another vocabulary, <code>prov:wasDerivedFrom</code> should be used to indicate that resource's IRI. If the vocabulary is based on a resource that is identified by a IRI but which is not a Semantic Web resource, <code>schema:citation</code> should be used to indicate the resource's IRI with the <code>xsd:anyURI</code> datatype. If the vocabulary is based on something which cannot be identified by IRI, a statement about the vocabulary's origins should be given in a literal value indicated with the <code>skos:historyNote</code> predicate. If the vocabulary is not based on any other resource or source of information, i.e. this vocabulary is its only expression, this should be communicated by use of the <code>skos:historyNote</code> indicating the phrase "This vocabulary is expressed for the first time here".
         </p>
         <p><em>The use of <code>dcterms:source</code> &amp; <code>dcterms:provenance</code> is to maintain compatability with previous versions of VocPub only and may eventually be disallowed.</em></p>
         <p>
@@ -405,16 +405,16 @@ WHERE {
         <p>To high-level theming of a vocabulary:</p>
         <p class="req">
           <a class="frag" id="2.1.12" href="#2.1.12">&#167;</a>
-          2.1.12 High-level theming of a vocabulary <em>SHOULD</em> be given using the <code>sdo:keywords</code> predicate indicating Concepts from another vocabulary. Alternatively, <code>dcat:theme</code> <em>MAY</em> be used. Text literal values for either predicate <em>SHOULD NOT</em> be used.
+          2.1.12 High-level theming of a vocabulary <em>SHOULD</em> be given using the <code>schema:keywords</code> predicate indicating Concepts from another vocabulary. Alternatively, <code>dcat:theme</code> <em>MAY</em> be used. Text literal values for either predicate <em>SHOULD NOT</em> be used.
         </p>
         <p>To indicate license, copyright:</p>
         <p class="req">
           <a class="frag" id="2.1.13" href="#2.1.13">&#167;</a>
-          2.1.13 Any licence pertaining to the reuse of a vocabulary's content <em>SHOULD</em> be given using the <code>sdo:license</code> predicate preferentially indicating the IRI of a license if in RDF form or a literal URL (datatype <code>xsd:anyURI</code>) if online but not in RDF form. If the licence is expressed in test, a literal text field may be indicated.
+          2.1.13 Any licence pertaining to the reuse of a vocabulary's content <em>SHOULD</em> be given using the <code>schema:license</code> predicate preferentially indicating the IRI of a license if in RDF form or a literal URL (datatype <code>xsd:anyURI</code>) if online but not in RDF form. If the licence is expressed in test, a literal text field may be indicated.
         </p>
         <p class="req">
           <a class="frag" id="2.1.14" href="#2.1.14">&#167;</a>
-          2.1.14 The copyright holder for the vocabulary <em>SHOULD</em> be given using the <code>sdo:copyrightHolder</code> predicate preferentially indicating the IRI of an Agent or a Blank Node instance of an Agent containing details as per Agent requirements. A <code>prov:qualifiedAttribution</code> predicate indicating an Agent with the <code>prov:hadRole</code> predicate indicating the value <code>isorole:rightsHolder</code> may be used instead of <code>sdo:copyrightHolder</code>.
+          2.1.14 The copyright holder for the vocabulary <em>SHOULD</em> be given using the <code>schema:copyrightHolder</code> predicate preferentially indicating the IRI of an Agent or a Blank Node instance of an Agent containing details as per Agent requirements. A <code>prov:qualifiedAttribution</code> predicate indicating an Agent with the <code>prov:hadRole</code> predicate indicating the value <code>isorole:rightsHolder</code> may be used instead of <code>schema:copyrightHolder</code>.
         </p>
       </section>
       <section id="collection">
@@ -438,7 +438,7 @@ WHERE {
         </p>
         <p class="req">
           <a class="frag" id="2.2.2" href="#2.2.2">&#167;</a>
-          2.2.2 The origins of a Collection, if different from its containing Concept Scheme, <em>SHOULD</em> be indicated by at least one of the following predicates: <code>skos:historyNote</code>, <code>sdo:citation</code>, <code>prov:wasDerivedFrom</code>. <code>dcterms:source</code> <em>MAY</em> be used instead of <code>sdo:citation</code> and <code>dcterms:provenance</code> <em>MAY</em> be used instead of <code>skos:historyNote</code> but the schema.org and SKOS predicates are preferred.
+          2.2.2 The origins of a Collection, if different from its containing Concept Scheme, <em>SHOULD</em> be indicated by at least one of the following predicates: <code>skos:historyNote</code>, <code>schema:citation</code>, <code>prov:wasDerivedFrom</code>. <code>dcterms:source</code> <em>MAY</em> be used instead of <code>schema:citation</code> and <code>dcterms:provenance</code> <em>MAY</em> be used instead of <code>skos:historyNote</code> but the schema.org and SKOS predicates are preferred.
         </p>
         <p><em>For compatability with previous versions of this Specification, <code>dcterms:provenance</code> MAY be used instead of <code>skos:historyNote</code> but the latter is the preferred predicate.</em></p>
         <p>To help list Collections within vocabularies:</p>
@@ -491,7 +491,7 @@ WHERE {
         </p>
         <p class="req">
           <a class="frag" id="2.3.4" href="#2.3.4">&#167;</a>
-          2.3.4 The origins of a Concept, if different from its containing Concept Scheme, <em>SHOULD</em> be indicated by at least one of the following predicates: <code>skos:historyNote</code>, <code>sdo:citation</code>, <code>dcterms:source</code> or <code>prov:wasDerivedFrom</code> or <code>dcterms:provenance</code>.
+          2.3.4 The origins of a Concept, if different from its containing Concept Scheme, <em>SHOULD</em> be indicated by at least one of the following predicates: <code>skos:historyNote</code>, <code>schema:citation</code>, <code>dcterms:source</code> or <code>prov:wasDerivedFrom</code> or <code>dcterms:provenance</code>.
         </p>
         <p>
           If a Concept is based on another Semantic Web resource, such as another Concept or other defined object, <code>prov:wasDerivedFrom</code> should be used to indicate that resource's IRI. If the Concept is based on a resource that is identified by a IRI but which is not a Semantic Web resource, <code>dcterms:source</code> should be used to indicate the resource's IRI. If the vocabulary is based on something which cannot be identified by IRI, a statement about the vocabulary's origins should be given in a literal value indicated with the <code>skos:historyNote</code> predicate. If the vocabulary is not based on any other resource or source of information, i.e. this vocabulary is its only expression, this should be communicated by use of the <code>skos:historyNote</code> indicating the phrase "This vocabulary is expressed for the first time here".
@@ -505,28 +505,28 @@ WHERE {
       </p>
       <p class="req">
         <a class="frag" id="2.4.1" href="#2.4.1">&#167;</a>
-        2.4.1 Each Agent associated with a vocabulary <em>MUST</em> be typed as an <code>sdo:Person</code> or <code>sdo:Organization</code>
+        2.4.1 Each Agent associated with a vocabulary <em>MUST</em> be typed as an <code>schema:Person</code> or <code>schema:Organization</code>
       </p>
       <p>
         To ensure human readability and association of Agents with their non-Semantic Web (real world) form:
       </p>
       <p class="req">
         <a class="frag" id="2.4.2" href="#2.4.2">&#167;</a>
-        2.4.2 Each Agent <em>MUST</em> give exactly one name with the <code>sdo:name</code> predicate indicating a literal text value
+        2.4.2 Each Agent <em>MUST</em> give exactly one name with the <code>schema:name</code> predicate indicating a literal text value
       </p>
       <p>
         To ensure that Agents are linked to non-Semantic Web forms of identification:
       </p>
       <p class="req">
         <a class="frag" id="2.4.3" href="#2.4.3">&#167;</a>
-        2.4.3 Each Agent <em>MUST</em> indicate either a <code>sdo:url</code> (for organizations) or a <code>sdo:email</code> (for people) predicate with a URL or email value
+        2.4.3 Each Agent <em>MUST</em> indicate either a <code>schema:url</code> (for organizations) or a <code>schema:email</code> (for people) predicate with a URL or email value
       </p>
       <p>
         To link to Agent registers using non-Semantic Web identifiers for Agents:
       </p>
       <p class="req">
         <a class="frag" id="2.4.4" href="#2.4.4">&#167;</a>
-        2.4.4 Each Agent <em>SHOULD</em> indicate any non-Semantic Web identifiers for Agents with the <code>sdo:identifier</code> predicate with literal identifier values, preferentially with custom data types that define the form of the identifier.
+        2.4.4 Each Agent <em>SHOULD</em> indicate any non-Semantic Web identifiers for Agents with the <code>schema:identifier</code> predicate with literal identifier values, preferentially with custom data types that define the form of the identifier.
       </p>
       <p><strong>NOTE</strong>: This method of providing identifiers with specialised datatypes is the same as that specified for <code>skos:notation</code> values in the <a href="https://www.w3.org/TR/skos-primer/#secnotations">SKOS Primer</a>.</p>
     </section>
