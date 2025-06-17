@@ -80,7 +80,7 @@ BASE <https://linked.data.gov.au/def/vocpub/validator/>
 
 <Requirement-2.1.2+3>
     a sh:NodeShape ;
-    sh:targetClass skos:ConceptScheme ;
+    sh:targetNode skos:ConceptScheme ;
     sh:property <ConceptSchemeType> ;
 .
 

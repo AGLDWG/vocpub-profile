@@ -1,3 +1,17 @@
+# This SHACL file "builds" more SKOS relationships in data, such as broader relationships
+# as the inverse eof narrower ones.
+#
+# It can be used to uplift a lightly specified vocabulary to a more fully specified one.
+# This may help toos use the vocab, for example ones that need broader links when only
+# narrower ones are supplied.
+#
+# The build rules are:
+#
+#   1. hasTopConcept/topConceptOf inverses
+#   2. broader/narrower inverses
+#   3. inScheme for all concepts in a broader -> topConceptOf tree
+#   4. apply provenance annotation properties from the ConceptScheme to all the Concepts with inScheme the ConceptScheme
+
 PREFIX schema: <https://schema.org/>
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
