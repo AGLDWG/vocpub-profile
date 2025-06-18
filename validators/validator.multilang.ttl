@@ -2,6 +2,7 @@ PREFIX dash: <http://datashapes.org/dash#>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX reg: <http://purl.org/linked-data/registry#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -13,16 +14,19 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 BASE <https://linked.data.gov.au/def/vocpub/validator/>
 
 
-<https://linked.data.gov.au/def/vocpub/validator>
+<https://linked.data.gov.au/def/vocpub/validator-multilang>
     a owl:Ontology ;
-    schema:name "VocPub Validator"@en ;
-    schema:definition "SHACL validator for the VocPub Profile"@en ;
+    prof:isProfileOf <https://linked.data.gov.au/def/vocpub/validator> ;
+    schema:name "VocPub Validator - MultiLang"@en ;
+    schema:definition "SHACL validator for the VocPub Profile - multi-language variant"@en ;
     schema:creator <https://orcid.org/0000-0002-8742-7730> ;
     schema:publisher <https://linked.data.gov.au/org/agldwg> ;
     schema:dateCreated "2020-06-14"^^xsd:date ;
     schema:dateModified "2025-04-29"^^xsd:date ;
-    owl:versionIRI <https://linked.data.gov.au/def/vocpub/validator/5.1> ;
-    owl:versionInfo """5.1 Remove targetNode -> ConceptScheme shape, use schema:, not schema:
+    owl:versionIRI <https://linked.data.gov.au/def/vocpub/validator/5.1.MULTILANG> ;
+    owl:versionInfo """5.1.GA Allows for multiple prefLabels
+
+5.1 Remove targetNode -> ConceptScheme shape, use schema:, not schema:
 
 5.0 Change IRI to linked.data.gov.au
 
@@ -402,7 +406,7 @@ BASE <https://linked.data.gov.au/def/vocpub/validator/>
     sh:message "Requirement 2.1.4, 2.2.1 or 2.3.1 Each vocabulary, Collection or Concept MUST have exactly one title and at least one definition indicated using the skos:prefLabel and the skos:definition predicates respectively that must give textual literal values. Only one definition per language is allowed" ;
     sh:path skos:prefLabel ;
     sh:minCount 1 ;
-    sh:maxCount 1 ;
+    # sh:maxCount 1 ;
     sh:uniqueLang true ;
     sh:or (
         [ sh:datatype xsd:string ]

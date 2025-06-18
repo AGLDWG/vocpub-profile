@@ -2,6 +2,7 @@ PREFIX dash: <http://datashapes.org/dash#>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX reg: <http://purl.org/linked-data/registry#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -13,16 +14,19 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 BASE <https://linked.data.gov.au/def/vocpub/validator/>
 
 
-<https://linked.data.gov.au/def/vocpub/validator>
+<https://linked.data.gov.au/def/vocpub/validator-ga>
     a owl:Ontology ;
-    schema:name "VocPub Validator"@en ;
-    schema:definition "SHACL validator for the VocPub Profile"@en ;
+    prof:isProfileOf <https://linked.data.gov.au/def/vocpub/validator> ;
+    schema:name "VocPub Validator - GA"@en ;
+    schema:definition "SHACL validator for the VocPub Profile - GA variant"@en ;
     schema:creator <https://orcid.org/0000-0002-8742-7730> ;
     schema:publisher <https://linked.data.gov.au/org/agldwg> ;
     schema:dateCreated "2020-06-14"^^xsd:date ;
-    schema:dateModified "2025-04-29"^^xsd:date ;
-    owl:versionIRI <https://linked.data.gov.au/def/vocpub/validator/5.1> ;
-    owl:versionInfo """5.1 Remove targetNode -> ConceptScheme shape, use schema:, not schema:
+    schema:dateModified "2025-05-18"^^xsd:date ;
+    owl:versionIRI <https://linked.data.gov.au/def/vocpub/validator/5.1.GA> ;
+    owl:versionInfo """5.1.GA Adds in requirements for Geoscience Australia
+
+5.1 Remove targetNode -> ConceptScheme shape, use schema:, not schema:
 
 5.0 Change IRI to linked.data.gov.au
 
@@ -705,3 +709,26 @@ schema:dateModified rdfs:label "date modified" .
     sh:order 2 ;
 .
 
+
+#
+#   GA Additions
+#
+
+# GA Vocabs must have an eCat ID
+<Requirement-GA.1>
+    a sh:NodeShape ;
+    sh:targetClass skos:ConceptScheme ;
+    sh:property <ConceptSchemeGaCatId> ;
+.
+
+<ConceptSchemeGaCatId>
+    a sh:PropertyShape ;
+    sh:message "Requirement GA CAT ID: Each vocabulary MUST have exactly one identifier predicate indicating an eCatID, which means a schema:identifier predicate indicating a URL starting https://pid.geoscience.gov.au/dataset/ga/ and ending with a multi-digit number" ;
+    sh:path schema:identifier ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:anyURI ;
+    sh:pattern "^https://pid.geoscience.gov.au/dataset/ga/[0-9]+$" ;
+.
+
+# Custodian requirement needed here
