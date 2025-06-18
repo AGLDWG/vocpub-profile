@@ -577,7 +577,6 @@ schema:dateModified rdfs:label "date modified" .
     sh:property [
         sh:path rdfs:isDefinedBy ;
         sh:nodeKind sh:IRI ;
-        sh:class skos:ConceptScheme ;
         sh:group <Group-concept-scheme-relationships> ;
     ] ;
     sh:property [
