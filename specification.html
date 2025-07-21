@@ -111,6 +111,8 @@
         This document refers to elements of various ontologies by short codes using namespace prefixes. The prefixes and their corresponding namespaces' URIs are:
       </p>
       <dl>
+        <dt>dcat</dt>
+        <dd><code>http://www.w3.org/ns/dcat#</code></dd>
         <dt>dcterms</dt>
         <dd><code>http://purl.org/dc/terms/</code></dd>
         <dt>isorole</dt>
@@ -286,11 +288,11 @@ WHERE {
           </tr>
           <tr>
             <td>
-              <a href="https://data.idnau.org/pid/vocab/idn-role-codes">IDN Role Codes</a>
+              <a href="https://data.idnau.org/v/vocab/defn:data-roles">IDN Role Codes</a>
             </td>
             <td>he Indigenous Data Network's vocabulary of the types of roles Agents - People and Organisations - play in relation to data</td>
             <td>For the predicate <code>prov:hadRole</code>, applied to an <code>Attribution</code> indicated by a <code>prov:qualifiedAttribution</code> predicate for a Concept Scheme</td>
-            <td><a href="https://data.idnau.org/pid/vocab/idn-role-codes">https://data.idnau.org/pid/vocab/idn-role-codes</a></td>
+            <td><a href="https://data.idnau.org/v/vocab/defn:data-roles">https://data.idnau.org/pid/vocab/idn-role-codes</a></td>
           </tr>
           <tr>
             <td>
@@ -412,7 +414,7 @@ WHERE {
         <p>To indicate license, copyright:</p>
         <p class="req">
           <a class="frag" id="2.1.13" href="#2.1.13">&#167;</a>
-          2.1.13 Any licence pertaining to the reuse of a vocabulary's content <em>SHOULD</em> be given using the <code>schema:license</code> predicate preferentially indicating the IRI of a license if in RDF form or a literal URL (datatype <code>xsd:anyURI</code>) if online but not in RDF form. If the licence is expressed in test, a literal text field may be indicated.
+          2.1.13 Any licence pertaining to the reuse of a vocabulary's content <em>SHOULD</em> be given using the <code>schema:license</code> predicate preferentially indicating the IRI of a license if in RDF form or a literal URL (datatype <code>xsd:anyURI</code>) if online but not in RDF form. If the licence is expressed in text, a literal text field may be indicated.
         </p>
         <p class="req">
           <a class="frag" id="2.1.14" href="#2.1.14">&#167;</a>
