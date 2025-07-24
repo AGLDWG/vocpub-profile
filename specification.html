@@ -577,13 +577,17 @@ WHERE {
     This web page content is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>
   </div><!-- #footer -->
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    var h = window.location.hash;
-    if (h) {
-      setTimeout(function () {
-        var el = document.getElementById(h.substring(1));
-        if (el) el.scrollIntoView({ behavior: "instant", block: "start" });
-      }, 100); // delay may help after slow renders
+  window.addEventListener("load", function () {
+    const hash = window.location.hash;
+    if (hash) {
+      const targetId = hash.substring(1);
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        console.log("Scrolling to:", targetId);
+        targetEl.scrollIntoView({ behavior: "instant", block: "start" });
+      } else {
+        console.warn("Target not found:", targetId);
+      }
     }
   });
 </script>
