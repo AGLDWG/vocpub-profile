@@ -578,15 +578,15 @@ WHERE {
   </div><!-- #footer -->
 <script>
   window.addEventListener("load", function () {
-    const hash = window.location.hash;
-    if (hash) {
-      const targetId = hash.substring(1);
-      const targetEl = document.getElementById(targetId);
-      if (targetEl) {
-        console.log("Scrolling to:", targetId);
-        targetEl.scrollIntoView({ behavior: "instant", block: "start" });
+    var h = window.location.hash;
+    if (h) {
+      var id = h.substring(1);
+      console.log("Scrolling to: " + id);
+      var el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
       } else {
-        console.warn("Target not found:", targetId);
+        console.warn("Target not found: " + id);
       }
     }
   });
