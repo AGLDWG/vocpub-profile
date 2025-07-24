@@ -575,5 +575,15 @@ WHERE {
   <div id="footer" style="grid-column:1/4; text-align: center;">
     This web page content is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>
   </div><!-- #footer -->
+  <script>
+  window.addEventListener("load", function() {
+    var h = window.location.hash;
+    if (h) {
+      var el = document.getElementById(h.substring(1));
+      if (el) el.scrollIntoView(true);
+    }
+  });
+</script>
+
 </body>
 </html>
