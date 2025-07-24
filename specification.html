@@ -321,7 +321,7 @@ WHERE {
           This profile identifies Semantic Web objects with URI-based persistent identifiers. For this reason:
         </p>
         <p class="req">
-          <a class="frag" id="2.1.1" href="#2.1.1">&#167;</a>
+          <a class="frag" id="req-2-1-1" href="#req-2-1-1">&#167;</a>
           2.1.1 Each vocabulary <em>MUST</em> be identified by a IRI
         </p>
         <p>
@@ -333,37 +333,37 @@ WHERE {
           For this reason, this profile requires that:
         </p>
         <p class="req">
-          <a class="frag" id="2.1.2" href="#2.1.2">&#167;</a>
+          <a class="frag" id="req-2-1-2" href="#req-2-1-2">&#167;</a>
           2.1.2 Each vocabulary <em>MUST</em> be presented as a single Concept Scheme object
         </p>
         <p>
           For ease of data management:
         </p>
         <p class="req">
-          <a class="frag" id="2.1.3" href="#2.1.3">&#167;</a>
+          <a class="frag" id="req-2-1-3" href="#req-2-1-3">&#167;</a>
           2.1.3 Each vocabulary <em>MUST</em> be presented in a single RDF file which does not contain information other than that which is directly part of the vocabulary
         </p>
         <p>
           To ensure vocabularies can be catalogued effectively and governed:
         </p>
         <p class="req">
-          <a class="frag" id="2.1.4" href="#2.1.4">&#167;</a>
+          <a class="frag" id="req-2-1-4" href="#req-2-1-4">&#167;</a>
           2.1.4 Each vocabulary <em>MUST</em> have exactly one title and at least one definition indicated using the <code>skos:prefLabel</code> and the <code>skos:definition</code> predicates respectively that must give textual literal values. Only one definition per language is allowed
         </p>
         <p><strong>NOTE</strong>: Unlike the general directions for the use of SKOS (the <a href="https://www.w3.org/TR/skos-primer/">SKOS "Primer"</a>) labels in multiple languages should be indicated with <code>skos:altLabel</code> predicates, not all with <code>skos:prefLabel</code>, i.e. there should only ever be one <code>skos:prefLabel</code> value. If multiple definitions are given, the one in the language of the label is considered primary.</p>
         <p class="req">
-          <a class="frag" id="2.1.5" href="#2.1.5">&#167;</a>
+          <a class="frag" id="req-2-1-5" href="#req-2-1-5">&#167;</a>
           2.1.5 Each vocabulary <em>MUST</em> have exactly one created date and exactly one modified date indicated using the <code>schema:dateCreated</code> and <code>schema:dateModified</code> or <code>dcterms:created</code> and <code>dcterms:modified</code> predicates respectively that must be either an <code>xsd:date</code>, <code>xsd:dateTime</code> or <code>xsd:dateTimeStamp</code> literal value
         </p>
         <p class="req">
-          <a class="frag" id="2.1.6" href="#2.1.6">&#167;</a>
+          <a class="frag" id="req-2-1-6" href="#req-2-1-6">&#167;</a>
           2.1.6 Each vocabulary <em>MUST</em> have at least one creator, indicated using <code>schema:creator</code> or <code>dcterms:creator</code> predicate and exactly one publisher, indicated using <code>schema:publisher</code> or <code>dcterms:publisher</code>, all of which MUST be IRIs indicating instances of <code>schema:Person</code>, or <code>schema:Organization</code>. A <code>prov:qualifiedAttribution</code> predicate indicating an Agent with the <code>prov:hadRole</code> predicate indicating the value <code>isorole:originator</code> or <code>isorole:publisher</code> may be used instead of <code>schema:creator</code> &amp; <code>schema:publisher</code>, respectively
         </p>
         <p>
           To be able to link SKOS vocabularies to their non-vocabulary source information:
         </p>
         <p class="req">
-          <a class="frag" id="2.1.7" href="#2.1.7">&#167;</a>
+          <a class="frag" id="req-2-1-7" href="#req-2-1-7">&#167;</a>
           2.1.7 The origins of a Concept Scheme <em>MUST</em> be indicated by at least one of the following predicates: <code>skos:historyNote</code>, <code>schema:citation</code>, <code>prov:wasDerivedFrom</code>. <code>dcterms:source</code> <em>MAY</em> be used instead of <code>schema:citation</code> and <code>dcterms:provenance</code> <em>MAY</em> be used instead of <code>skos:historyNote</code> but the schema.org and SKOS predicates are preferred.
         </p>
         <p>
@@ -374,24 +374,24 @@ WHERE {
           To ensure that all the terms within a vocabulary are linked to the main vocabulary object, the Concept Scheme:
         </p>
         <p class="req">
-          <a class="frag" id="2.1.8" href="#2.1.8">&#167;</a>
+          <a class="frag" id="req-2-1-8" href="#req-2-1-8">&#167;</a>
           2.1.8 All Concept instances within a Concept Scheme <em>MUST</em> be contained in a single term hierarchy using <code>skos:hasTopConcept</code> / <code>skos:topConceptOf</code> predicates indicating the broadest Concepts in the vocabulary and then <code>skos:broader</code> and/or <code>skos:narrower</code> predicates for all non-broadest Concepts in a hierarchy that contains no cycles.
         </p>
         <p>
           To unambiguously link the term hierarchy within a vocabulary to the vocabulary itself:
         </p>
         <p class="req">
-          <a class="frag" id="2.1.9" href="#2.1.9">&#167;</a>
+          <a class="frag" id="req-2-1-9" href="#req-2-1-9">&#167;</a>
           2.1.9 Each vocabulary's Concept Scheme <em>MUST</em> link to at least one Concept within the vocabulary with the <code>skos:hasTopConcept</code> predicate
         </p>
         <p>To communicate the <em>Registry Status</em> of the vocabulary:</p>
         <p class="req">
-          <a class="frag" id="2.1.10" href="#2.1.10">&#167;</a>
+          <a class="frag" id="req-2-1-10" href="#req-2-1-10">&#167;</a>
           2.1.10 The status of the vocabulary as a whole, according to the Registry Status standard<sup><a href="#iso19135">ref</a></sup>, <em>SHOULD</em> be given with the predicate <code>reg:status</code> indicating a Concept from the <em>Registry Statuses</em> vocabulary (<a href="https://linked.data.gov.au/def/reg-statuses">https://linked.data.gov.au/def/reg-statuses</a>).
         </p>
         <p>To indicate whether and if so how this vocabulary has been derived from another vocabulary:</p>
         <p class="req">
-          <a class="frag" id="2.1.11" href="#2.1.11">&#167;</a>
+          <a class="frag" id="req-2-1-11" href="#req-2-1-11">&#167;</a>
           2.1.11 The derivation status of the vocabulary <em>SHOULD</em> be given with the predicate <code>prov:qualifiedDerivation</code> indicating a Blank Node that contains the predicated <code>prov:entity</code>, to indicate the vocabulary derived from and <code>prov:hadRole</code> to indicate the mode of derivation which <em>SHOULD</em> be taken from the <em>Vocabulary Derivation Modes</em> vocabulary (<a href="https://linked.data.gov.au/def/vocdermods">https://linked.data.gov.au/def/vocdermods</a>).
         </p>
         <p>Example data for a vocabulary indicating that it is an extension to another vocabulary using the mechanism defined in Requirement 2.1.2 is:</p>
@@ -408,16 +408,16 @@ WHERE {
 .</pre>
         <p>To high-level theming of a vocabulary:</p>
         <p class="req">
-          <a class="frag" id="2.1.12" href="#2.1.12">&#167;</a>
+          <a class="frag" id="req-2-1-12" href="#req-2-1-12">&#167;</a>
           2.1.12 High-level theming of a vocabulary <em>SHOULD</em> be given using the <code>schema:keywords</code> predicate indicating Concepts from another vocabulary. Alternatively, <code>dcat:theme</code> <em>MAY</em> be used. Text literal values for either predicate <em>SHOULD NOT</em> be used.
         </p>
         <p>To indicate license, copyright:</p>
         <p class="req">
-          <a class="frag" id="2.1.13" href="#2.1.13">&#167;</a>
+          <a class="frag" id="req-2-1-13" href="#req-2-1-13">&#167;</a>
           2.1.13 Any licence pertaining to the reuse of a vocabulary's content <em>SHOULD</em> be given using the <code>schema:license</code> predicate preferentially indicating the IRI of a license if in RDF form or a literal URL (datatype <code>xsd:anyURI</code>) if online but not in RDF form. If the licence is expressed in text, a literal text field may be indicated.
         </p>
         <p class="req">
-          <a class="frag" id="2.1.14" href="#2.1.14">&#167;</a>
+          <a class="frag" id="req-2-1-14" href="#req-2-1-14">&#167;</a>
           2.1.14 The copyright holder for the vocabulary <em>SHOULD</em> be given using the <code>schema:copyrightHolder</code> predicate preferentially indicating the IRI of an Agent or a Blank Node instance of an Agent containing details as per Agent requirements. A <code>prov:qualifiedAttribution</code> predicate indicating an Agent with the <code>prov:hadRole</code> predicate indicating the value <code>isorole:rightsHolder</code> may be used instead of <code>schema:copyrightHolder</code>.
         </p>
       </section>
@@ -433,7 +433,7 @@ WHERE {
           To ensure that Collection instances are identifiable and their meaning isn't obscure or lost:
         </p>
         <p class="req">
-          <a class="frag" id="2.2.1" href="#2.2.1">&#167;</a>
+          <a class="frag" id="req-2-2-1" href="#req-2-2-1">&#167;</a>
           2.2.1 Each Collection <em>MUST</em> have exactly one title and at least one definition indicated using the <code>skos:prefLabel</code> and the <code>skos:definition</code> predicates respectively that must give textual literal values. Only one definition per language is allowed
         </p>
         <p><strong>NOTE</strong>: Unlike the general directions for the use of SKOS (the <a href="https://www.w3.org/TR/skos-primer/">SKOS "Primer"</a>) labels in multiple languages should be indicated with <code>skos:altLabel</code> predicates, not all with <code>skos:prefLabel</code>, i.e. there should only ever be one <code>skos:prefLabel</code> value. If multiple definitions are given, the one in the language of the label is considered primary.</p>
@@ -441,18 +441,18 @@ WHERE {
           If a Collection's grouping of Concepts is derived from an existing resource that is different from the ConceptScheme it is defined within:
         </p>
         <p class="req">
-          <a class="frag" id="2.2.2" href="#2.2.2">&#167;</a>
+          <a class="frag" id="req-2-2-2" href="#req-2-2-2">&#167;</a>
           2.2.2 The origins of a Collection, if different from its containing Concept Scheme, <em>SHOULD</em> be indicated by at least one of the following predicates: <code>skos:historyNote</code>, <code>schema:citation</code>, <code>prov:wasDerivedFrom</code>. <code>dcterms:source</code> <em>MAY</em> be used instead of <code>schema:citation</code> and <code>dcterms:provenance</code> <em>MAY</em> be used instead of <code>skos:historyNote</code> but the schema.org and SKOS predicates are preferred.
         </p>
         <p><em>For compatability with previous versions of this Specification, <code>dcterms:provenance</code> MAY be used instead of <code>skos:historyNote</code> but the latter is the preferred predicate.</em></p>
         <p>To help list Collections within vocabularies:</p>
         <p class="req">
-          <a class="frag" id="2.2.3" href="#2.2.3">&#167;</a>
+          <a class="frag" id="req-2-2-3" href="#req-2-2-3">&#167;</a>
           2.2.3 A Collection exists within a vocabulary <em>SHOULD</em> indicate that it is within the vocabulary by use of the <code>skos:inScheme</code> predicate. If it is defined for the first time in the vocabulary, it should also indicate this with the <code>rdfs:isDefinedBy</code> predicate
         </p>
         <p>To ensure that a Collection isn't empty:</p>
         <p class="req">
-          <a class="frag" id="2.2.4" href="#2.2.4">&#167;</a>
+          <a class="frag" id="req-2-2-4" href="#req-2-2-4">&#167;</a>
           2.2.4 A Collection <em>MUST</em> indicate at least one Concept instance that is within the collection with use of the <code>skos:member</code> predicate. The Concept need not be defined by the Concept Scheme that defines the Collection
         </p>
       </section>
@@ -471,7 +471,7 @@ WHERE {
           To ensure that Concept instances are identifiable and their meaning isn't obscure or lost:
         </p>
         <p class="req">
-          <a class="frag" id="2.3.1" href="#2.3.1">&#167;</a>
+          <a class="frag" id="req-2-3-1" href="#req-2-3-1">&#167;</a>
           2.3.1 Each Concept <em>MUST</em> have exactly one title and at least one definition indicated using the <code>skos:prefLabel</code> and the <code>skos:definition</code> predicates respectively that must give textual literal values. Only one definition per language is allowed
         </p>
         <p><strong>NOTE</strong>: Unlike the general directions for the use of SKOS (the <a href="https://www.w3.org/TR/skos-primer/">SKOS "Primer"</a>) labels in multiple languages should be indicated with <code>skos:altLabel</code> predicates, not all with <code>skos:prefLabel</code>, i.e. there should only ever be one <code>skos:prefLabel</code> value. If multiple definitions are given, the one in the language of the label is considered primary.</p>
@@ -479,7 +479,7 @@ WHERE {
           To ensure that every Concept is linked to the vocabulary that defines it:
         </p>
         <p class="req">
-          <a class="frag" id="2.3.2" href="#2.3.2">&#167;</a>
+          <a class="frag" id="req-2-3-2" href="#req-2-3-2">&#167;</a>
           2.3.2 Each Concept in a vocabulary <em>MAY</em> indicate the vocabulary that defines it by use of the <code>rdfs:isDefinedBy</code> predicate indicating a Concept Scheme instance. If no such predicate is given, the Concept Scheme in the file that a Concept is provided in is understood to be the defining Concept Scheme
         </p>
         <p>Note that the vocabulary that defines a Concept does not have to be the vocabulary in the file being validated. This is to allow for Concept instance reuse across multiple vocabularies.</p>
@@ -487,14 +487,14 @@ WHERE {
           Since a Concept may be used in more than one vocabulary:
         </p>
         <p class="req">
-          <a class="frag" id="2.3.3" href="#2.3.3">&#167;</a>
+          <a class="frag" id="req-2-3-3" href="#req-2-3-3">&#167;</a>
           2.3.3 Each Concept in a vocabulary <em>MUST</em> indicate that it appears within that vocabulary's hierarchy of Concepts either directly by use of the <code>skos:topConceptOf</code> predicate indicating the vocabulary or indirectly by use of one or more <code>skos:broader</code> / <code>skos:narrower</code> predicates placing the Concept within a chain of other Concepts, the top concept of which uses the <code>skos:topConceptOf</code> predicate to indicate the vocabulary.
         </p>
         <p>
           If a Concept is derived from an existing resource and that derivation is not already covered by source information for the vocabulary that it is within:
         </p>
         <p class="req">
-          <a class="frag" id="2.3.4" href="#2.3.4">&#167;</a>
+          <a class="frag" id="req-2-3-4" href="#req-2-3-4">&#167;</a>
           2.3.4 The origins of a Concept, if different from its containing Concept Scheme, <em>SHOULD</em> be indicated by at least one of the following predicates: <code>skos:historyNote</code>, <code>schema:citation</code>, <code>dcterms:source</code> or <code>prov:wasDerivedFrom</code> or <code>dcterms:provenance</code>.
         </p>
         <p>
@@ -508,28 +508,28 @@ WHERE {
         To be consistent with other Semantic Web representations of Agents, vocabularies' associated Agents, creator &amp; publisher must be certain typed RDF values:
       </p>
       <p class="req">
-        <a class="frag" id="2.4.1" href="#2.4.1">&#167;</a>
+        <a class="frag" id="req-2-4-1" href="#req-2-4-1">&#167;</a>
         2.4.1 Each Agent associated with a vocabulary <em>MUST</em> be typed as an <code>schema:Person</code> or <code>schema:Organization</code>
       </p>
       <p>
         To ensure human readability and association of Agents with their non-Semantic Web (real world) form:
       </p>
       <p class="req">
-        <a class="frag" id="2.4.2" href="#2.4.2">&#167;</a>
+        <a class="frag" id="req-2-4-2" href="#req-2-4-2">&#167;</a>
         2.4.2 Each Agent <em>MUST</em> give exactly one name with the <code>schema:name</code> predicate indicating a literal text value
       </p>
       <p>
         To ensure that Agents are linked to non-Semantic Web forms of identification:
       </p>
       <p class="req">
-        <a class="frag" id="2.4.3" href="#2.4.3">&#167;</a>
+        <a class="frag" id="req-2-4-3" href="#req-2-4-3">&#167;</a>
         2.4.3 Each Agent <em>MUST</em> indicate either a <code>schema:url</code> (for organizations) or a <code>schema:email</code> (for people) predicate with a URL or email value
       </p>
       <p>
         To link to Agent registers using non-Semantic Web identifiers for Agents:
       </p>
       <p class="req">
-        <a class="frag" id="2.4.4" href="#2.4.4">&#167;</a>
+        <a class="frag" id="req-2-4-4" href="#req-2-4-4">&#167;</a>
         2.4.4 Each Agent <em>SHOULD</em> indicate any non-Semantic Web identifiers for Agents with the <code>schema:identifier</code> predicate with literal identifier values, preferentially with custom data types that define the form of the identifier.
       </p>
       <p><strong>NOTE</strong>: This method of providing identifiers with specialised datatypes is the same as that specified for <code>skos:notation</code> values in the <a href="https://www.w3.org/TR/skos-primer/#secnotations">SKOS Primer</a>.</p>
