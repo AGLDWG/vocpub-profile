@@ -13,45 +13,44 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 :Requirement-2.1.04
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.1.04" ;
     sh:message "Requirement 2.1.4 Each vocabulary MUST have exactly one title and at least one definition indicated using the skos:prefLabel and the skos:definition predicates respectively that must give textual literal values. Only one definition per language is allowed" ;
     sh:property
         :definition ,
         :prefLabel ;
     sh:targetClass skos:ConceptScheme ;
+    schema:description "Requirement 2.1.04" ;
     schema:name "Requirement 2.1.04" ;
 .
 
 :Requirement-2.1.05
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.1.05" ;
     sh:message "Requirement 2.1.5 Each vocabulary MUST have exactly one created date and exactly one modified date indicated using the schema:dateCreated and schema:dateModified or dcterms:created and dcterms:modified predicates respectively that must be either an xsd:date, xsd:dateTime or xsd:dateTimeStamp literal value" ;
     sh:property
         :created ,
         :modified ;
     sh:targetClass skos:ConceptScheme ;
+    schema:description "Requirement 2.1.05" ;
     schema:name "Requirement 2.1.05" ;
 .
 
 :Requirement-2.1.06
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.1.06" ;
     sh:message "Requirement 2.1.6 Each vocabulary MUST have at least one creator, indicated using schema:creator or dcterms:creator predicate and exactly one publisher, indicated using schema:publisher or dcterms:publisher, all of which MUST be IRIs indicating instances of schema:Person, or schema:Organization" ;
     sh:property
         :creator ,
         :publisher ;
     sh:targetClass skos:ConceptScheme ;
+    schema:description "Requirement 2.1.06" ;
     schema:name "Requirement 2.1.06" ;
 .
 
 :Requirement-2.1.07
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.1.07" ;
     sh:message "Requirement 2.1.7 The origins of a Concept Scheme MUST be indicated by at least one of the following predicates: skos:historyNote, schema:citation, prov:wasDerivedFrom. dcterms:source MAY be used instead of schema:citation and dcterms:provenance MAY be used instead of skos:historyNote but the schema.org and SKOS predicates are preferred" ;
     sh:or (
         :provenance-wasDerivedFrom
@@ -61,92 +60,93 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         :provenance-dcterms-provenance
     ) ;
     sh:targetClass skos:ConceptScheme ;
+    schema:description "Requirement 2.1.07" ;
     schema:name "Requirement 2.1.07" ;
 .
 
 :Requirement-2.1.08
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.1.08" ;
     sh:property :single-term-hierarchy ;
     sh:targetClass skos:Concept ;
+    schema:description "Requirement 2.1.08" ;
     schema:name "Requirement 2.1.08" ;
 .
 
 :Requirement-2.1.09
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.1.09" ;
     sh:property :at-least-one-concept ;
     sh:targetClass skos:ConceptScheme ;
+    schema:description "Requirement 2.1.09" ;
     schema:name "Requirement 2.1.09" ;
 .
 
 :Requirement-2.1.10
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.1.10" ;
     sh:property :status ;
-    sh:severity sh:Warning ;
     sh:targetClass skos:ConceptScheme ;
+    schema:description "Requirement 2.1.10" ;
     schema:name "Requirement 2.1.10" ;
 .
 
 :Requirement-2.1.11
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.1.11" ;
     sh:message "Requirement 2.1.11 The derivation status of the vocabulary SHOULD be given should be given with the predicate prov:qualifiedDerivation indicating a Blank Node that contains the predicated prov:entity, to indicate the vocabulary derived from and prov:hadRole to indicate the mode of derivation which SHOULD be taken from the Vocabulary Derivation Modes vocabulary (https://linked.data.gov.au/def/vocdermods)" ;
     sh:property :qualified-derivation ;
     sh:targetClass skos:ConceptScheme ;
+    schema:description "Requirement 2.1.11" ;
     schema:name "Requirement 2.1.11" ;
 .
 
 :Requirement-2.1.11b
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.1.11b" ;
-    schema:description "" ;
     sh:property :qualified-derivation-entity ;
     sh:targetObjectsOf prov:qualifiedDerivation ;
+    schema:description
+        "" ,
+        "Requirement 2.1.11b" ;
     schema:name "Requirement 2.1.11b" ;
 .
 
 :Requirement-2.1.11c
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.1.11c" ;
     sh:property :qualified-derivation-role ;
     sh:targetObjectsOf prov:qualifiedDerivation ;
+    schema:description "Requirement 2.1.11c" ;
     schema:name "Requirement 2.1.11c" ;
 .
 
 :Requirement-2.1.12
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.1.12" ;
     sh:property :theming ;
     sh:severity sh:Warning ;
     sh:targetClass skos:ConceptScheme ;
+    schema:description "Requirement 2.1.12" ;
     schema:name "Requirement 2.1.12" ;
 .
 
 :Requirement-2.1.13
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.1.13" ;
     sh:property :license ;
     sh:targetClass skos:ConceptScheme ;
+    schema:description "Requirement 2.1.13" ;
     schema:name "Requirement 2.1.13" ;
 .
 
 :Requirement-2.1.14
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.1.14" ;
     sh:property :copyright-holder ;
     sh:severity sh:Warning ;
     sh:targetClass skos:ConceptScheme ;
+    schema:description "Requirement 2.1.14" ;
     schema:name "Requirement 2.1.14" ;
 .
 
@@ -160,9 +160,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 .
 
 :Requirement-2.2.01
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.2.01" ;
     sh:message "Requirement 2.1.4 Each Collection and Concept MUST have exactly one title and at least one definition indicated using the skos:prefLabel and the skos:definition predicates respectively that must give textual literal values. Only one definition per language is allowed" ;
     sh:property
         :definition ,
@@ -170,13 +169,13 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:targetClass
         skos:Collection ,
         skos:Concept ;
+    schema:description "Requirement 2.2.01" ;
     schema:name "Requirement 2.2.01" ;
 .
 
 :Requirement-2.2.02
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.2.02" ;
     sh:message "Requirement 2.2.2 The origins of a Collection, if different from its containing Concept Scheme, SHOULD be indicated by at least one of the following predicates: skos:historyNote, schema:citation, prov:wasDerivedFrom. dcterms:source MAY be used instead of schema:citation and dcterms:provenance MAY be used instead of skos:historyNote but the schema.org and SKOS predicates are preferred" ;
     sh:or (
         :provenance-wasDerivedFrom
@@ -187,61 +186,61 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     ) ;
     sh:severity sh:Warning ;
     sh:targetClass skos:Collection ;
+    schema:description "Requirement 2.2.02" ;
     schema:name "Requirement 2.2.02" ;
 .
 
 :Requirement-2.2.03
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.2.03" ;
     sh:property :in-scheme ;
     sh:targetClass skos:Collection ;
+    schema:description "Requirement 2.2.03" ;
     schema:name "Requirement 2.2.03" ;
 .
 
 :Requirement-2.2.03b
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.2.03b" ;
     sh:property :in-scheme ;
     sh:severity sh:Warning ;
     sh:targetClass skos:Collection ;
+    schema:description "Requirement 2.2.03b" ;
     schema:name "Requirement 2.2.03b" ;
 .
 
 :Requirement-2.2.04
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.2.04" ;
     sh:property :member ;
     sh:targetClass skos:Collection ;
+    schema:description "Requirement 2.2.04" ;
     schema:name "Requirement 2.2.04" ;
 .
 
 :Requirement-2.3.02
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.3.02" ;
     sh:message "Requirement 2.3.2 Each Concept in a vocabulary MAY indicate the vocabulary that defines it by use of the rdfs:isDefinedBy predicate indicating a Concept Scheme instance. If no such predicate is given, the Concept Scheme in the file that a Concept is provided in is understood to be the defining Concept Scheme" ;
     sh:property :is-defined-by ;
     sh:severity sh:Warning ;
     sh:targetClass skos:Concept ;
+    schema:description "Requirement 2.3.02" ;
     schema:name "Requirement 2.3.02" ;
 .
 
 :Requirement-2.3.03
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.3.03" ;
     sh:property :in-scheme ;
     sh:targetClass skos:Concept ;
+    schema:description "Requirement 2.3.03" ;
     schema:name "Requirement 2.3.03" ;
 .
 
 :Requirement-2.3.04
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.3.04" ;
     sh:message "Requirement 2.2.2 The origins of a Concept, if different from its containing Concept Scheme, SHOULD be indicated by at least one of the following predicates: skos:historyNote, schema:citation, prov:wasDerivedFrom. dcterms:source MAY be used instead of schema:citation and dcterms:provenance MAY be used instead of skos:historyNote but the schema.org and SKOS predicates are preferred" ;
     sh:or (
         :provenance-wasDerivedFrom
@@ -252,35 +251,45 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     ) ;
     sh:severity sh:Warning ;
     sh:targetClass skos:Concept ;
+    schema:description "Requirement 2.3.04" ;
     schema:name "Requirement 2.3.04" ;
 .
 
-:Requirement-2.4.02
-   a sh:NodeShape ;
+:Requirement-2.3.05
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.4.02" ;
+    sh:property :status ;
+    sh:targetClass skos:Concept ;
+    schema:description "Requirement 2.3.05" ;
+    schema:name "Requirement 2.3.05" ;
+.
+
+:Requirement-2.4.02
+    a sh:NodeShape ;
+    rdfs:isDefinedBy ont: ;
     sh:property :agent-name ;
     sh:targetClass
         schema:Organization ,
         schema:Person ;
+    schema:description "Requirement 2.4.02" ;
     schema:name "Requirement 2.4.02" ;
 .
 
 :Requirement-2.4.03a
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.4.03a" ;
     sh:property :agent-url ;
     sh:targetClass schema:Organization ;
+    schema:description "Requirement 2.4.03a" ;
     schema:name "Requirement 2.4.03a" ;
 .
 
 :Requirement-2.4.03b
-   a sh:NodeShape ;
+    a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    schema:description "Requirement 2.4.03b" ;
     sh:property :agent-email ;
     sh:targetClass schema:Person ;
+    schema:description "Requirement 2.4.03b" ;
     schema:name "Requirement 2.4.03b" ;
 .
 
@@ -509,8 +518,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :qualified-derivation
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
-    sh:nodeKind sh:BlankNodeOrIRI ;
     sh:message "Requirement 2.1.11 The derivation status of the vocabulary SHOULD be given should be given with the predicate prov:qualifiedDerivation indicating a Blank Node that contains the predicated prov:entity, to indicate the vocabulary derived from and prov:hadRole to indicate the mode of derivation which SHOULD be taken from the Vocabulary Derivation Modes vocabulary (https://linked.data.gov.au/def/vocdermods)" ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
     sh:path prov:qualifiedDerivation ;
     schema:name "qualified derivation" ;
 .
@@ -552,9 +561,16 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
     sh:maxCount 1 ;
-    sh:message "Requirement 2.1.10 The status of the vocabulary as a whole, according to the Registry Status standard, SHOULD be given with the predicate reg:status indicating a Concept from the Registry Statuses vocabulary (https://linked.data.gov.au/def/reg-statuses)" ;
+    sh:message "Requirement 2.1.10 The status of a vocabulary or a Concept SHOULD be given with the predicate schema:status and MAY be given with the predicate reg:status. Either, if used, MUST indicate a Concept from the Registry Statuses vocabulary (https://linked.data.gov.au/def/reg-statuses)" ;
     sh:nodeKind sh:IRI ;
-    sh:path reg:status ;
+    sh:path
+        [
+            sh:alternativePath (
+                schema:status
+                reg:status
+            ) ;
+        ] ;
+    sh:severity sh:Warning ;
     schema:name "status" ;
 .
 
@@ -577,13 +593,6 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a schema:Organization ;
     schema:name "Australian Government Linked Data Working Group" ;
     schema:url "https://www.linked.data.gov.au"^^xsd:anyURI ;
-.
-
-<https://orcid.org/0000-0002-8742-7730>
-    a schema:Person ;
-    schema:email "nicholas.car@anu.edu.au"^^xsd:anyURI ;
-    schema:identifier "https://orcid.org/0000-0002-8742-7730"^^xsd:anyURI ;
-    schema:name "Nicholas J. Car" ;
 .
 
 :definition
@@ -627,6 +636,13 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     schema:name "prefLabel" ;
 .
 
+<https://orcid.org/0000-0002-8742-7730>
+    a schema:Person ;
+    schema:email "nicholas.car@anu.edu.au"^^xsd:anyURI ;
+    schema:identifier "https://orcid.org/0000-0002-8742-7730"^^xsd:anyURI ;
+    schema:name "Nicholas J. Car" ;
+.
+
 :in-scheme
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
@@ -637,20 +653,10 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     schema:name "in scheme" ;
 .
 
-:provenance-wasDerivedFrom
-    a sh:PropertyShape ;
-    rdfs:isDefinedBy ont: ;
-    sh:minCount 1 ;
-    sh:nodeKind sh:IRI ;
-    sh:path prov:wasDerivedFrom ;
-    sh:severity sh:Warning ;
-    schema:name "provenance wasDerivedFrom" ;
-    sh:message "prov:wasDerivedFrom SHOULD be supplied and, if it is, MUST be an IRI" ;
-.
-
 :provenance-citation
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
+    sh:message "schema:citation SHOULD be supplied and, if it is, MUST be a literal of type xsd:string or xsd:anyURI" ;
     sh:minCount 1 ;
     sh:or (
         
@@ -665,53 +671,12 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:path schema:citation ;
     sh:severity sh:Warning ;
     schema:name "provenance citation" ;
-    sh:message "schema:citation SHOULD be supplied and, if it is, MUST be a literal of type xsd:string or xsd:anyURI" ;
-.
-
-:provenance-source
-    a sh:PropertyShape ;
-    rdfs:isDefinedBy ont: ;
-    sh:minCount 1 ;
-    sh:or (
-        
-        [
-            sh:datatype xsd:anyURI ;
-        ]
-        
-        [
-            sh:datatype xsd:string ;
-        ]
-    ) ;
-    sh:path dcterms:source ;
-    sh:severity sh:Warning ;
-    schema:name "provenance source" ;
-    sh:message "dcterms:source SHOULD be supplied and, if it is, MUST be a literal of type xsd:string or xsd:anyURI" ;
-    
-.
-
-:provenance-historyNote
-    a sh:PropertyShape ;
-    rdfs:isDefinedBy ont: ;
-    sh:minCount 1 ;
-    sh:or (
-        
-        [
-            sh:datatype rdf:langString ;
-        ]
-        
-        [
-            sh:datatype xsd:string ;
-        ]
-    ) ;
-    sh:path skos:historyNote ;
-    sh:severity sh:Warning ;
-    schema:name "provenance historyNote" ;
-    sh:message "skos:historyNote SHOULD be supplied and, if it is, MUST be a literal of type xsd:string or rdf:langString" ;
 .
 
 :provenance-dcterms-provenance
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
+    sh:message "dcterms:provenance SHOULD be supplied and, if it is, MUST be a literal of type xsd:string or rdf:langString" ;
     sh:minCount 1 ;
     sh:or (
         
@@ -726,7 +691,57 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:path dcterms:provenance ;
     sh:severity sh:Warning ;
     schema:name "provenance dcterms:provenance" ;
-        sh:message "dcterms:provenance SHOULD be supplied and, if it is, MUST be a literal of type xsd:string or rdf:langString" ;
+.
+
+:provenance-historyNote
+    a sh:PropertyShape ;
+    rdfs:isDefinedBy ont: ;
+    sh:message "skos:historyNote SHOULD be supplied and, if it is, MUST be a literal of type xsd:string or rdf:langString" ;
+    sh:minCount 1 ;
+    sh:or (
+        
+        [
+            sh:datatype rdf:langString ;
+        ]
+        
+        [
+            sh:datatype xsd:string ;
+        ]
+    ) ;
+    sh:path skos:historyNote ;
+    sh:severity sh:Warning ;
+    schema:name "provenance historyNote" ;
+.
+
+:provenance-source
+    a sh:PropertyShape ;
+    rdfs:isDefinedBy ont: ;
+    sh:message "dcterms:source SHOULD be supplied and, if it is, MUST be a literal of type xsd:string or xsd:anyURI" ;
+    sh:minCount 1 ;
+    sh:or (
+        
+        [
+            sh:datatype xsd:anyURI ;
+        ]
+        
+        [
+            sh:datatype xsd:string ;
+        ]
+    ) ;
+    sh:path dcterms:source ;
+    sh:severity sh:Warning ;
+    schema:name "provenance source" ;
+.
+
+:provenance-wasDerivedFrom
+    a sh:PropertyShape ;
+    rdfs:isDefinedBy ont: ;
+    sh:message "prov:wasDerivedFrom SHOULD be supplied and, if it is, MUST be an IRI" ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:path prov:wasDerivedFrom ;
+    sh:severity sh:Warning ;
+    schema:name "provenance wasDerivedFrom" ;
 .
 
 ont:
@@ -771,6 +786,9 @@ ont:
 3.1: Changed dcterms:provenance to skos:historyNote
 
 3.0: Removed Requirement-2.3.5 (identifiers) as these are auto-generated in systems like VocPrez; Added Requirement-2.1.10 & 2.1.11 and sub parts to test for qualifiedDerivation and status of a ConceptScheme""" ;
+    skos:historyNote "Created to validate Australian government vocabularies in 2020. Now used widely." ;
+    schema:codeRepository "https://github.com/AGLDWG/vocpub-profile/"^^xsd:anyURI ;
+    schema:copyrightHolder <https://orcid.org/0000-0002-8742-7730> ;
     schema:creator <https://orcid.org/0000-0002-8742-7730> ;
     schema:dateCreated "2020-06-14"^^xsd:date ;
     schema:dateModified "2026-02-23"^^xsd:date ;
@@ -778,7 +796,4 @@ ont:
     schema:license <http://purl.org/NET/rdflicense/cc-by4.0> ;
     schema:name "VocPub Validator" ;
     schema:publisher <https://linked.data.gov.au/org/agldwg> ;
-    schema:copyrightHolder <https://orcid.org/0000-0002-8742-7730> ;
-    schema:codeRepository "https://github.com/AGLDWG/vocpub-profile/"^^xsd:anyURI ;
-    skos:historyNote "Created to validate Australian government vocabularies in 2020. Now used widely."
 .
