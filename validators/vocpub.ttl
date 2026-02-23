@@ -760,8 +760,10 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 ont:
     a owl:Ontology ;
-    owl:versionIRI :5.3 ;
-    owl:versionInfo """5.3 ValPub valid. All propertyShape instances have IRIs, are not Blank Nodes. All Shapes have names & messages. SHACL-UI elements moved to shaclui.ttl
+    owl:versionIRI :5.4 ;
+    owl:versionInfo """5.4 2026-02: Small fixes for a number of Issues raised in the Issue Tracker
+
+5.3 ValPub valid. All propertyShape instances have IRIs, are not Blank Nodes. All Shapes have names & messages. SHACL-UI elements moved to shaclui.ttl
 
 5.2 Implement Shape 2.1.2+3 using qualified shape pattern as this is supported by pySHACL
 

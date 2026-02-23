@@ -1,9 +1,19 @@
 # Vocabularies Publication Profile
-This is a *profile* of the [Simple Knowledge Organization System (SKOS)](https://www.w3.org/TR/skos-reference/) intended to allow for easy to manage and publish vocabularies.
+This is a *profile* of the [Simple Knowledge Organization System (SKOS)](https://www.w3.org/TR/skos-reference/) that constrains SKOS use with simple rules such as once Concept Scheme per vocabulary and per file and ensure basic catalogue metadata is present.
 
-By *profile*, what is meant here is "A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications." (from [PROF](https://www.w3.org/TR/dx-prof/#definitions)) and, here the *other specification* is SKOS.
+It is intended for managing sets of basic categorisation vocabularies in catalogues.
 
-This profile is formulated according to the [Profiles Vocabulary](https://www.w3.org/TR/dx-prof/) and provides [Shapes Constraint Language (SHACL)](https://www.w3.org/TR/shacl/) validator files that can be used to determine whether vocabularies conform to this profile.
+## What is a _profile_?
+
+By *profile*, what is meant here is:
+
+> "A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications" 
+> 
+-- [The Profiles Vocabulary](https://www.w3.org/TR/dx-prof/)
+
+In this case, the *other specification* are SKOS and [schema.org](https://schema.org) and, in legacy mode, [DCMI Metadata Terms (DCTERMS)](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/)
+
+This profile is formulated according to [The Profiles Vocabulary](https://www.w3.org/TR/dx-prof/) and provides [Shapes Constraint Language (SHACL)](https://www.w3.org/TR/shacl/) validator files that can be used to determine whether vocabularies conform to this profile.
 
 This profile is hosted online in [Linked Data](https://www.w3.org/standards/semanticweb/data) form using a persistent web address:
 
@@ -38,8 +48,8 @@ To cite this profile, please use the following (formulated in [BibTex](http://ww
 @software{vocpub-profile,
   author = {{Nicholas J. Car}},
   title = {{Vocabulary Publication Profile}},
-  version = {4.2},
-  date = {2023},
+  version = {5.4},
+  date = {2026},
   publisher = {{Australian Government Linked Data Working Group}},
   url = {https://linked.data.gov.au/def/vocpub}
 }
