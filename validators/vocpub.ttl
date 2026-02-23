@@ -292,14 +292,14 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         [
             sh:inversePath rdf:type ;
         ] ;
-    sh:qualifiedMaxCount 2 ;
+    sh:qualifiedMaxCount 1 ;
     sh:qualifiedMinCount 1 ;
     sh:qualifiedValueShape
         [
             sh:hasValue skos:ConceptScheme ;
             sh:path rdf:type ;
         ] ;
-    schema:name "ConceptSchemeType" ;
+    schema:name "single Concept Scheme" ;
 .
 
 :agent-email
