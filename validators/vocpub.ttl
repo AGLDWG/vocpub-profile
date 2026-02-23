@@ -267,7 +267,10 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :Requirement-2.4.02
     a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    sh:property :agent-name ;
+    sh:xone (
+        :agent-name
+        :agent-name2
+    ) ;
     sh:targetClass
         schema:Organization ,
         schema:Person ;
@@ -324,9 +327,20 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :agent-name
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
+    sh:datatype rdf:langString ;
+    sh:message "Requirement 2.4.2 Each Agent MUST have at least one name indicated with the schema:name predicate, pointing to a literal text value. If multiple names in multiple languages are desired, then multiple schema:name values are permitted with langString literals, but ony one per language" ;
+    sh:minCount 1 ;
+    sh:path schema:name ;
+    schema:name "agent name" ;
+    sh:uniqueLang true ;
+.
+
+:agent-name2
+    a sh:PropertyShape ;
+    rdfs:isDefinedBy ont: ;
     sh:datatype xsd:string ;
+    sh:message "Requirement 2.4.2 Each Agent MUST have at least one name indicated with the schema:name predicate, pointing to a literal text value. If multiple names in multiple languages are desired, then multiple schema:name values are permitted with langString literals, but ony one per language" ;
     sh:maxCount 1 ;
-    sh:message "Requirement 2.4.2 Each Agent MUST have exactly one name indicated with the schema:name predicate, pointing to a literal text value" ;
     sh:minCount 1 ;
     sh:path schema:name ;
     schema:name "agent name" ;
