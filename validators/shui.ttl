@@ -1,0 +1,202 @@
+PREFIX : <https://linked.data.gov.au/def/vocpub/validator/>
+PREFIX dash: <http://datashapes.org/dash#>
+PREFIX ont: <https://linked.data.gov.au/def/vocpub/validator>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <https://schema.org/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+:Shui-Concept
+    a sh:NodeShape ;
+    dash:defaultViewForRole dash:all ;
+    rdfs:isDefinedBy ont: ;
+    sh:property 
+        [
+            a sh:PropertyShape ;
+            sh:group :Group-concept-scheme-relationships ;
+            sh:nodeKind sh:IRI ;
+            sh:path rdfs:isDefinedBy ;
+        ] ,
+        [
+            a sh:PropertyShape ;
+            sh:class skos:ConceptScheme ;
+            sh:group :Group-concept-scheme-relationships ;
+            sh:nodeKind sh:IRI ;
+            sh:path skos:topConceptOf ;
+        ] ,
+        [
+            a sh:PropertyShape ;
+            sh:class skos:ConceptScheme ;
+            sh:group :Group-concept-scheme-relationships ;
+            sh:nodeKind sh:IRI ;
+            sh:path skos:inScheme ;
+        ] ,
+        [
+            a sh:PropertyShape ;
+            sh:class skos:Concept ;
+            sh:group :Group-concept-relationships ;
+            sh:nodeKind sh:IRI ;
+            sh:path skos:narrower ;
+        ] ,
+        [
+            a sh:PropertyShape ;
+            sh:class skos:Concept ;
+            sh:group :Group-concept-relationships ;
+            sh:nodeKind sh:IRI ;
+            sh:path skos:broader ;
+        ] ,
+        :definition ,
+        :prefLabel ;
+    sh:targetClass skos:Concept ;
+.
+
+:Shui-ConceptScheme
+    a sh:NodeShape ;
+    dash:defaultViewForRole dash:all ;
+    rdfs:isDefinedBy ont: ;
+    sh:property 
+        [
+            a sh:PropertyShape ;
+            dash:editor dash:DetailsEditor ;
+            sh:group :Group-metadata ;
+            sh:node
+                [
+                    sh:property 
+                        [
+                            sh:datatype xsd:string ;
+                            sh:path schema:name ;
+                        ] ,
+                        [
+                            sh:datatype xsd:anyURI ;
+                            sh:path schema:url ;
+                        ] ;
+                ] ;
+            sh:path schema:creator ;
+        ] ,
+        [
+            a sh:PropertyShape ;
+            sh:group :Group-metadata ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path schema:version ;
+        ] ,
+        [
+            a sh:PropertyShape ;
+            dash:editor dash:DetailsEditor ;
+            sh:group :Group-metadata ;
+            sh:node
+                [
+                    sh:property 
+                        [
+                            sh:node
+                                [
+                                    sh:property 
+                                        [
+                                            sh:datatype xsd:anyURI ;
+                                            sh:path schema:email ;
+                                        ] ,
+                                        [
+                                            sh:datatype xsd:string ;
+                                            sh:path schema:name ;
+                                        ] ;
+                                ] ;
+                            sh:path prov:agent ;
+                        ] ,
+                        [
+                            sh:nodeKind sh:IRI ;
+                            sh:path prov:hadRole ;
+                        ] ;
+                ] ;
+            sh:path prov:qualifiedAttribution ;
+        ] ,
+        [
+            a sh:PropertyShape ;
+            dash:editor dash:DetailsEditor ;
+            sh:group :Group-metadata ;
+            sh:node
+                [
+                    sh:property 
+                        [
+                            sh:datatype xsd:string ;
+                            sh:path schema:name ;
+                        ] ,
+                        [
+                            sh:datatype xsd:anyURI ;
+                            sh:path schema:url ;
+                        ] ;
+                ] ;
+            sh:path schema:publisher ;
+        ] ,
+        [
+            a sh:PropertyShape ;
+            sh:datatype xsd:date ;
+            sh:group :Group-metadata ;
+            sh:order 0 ;
+            sh:path schema:dateCreated ;
+        ] ,
+        [
+            a sh:PropertyShape ;
+            sh:datatype xsd:date ;
+            sh:group :Group-metadata ;
+            sh:order 1 ;
+            sh:path schema:dateModified ;
+        ] ,
+        [
+            a sh:PropertyShape ;
+            sh:group :Group-metadata ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path owl:versionIRI ;
+        ] ,
+        :definition ,
+        :prefLabel ,
+        :provenance-properties-04 ;
+    sh:targetClass skos:ConceptScheme ;
+.
+
+:at-least-one-concept
+    dash:editor dash:AutoCompleteEditor ;
+    sh:group :Group-concept-relationships ;
+.
+
+:provenance-properties-04
+    dash:singleLine false ;
+    sh:group :Group-annotations ;
+.
+
+:definition
+    dash:singleLine false ;
+    sh:group :Group-annotations ;
+.
+
+:prefLabel
+    a sh:PropertyShape ;
+    sh:group :Group-annotations ;
+.
+
+:Group-annotations
+    a sh:PropertyGroup ;
+    rdfs:label "Annotations" ;
+    sh:order 0 ;
+.
+
+:Group-concept-relationships
+    a sh:PropertyGroup ;
+    rdfs:label "Concept relationships" ;
+    sh:order 2 ;
+.
+
+:Group-concept-scheme-relationships
+    a sh:PropertyGroup ;
+    rdfs:label "Concept Scheme relationships" ;
+    sh:order 1 ;
+.
+
+:Group-metadata
+    a sh:PropertyGroup ;
+    rdfs:label "Metadata" ;
+    sh:order 1 ;
+.
