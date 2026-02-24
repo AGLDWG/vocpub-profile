@@ -1,6 +1,4 @@
-# This is an old style vocabulary - it uses Dublin Core Terms properties.
-# It is valid only if the expand script is run on it before validation.
-# i.e. the validator-combined.py validator must be used, not the plain validator.ttl
+# Invalid because da:open has 2x Polish historyNote
 
 @prefix cs: <http://linked.data.gov.au/def/data-access-rights> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -55,7 +53,7 @@ da:open a skos:Concept ;
     skos:inScheme cs: ;
     skos:topConceptOf cs: ;
     skos:historyNote "Dummy plain string history note"@en ;
-    skos:historyNote "Dummy plain string history note"@pl ;
+    skos:historyNote "Dummy plain string history notex"@pl ;
 .
 
 da:restricted a skos:Concept ;
@@ -64,6 +62,9 @@ da:restricted a skos:Concept ;
     skos:definition "Restricted access refers to a resource that is stored in a system but is not freely accessible. Access is limited to specific personnel or user groups."@en ;
     skos:inScheme cs: ;
     skos:topConceptOf cs: ;
+    skos:historyNote
+        "Dummy plain string history note"@pl ,
+        "Dummy plain string history notex"@pl ;
 .
 
 da:protected a skos:Concept ;

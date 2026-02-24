@@ -52,11 +52,12 @@
         <dt>Created</dt>
         <dd>2020-06-14</dd>
         <dt>Modified</dt>
-        <dd>2026-02-23</dd>
+        <dd>2026-02-25</dd>
         <dt>Version IRI</dt>
-        <dd><a href="https://linked.data.gov.au/def/vocpub/spec/5.4">https://linked.data.gov.au/def/vocpub/spec/5.4</a></dd>
+        <dd><a href="https://linked.data.gov.au/def/vocpub/spec/5.5">https://linked.data.gov.au/def/vocpub/spec/5.5</a></dd>
         <dt>Version Information</dt>
         <dd>
+          <p>5.5 2026-02: Added Shapes for Reqs 2.3.10 - 2.3.19</p>
           <p>5.4 2026-02: Small fixes for a number of Issues raised in the Issue Tracker</p>
           <p>5.3 ValPub valid. All propertyShape instances have IRIs, are not Blank Nodes. All Shapes have names & messages. SHACL-UI elements moved to shaclui.ttl</p>
           <p>5.2 Implement Shape 2.1.2+3 using qualified shape pattern as this is supported by pySHACL</p>
@@ -507,6 +508,56 @@ WHERE {
         <p class="req">
           <a class="frag" id="2.3.05" href="#2.3.05">&#167;</a>
           2.3.05 The status of a Concept, according to the Registry Status standard<sup><a href="#iso19135">ref</a></sup>, <em>MAY</em> be given with the predicate <code>schema:status</code> (preferred) or <code>reg:status</code> indicating a Concept from the <em>Registry Statuses</em> vocabulary (<a href="https://linked.data.gov.au/def/reg-statuses">https://linked.data.gov.au/def/reg-statuses</a>).
+        </p>
+        <p>To link a Concept to other things with literal identifiers:</p>
+        <p class="req">
+          <a class="frag" id="2.3.10" href="#2.3.10">&#167;</a>
+          2.3.10 If a Concept indicates a skos:notation, its range value MUST be a literal. Note that it SHOULD be of a custom datatype
+        </p>
+        <p>The use of custom datatypes with SKOS <code>notation</code> predicates is explained in <a href="https://www.w3.org/TR/skos-primer/#secnotations">SKOS Primer, Section 4.6 Notations</a>.</p>
+        <p>To describe the history of a Concept (it's development):</p>
+        <p class="req">
+          <a class="frag" id="2.3.11" href="#2.3.11">&#167;</a>
+          2.3.11 If a Concept indicates a skos:historyNote, its range value MUST be a literal. A plain string value (xsd:string) may be used or, if values in multiple languages are desired, then multiple language string literals (rdf:langString) may be used, but ony one per language and plain strings and language strings should not be mixed
+        </p>
+        <p>To indicate another Concept from which a Concept was derived:</p>
+        <p class="req">
+          <a class="frag" id="2.3.12" href="#2.3.12">&#167;</a>
+          2.3.12 If a Concept indicates was derived from, its range value MUST be an IRI
+        </p>
+        <p>To indicate another Concept which a Concept is a revision of, revision of being a closer derivation than the more generic was derived from, as above:</p>
+        <p class="req">
+          <a class="frag" id="2.3.13" href="#2.3.13">&#167;</a>
+          2.3.13 If a Concept indicates revision of, its range value MUST be an IRI
+        </p>
+        <p>To indicate another Concept that a Concept replaces:</p>
+        <p class="req">
+          <a class="frag" id="2.3.14" href="#2.3.14">&#167;</a>
+          2.3.14 If a Concept indicates replaces, its range value MUST be an IRI
+        </p>
+        <p>To indicate another Concept that a Concept is replaced by, the inverse of replaces above:</p>
+        <p class="req">
+          <a class="frag" id="2.3.15" href="#2.3.15">&#167;</a>
+          2.3.15 If a Concept indicates is replaced by, its range value MUST be an IRI
+        </p>
+        <p>To indicate a version identifier for a Concept:</p>
+        <p class="req">
+          <a class="frag" id="2.3.16" href="#2.3.16">&#167;</a>
+          2.3.16 If a Concept indicates version, its range value MUST be a plain string (xsd:string)
+        </p>
+        <p>To indicate details about when a Concept was created and modified but not when it is applicable for:</p>
+        <p class="req">
+          <a class="frag" id="2.3.17" href="#2.3.17">&#167;</a>
+          2.3.17 If a Concept indicates a date created, its range value MUST be a date (xsd:date)
+        </p>
+        <p class="req">
+          <a class="frag" id="2.3.18" href="#2.3.18">&#167;</a>
+          2.3.18 If a Concept indicates a date modified, its range value MUST be a date (xsd:date)
+        </p>
+        <p>To indicate the period of time that a Concept is relevant for:</p>
+        <p class="req">
+          <a class="frag" id="2.3.19" href="#2.3.19">&#167;</a>
+          2.3.19 If a Concept indicates a temporal coverage, its range value MUST be a temporal entity (time:TemporalEntity) with either or both schema:startDate and schema:endDate values which must be dates (xsd:date)
         </p>
       </section>
     </section>
