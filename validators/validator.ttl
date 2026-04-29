@@ -203,7 +203,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :Requirement-2.2.03b
     a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    sh:property :in-scheme ;
+    sh:property :is-defined-by ;
     sh:severity sh:Warning ;
     sh:targetClass skos:Collection ;
     schema:description "Requirement 2.2.03b" ;
@@ -1074,7 +1074,7 @@ ont:
     schema:copyrightHolder <https://orcid.org/0000-0002-8742-7730> ;
     schema:creator <https://orcid.org/0000-0002-8742-7730> ;
     schema:dateCreated "2020-06-14"^^xsd:date ;
-    schema:dateModified "2026-04-22"^^xsd:date ;
+    schema:dateModified "2026-04-29"^^xsd:date ;
     schema:description "SHACL validator for the VocPub Profile" ;
     schema:license <http://purl.org/NET/rdflicense/cc-by4.0> ;
     schema:name "VocPub Validator" ;
