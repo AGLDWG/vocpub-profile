@@ -17,7 +17,7 @@ def test_examples():
         elif "multilang" in str(f.name):
             validator = VALIDATORS_DIR / "validator.multilang.ttl"
         else:
-            validator = VALIDATORS_DIR / "vocpub.ttl"
+            validator = VALIDATORS_DIR / "validator.ttl"
 
         data_g = Graph().parse(f)
         validator_g = Graph().parse(validator)
