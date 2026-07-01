@@ -427,8 +427,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :agent-email
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
-    sh:datatype xsd:anyURI ;
-    sh:message "Requirement 2.4.3 Each Person MUST indicate an email address with the schema:email predicate, pointing to an xsd:anyURI value" ;
+    sh:message "Requirement 2.4.3 Each Person MUST indicate an email address with the schema:email predicate" ;
     sh:minCount 1 ;
     sh:path schema:email ;
     schema:name "agent email" ;
@@ -459,8 +458,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :agent-url
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
-    sh:datatype xsd:anyURI ;
-    sh:message "Requirement 2.4.3 Each Organization MUST indicate a website with the schema:url predicate, pointing to an xsd:anyURI value" ;
+    sh:message "Requirement 2.4.3 Each Organization MUST indicate a website with the schema:url predicate" ;
     sh:minCount 1 ;
     sh:path schema:url ;
     schema:name "agent url" ;
