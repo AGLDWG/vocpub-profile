@@ -192,6 +192,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
     sh:property :in-scheme ;
+    sh:severity sh:Warning ;
     sh:targetClass skos:Collection ;
     schema:description "Requirement 2.2.03" ;
     schema:name "Requirement 2.2.03" ;
@@ -704,9 +705,10 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
     sh:maxCount 1 ;
-    sh:message "Requirement 2.2.03 All Collections MUST indicate they are within the Concept Scheme of the vocabulary with the skos:inScheme predicate" ;
+    sh:message "Requirement 2.2.03 All Collections SHOULD indicate they are within the Concept Scheme of the vocabulary with the skos:inScheme predicate" ;
     sh:minCount 1 ;
     sh:path skos:inScheme ;
+    sh:severity sh:Warning ;
     schema:name "in scheme" ;
 .
 
