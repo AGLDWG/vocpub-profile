@@ -115,12 +115,12 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 <https://kurrawong.ai>
     a schema:Organization ;
     schema:name "KurrawongAI Pty Ltd" ;
-    schema:url "https://kurrawong.ai"^^xsd:anyURI ;
+    schema:url "https://kurrawong.ai" ;
 .
 
 <https://orcid.org/0000-0002-8742-7730>
     a schema:Person ;
-    schema:email "nick@kurrawong.ai"^^xsd:anyURI ;
+    schema:email "nick@kurrawong.ai" ;
     schema:memberOf <https://kurrawong.ai> ;
     schema:name "Nicholas J. Car" ;
 .
