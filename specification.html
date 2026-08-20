@@ -52,7 +52,7 @@
         <dt>Created</dt>
         <dd>2020-06-14</dd>
         <dt>Modified</dt>
-        <dd>2026-05-13</dd>
+        <dd>2026-08-20</dd>
         <dt>Version IRI</dt>
         <dd><a href="https://linked.data.gov.au/def/vocpub/spec/5.6">https://linked.data.gov.au/def/vocpub/spec/5.6</a></dd>
         <dt>Version Information</dt>
@@ -429,6 +429,12 @@ WHERE {
           <a class="frag" id="2.1.14" href="#2.1.14">&#167;</a>
           2.1.14 The copyright holder for the vocabulary <em>SHOULD</em> be given using the <code>schema:copyrightHolder</code> predicate preferentially indicating the IRI of an Agent or a Blank Node instance of an Agent containing details as per Agent requirements. A <code>prov:qualifiedAttribution</code> predicate indicating an Agent with the <code>prov:hadRole</code> predicate indicating the value <code>isorole:rightsHolder</code> may be used instead of <code>schema:copyrightHolder</code>.
         </p>
+        <p>To assist users locating additional online resources:</p>
+        <p class="req">
+          <a class="frag" id="2.1.15" href="#2.1.15">&#167;</a>
+          2.1.15 SKOS vocabularies <em>SHOULD</em> indicate any online version-controlled source code repository storing the vocabulary and related content with the <code>schema:codeRepository</code> predicate and an <code>xsd:anyURI</code> object.
+        </p>
+        <p><strong>NOTE</strong>: The datatype <code>xsd:anyURI</code> is used instead of an IRI when the object in a triple is a web resource or web address but is not expected to be an RDF node in a graph, as will be the case for non-RDF resources such as code repository locations.</p>
       </section>
       <section id="collection">
         <h3>2.2 Collection</h3>
