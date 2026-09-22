@@ -626,6 +626,14 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         [
             sh:datatype xsd:dateTimeStamp ;
         ]
+        
+        [
+            sh:datatype xsd:gYearMonth ;
+        ]
+        
+        [
+            sh:datatype xsd:gYear ;
+        ]
     ) ;
     sh:path
         [
@@ -771,6 +779,14 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         
         [
             sh:datatype xsd:dateTimeStamp ;
+        ]
+        
+        [
+            sh:datatype xsd:gYearMonth ;
+        ]
+        
+        [
+            sh:datatype xsd:gYear ;
         ]
     ) ;
     sh:path
@@ -1066,8 +1082,10 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 ont:
     a owl:Ontology ;
-    owl:versionIRI :5.6 ;
-    owl:versionInfo """5.6 2023-05: Test that broader/narrower indicates a Concept in this vocab (2.3.02), allow topConceptOf or hasTopConcept for 2.1.08 & 2.3.03; use same test for 2.1.08 & 2.3.03
+    owl:versionIRI :5.7 ;
+    owl:versionInfo """5.7 2026-09: Allowed more XSD forms of date - gYear, gYearMonth
+
+5.6 2026-05: Test that broader/narrower indicates a Concept in this vocab (2.3.02), allow topConceptOf or hasTopConcept for 2.1.08 & 2.3.03; use same test for 2.1.08 & 2.3.03
 
 5.5 2026-02: Added Shapes for Reqs 2.3.10 - 2.3.19
 
@@ -1117,10 +1135,10 @@ ont:
     schema:copyrightHolder <https://orcid.org/0000-0002-8742-7730> ;
     schema:creator <https://orcid.org/0000-0002-8742-7730> ;
     schema:dateCreated "2020-06-14"^^xsd:date ;
-    schema:dateModified "2026-05-13"^^xsd:date ;
+    schema:dateModified "2026-09-21"^^xsd:date ;
     schema:description "SHACL validator for the VocPub Profile" ;
     schema:license <http://purl.org/NET/rdflicense/cc-by4.0> ;
     schema:name "VocPub Validator" ;
     schema:publisher <https://linked.data.gov.au/org/agldwg> ;
-    schema:version "5.6" ;
+    schema:version "5.7" ;
 .
