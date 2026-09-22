@@ -52,12 +52,13 @@
         <dt>Created</dt>
         <dd>2020-06-14</dd>
         <dt>Modified</dt>
-        <dd>2026-05-13</dd>
+        <dd>2026-09-22</dd>
         <dt>Version IRI</dt>
-        <dd><a href="https://linked.data.gov.au/def/vocpub/spec/5.6">https://linked.data.gov.au/def/vocpub/spec/5.6</a></dd>
+        <dd><a href="https://linked.data.gov.au/def/vocpub/spec/5.7">https://linked.data.gov.au/def/vocpub/spec/5.7</a></dd>
         <dt>Version Information</dt>
         <dd>
-          <p>5.6 2023-05: Test that broader/narrower indicates a Concept in this vocab (2.3.02), allow topConceptOf or hasTopConcept for 2.1.08 & 2.3.03; use same test for 2.1.08 & 2.3.03</p>
+          <p>5.7 2026-09: Allowed more XSD forms of date - gYear, gYearMonth. Dual classed ontology as a sh:ShapesGraph. Relaxed Agent requirement for URL or email. Allowed Agent to use prefLabel for name</p>
+          <p>5.6 2026-05: Test that broader/narrower indicates a Concept in this vocab (2.3.02), allow topConceptOf or hasTopConcept for 2.1.08 & 2.3.03; use same test for 2.1.08 & 2.3.03</p>
           <p>5.5 2026-02: Added Shapes for Reqs 2.3.10 - 2.3.19</p>
           <p>5.4 2026-02: Small fixes for a number of Issues raised in the Issue Tracker</p>
           <p>5.3 ValPub valid. All propertyShape instances have IRIs, are not Blank Nodes. All Shapes have names & messages. SHACL-UI elements moved to shaclui.ttl</p>
@@ -362,7 +363,7 @@ WHERE {
         <p><strong>NOTE</strong>: Unlike the general directions for the use of SKOS (the <a href="https://www.w3.org/TR/skos-primer/">SKOS "Primer"</a>) labels in multiple languages should be indicated with <code>skos:altLabel</code> predicates, not all with <code>skos:prefLabel</code>, i.e. there should only ever be one <code>skos:prefLabel</code> value. If multiple definitions are given, the one in the language of the label is considered primary.</p>
         <p class="req">
           <a class="frag" id="2.1.05" href="#2.1.05">&#167;</a>
-          2.1.05 Each vocabulary <em>MUST</em> have exactly one created date and exactly one modified date indicated using the <code>schema:dateCreated</code> and <code>schema:dateModified</code> or <code>dcterms:created</code> and <code>dcterms:modified</code> predicates respectively that must be either an <code>xsd:date</code>, <code>xsd:dateTime</code> or <code>xsd:dateTimeStamp</code> literal value
+          2.1.05 Each vocabulary <em>MUST</em> have exactly one created date and exactly one modified date indicated using the <code>schema:dateCreated</code> and <code>schema:dateModified</code> or <code>dcterms:created</code> and <code>dcterms:modified</code> predicates respectively that must be either an <code>xsd:date</code>, <code>xsd:dateTime</code>, <code>xsd:dateTimeStamp</code>, <code>xsd:gYearMonth</code> or <code>xsd:gYear</code> literal value
         </p>
         <p class="req">
           <a class="frag" id="2.1.06" href="#2.1.06">&#167;</a>
@@ -585,7 +586,7 @@ WHERE {
       </p>
       <p class="req">
         <a class="frag" id="2.4.2" href="#2.4.2">&#167;</a>
-        2.4.2 Each Agent <em>MUST</em> give either exactly one name with the <code>schema:name</code> predicate indicating a plain string text value or at least one <code>schema:name</code> predicate indicating a language string (e.g. "Nicholas"@en). If multiple language strings are used, the languages must be unique.
+        2.4.2 Each Agent <em>MUST</em> give either exactly one name with the <code>schema:name</code> predicate indicating a plain string text value or at least one <code>skos:prefLabel</code> predicate indicating a language string (e.g. "Nicholas"@en). If multiple language strings are used, the languages must be unique.
       </p>
       <p>
         To ensure that Agents are linked to non-Semantic Web forms of identification:
