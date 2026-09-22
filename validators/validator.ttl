@@ -157,6 +157,16 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     schema:name "Requirement 2.1.14" ;
 .
 
+:Requirement-2.1.15
+    a sh:NodeShape ;
+    rdfs:isDefinedBy ont: ;
+    sh:property :code-repository ;
+    sh:severity sh:Warning ;
+    sh:targetClass skos:ConceptScheme ;
+    schema:description "Requirement 2.1.15" ;
+    schema:name "Requirement 2.1.15" ;
+.
+
 :Requirement-2.2.01
     a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
@@ -493,6 +503,16 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     schema:name "broader must be a Concept" ;
 .
 
+:code-repository
+    a sh:PropertyShape ;
+    rdfs:isDefinedBy ont: ;
+    sh:maxCount 1 ;
+    sh:message "Requirement 2.1.15 A vocabulary SHOULD indicate any online version-controlled source code repository storing the vocabulary and related content with the <code>schema:codeRepository</code> predicate and an <code>xsd:anyURI</code> object" ;
+    sh:nodeKind sh:IRI ;
+    sh:path schema:codeRepository ;
+    schema:name "copyright holder" ;
+.
+
 :concept-date-created
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
@@ -646,7 +666,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :creator
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
-    sh:message "Requirement 2.1.06 Each vocabulary MUST have at least one creator, indicated using schema:creator or dcterms:creator predicate and exactly one publisher, indicated using schema:publisher or dcterms:publisher, all of which MUST be IRIs indicating instances of schema:Person, or schema:Organization. This error message is for creator" ;
+    sh:message "Requirement 2.1.06 A vocabulary MUST have at least one creator, indicated using schema:creator or dcterms:creator predicate and exactly one publisher, indicated using schema:publisher or dcterms:publisher, all of which MUST be IRIs indicating instances of schema:Person, or schema:Organization. This error message is for creator" ;
     sh:minCount 1 ;
     sh:or (
         
@@ -720,7 +740,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
     sh:maxCount 1 ;
-    sh:message "Requirement 2.2.03 Collections and Concepts SHOULD indicate the vocabulary that defines it with the rdfs:isDefinedBy predicate" ;
+    sh:message "Requirement 2.2.03 All Collections and Concepts SHOULD indicate the vocabulary that defines it with the rdfs:isDefinedBy predicate" ;
     sh:minCount 1 ;
     sh:path rdfs:isDefinedBy ;
     schema:name "is defined by" ;
@@ -729,7 +749,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :license
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
-    sh:message "Requirement 2.1.13 Vocabularies SHOULD present any licence pertaining to its use using the schema:license predicate preferentially indicating the IRI of a license if in RDF form or a literal URL (datatype xsd:anyURI) if online but not in RDF form. If the licence is expressed in text, a literal text field may be indicated." ;
+    sh:message "Requirement 2.1.13 A vocabulary SHOULD present any licence pertaining to its use using the schema:license predicate preferentially indicating the IRI of a license if in RDF form or a literal URL (datatype xsd:anyURI) if online but not in RDF form. If the licence is expressed in text, a literal text field may be indicated." ;
     sh:or (
         
         [
@@ -752,7 +772,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :member
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
-    sh:message "Requirement 2.2.04 A Collection MUST indicate at least one Concept instance that is within the collection with use of the skos:member predicate. The Concept need not be defined by the Concept Scheme that defines the Collection" ;
+    sh:message "Requirement 2.2.04 Each Collection MUST indicate at least one Concept instance that is within the collection with use of the skos:member predicate. The Concept need not be defined by the Concept Scheme that defines the Collection" ;
     sh:minCount 1 ;
     sh:nodeKind sh:IRI ;
     sh:path skos:member ;
@@ -810,7 +830,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :publisher
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
-    sh:message "Requirement 2.1.06 Each vocabulary MUST have at least one creator, indicated using schema:creator or dcterms:creator predicate and exactly one publisher, indicated using schema:publisher or dcterms:publisher, all of which MUST be IRIs indicating instances of schema:Person, or schema:Organization. This error message is for publisher" ;
+    sh:message "Requirement 2.1.06 A vocabulary MUST have at least one creator, indicated using schema:creator or dcterms:creator predicate and exactly one publisher, indicated using schema:publisher or dcterms:publisher, all of which MUST be IRIs indicating instances of schema:Person, or schema:Organization. This error message is for publisher" ;
     sh:minCount 1 ;
     sh:or (
         
