@@ -57,7 +57,7 @@
         <dd><a href="https://linked.data.gov.au/def/vocpub/spec/5.7">https://linked.data.gov.au/def/vocpub/spec/5.7</a></dd>
         <dt>Version Information</dt>
         <dd>
-          <p>5.7 2026-09: Allowed more XSD forms of date - gYear, gYearMonth. Dual classed ontology as a sh:ShapesGraph</p>
+          <p>5.7 2026-09: Allowed more XSD forms of date - gYear, gYearMonth. Dual classed ontology as a sh:ShapesGraph. Relaxed Agent requirement for URL or email. Allowed Agent to use prefLabel for name</p>
           <p>5.6 2026-05: Test that broader/narrower indicates a Concept in this vocab (2.3.02), allow topConceptOf or hasTopConcept for 2.1.08 & 2.3.03; use same test for 2.1.08 & 2.3.03</p>
           <p>5.5 2026-02: Added Shapes for Reqs 2.3.10 - 2.3.19</p>
           <p>5.4 2026-02: Small fixes for a number of Issues raised in the Issue Tracker</p>
@@ -586,7 +586,7 @@ WHERE {
       </p>
       <p class="req">
         <a class="frag" id="2.4.2" href="#2.4.2">&#167;</a>
-        2.4.2 Each Agent <em>MUST</em> give either exactly one name with the <code>schema:name</code> predicate indicating a plain string text value or at least one <code>schema:name</code> predicate indicating a language string (e.g. "Nicholas"@en). If multiple language strings are used, the languages must be unique.
+        2.4.2 Each Agent <em>MUST</em> give either exactly one name with the <code>schema:name</code> predicate indicating a plain string text value or at least one <code>skos:prefLabel</code> predicate indicating a language string (e.g. "Nicholas"@en). If multiple language strings are used, the languages must be unique.
       </p>
       <p>
         To ensure that Agents are linked to non-Semantic Web forms of identification:

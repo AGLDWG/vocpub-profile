@@ -428,8 +428,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
     sh:datatype xsd:anyURI ;
-    sh:message "Requirement 2.4.3 Each Person MUST indicate an email address with the schema:email predicate, pointing to an xsd:anyURI value" ;
-    sh:minCount 1 ;
+    sh:message "Requirement 2.4.3 If a Person indicates an email address with the schema:email predicate, it must point to an xsd:anyURI value" ;
     sh:path schema:email ;
     schema:name "agent email" ;
 .
@@ -440,7 +439,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:datatype rdf:langString ;
     sh:message "Requirement 2.4.2 Each Agent MUST have at least one name indicated with the schema:name predicate, pointing to a literal text value. If multiple names in multiple languages are desired, then multiple schema:name values are permitted with langString literals, but ony one per language" ;
     sh:minCount 1 ;
-    sh:path schema:name ;
+    sh:path skos:prefLabel ;
     sh:uniqueLang true ;
     schema:name "agent name" ;
 .
@@ -460,8 +459,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
     sh:datatype xsd:anyURI ;
-    sh:message "Requirement 2.4.3 Each Organization MUST indicate a website with the schema:url predicate, pointing to an xsd:anyURI value" ;
-    sh:minCount 1 ;
+    sh:message "Requirement 2.4.3 If an Organisation indicates a URL address with the schema:url predicate, it must point to an xsd:anyURI value" ;
     sh:path schema:url ;
     schema:name "agent url" ;
 .
@@ -1085,7 +1083,7 @@ ont:
         owl:Ontology ,
         sh:ShapesGraph ;
     owl:versionIRI :5.7 ;
-    owl:versionInfo """5.7 2026-09: Allowed more XSD forms of date - gYear, gYearMonth. Dual classed ontology as a sh:ShapesGraph.
+    owl:versionInfo """5.7 2026-09: Allowed more XSD forms of date - gYear, gYearMonth. Dual classed ontology as a sh:ShapesGraph. Relaxed Agent requirement for URL or email. Allowed Agent to use prefLabel for name
 
 5.6 2026-05: Test that broader/narrower indicates a Concept in this vocab (2.3.02), allow topConceptOf or hasTopConcept for 2.1.08 & 2.3.03; use same test for 2.1.08 & 2.3.03
 
