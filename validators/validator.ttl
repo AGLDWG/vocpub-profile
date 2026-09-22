@@ -585,7 +585,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :concept-replaces
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
-    sh:message "Requirement 2.3.14 If a Concept indicates replaces, its range value MUST be an IRI" ;
+    sh:message "Requirement 2.3.14 If a Concept replaces another Concept, it SHOULD indicate this with dcterms:replaces with the value being the other Concept's IRI" ;
     sh:nodeKind sh:IRI ;
     sh:path dcterms:replaces ;
     schema:name "replaces" ;
@@ -594,7 +594,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :concept-revisionOf
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
-    sh:message "Requirement 2.3.13 If a Concept indicates revision of, its range value MUST be an IRI" ;
+    sh:message "Requirement 2.3.13 If a Concept is a revision of another Concept, it SHOULD indicate this with prov:revisionOf with the value being the other Concept's IRI" ;
     sh:nodeKind sh:IRI ;
     sh:path prov:revisionOf ;
     schema:name "concept revision of" ;
@@ -604,7 +604,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
     sh:class time:TemporalEntity ;
-    sh:message "Requirement 2.3.19 If a Concept indicates a temporal coverage, its range value MUST be a temporal entity (time:TemporalEntity) with either or both schema:startDate and schema:endDate values which must be dates (xsd:date)" ;
+    sh:message "Requirement 2.3.19 If a Concept indicates a temporal coverage, it must do so with the predicate schema:temporalCoverage and its range value MUST be a temporal entity (time:TemporalEntity) with either or both schema:startDate and schema:endDate values which must be dates (xsd:date)" ;
     sh:path schema:temporalCoverage ;
     schema:name "concept date modified" ;
 .
@@ -613,7 +613,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
     sh:datatype xsd:string ;
-    sh:message "Requirement 2.3.16 If a Concept indicates version, its range value MUST be a plain string (xsd:string)" ;
+    sh:message "Requirement 2.3.16 If a Concept is versioned, it SHOULD indicate this with the scehma:version predicate whose range value MUST be a plain string (xsd:string)" ;
     sh:path schema:version ;
     schema:name "concept version" ;
 .
@@ -621,7 +621,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :concept-wasDerivedFrom
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
-    sh:message "Requirement 2.3.12 If a Concept indicates was derived from, its range value MUST be an IRI" ;
+    sh:message "Requirement 2.3.12 If a Concept was derived from another Concept it SHOULD indicate this with the prov:wasDerivedFrompredicate whose range value MUST be the Concept's IRI" ;
     sh:nodeKind sh:IRI ;
     sh:path prov:wasDerivedFrom ;
     schema:name "concept was derived from" ;

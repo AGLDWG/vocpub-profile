@@ -537,17 +537,17 @@ WHERE {
         <p>To indicate another Concept from which a Concept was derived:</p>
         <p class="req">
           <a class="frag" id="2.3.12" href="#2.3.12">&#167;</a>
-          2.3.12 If a Concept indicates was derived from, its range value <em>MUST</em> be an IRI
+          2.3.12 If a Concept was derived from another Concept it <em>SHOULD</em> indicate this with the <code>prov:wasDerivedFrom</code> predicate whose range value <em>MUST</em> be the Concept's IRI
         </p>
         <p>To indicate another Concept which a Concept is a revision of, revision of being a closer derivation than the more generic was derived from, as above:</p>
         <p class="req">
           <a class="frag" id="2.3.13" href="#2.3.13">&#167;</a>
-          2.3.13 If a Concept indicates revision of, its range value <em>MUST</em> be an IRI
+          2.3.13 If a Concept is a revision of another Concept, it <em>SHOULD</em> indicate this with <code>prov:revisionOf</code> with the value being the other Concept's IRI
         </p>
         <p>To indicate another Concept that a Concept replaces:</p>
         <p class="req">
           <a class="frag" id="2.3.14" href="#2.3.14">&#167;</a>
-          2.3.14 If a Concept indicates replaces, its range value <em>MUST</em> be an IRI
+          2.3.14 If a Concept replaces another Concept, it <em>SHOULD</em> indicate this with <code>dcterms:replaces</code> with the value being the other Concept's IRI
         </p>
         <p>To indicate another Concept that a Concept is replaced by, the inverse of replaces above:</p>
         <p class="req">
@@ -557,7 +557,7 @@ WHERE {
         <p>To indicate a version identifier for a Concept:</p>
         <p class="req">
           <a class="frag" id="2.3.16" href="#2.3.16">&#167;</a>
-          2.3.16 If a Concept indicates version, its range value <em>MUST</em> be a plain string (<code>xsd:string</code>)
+          2.3.16 If a Concept is versioned, it <em>SHOULD</em> indicate this with the scehma:version predicate whose range value <em>MUST</em> be a plain string (<code>xsd:string</code>)
         </p>
         <p>To indicate details about when a Concept was created and modified but not when it is applicable for:</p>
         <p class="req">
@@ -571,7 +571,7 @@ WHERE {
         <p>To indicate the period of time that a Concept is relevant for:</p>
         <p class="req">
           <a class="frag" id="2.3.19" href="#2.3.19">&#167;</a>
-          2.3.19 If a Concept indicates a temporal coverage, its range value <em>MUST</em> be a temporal entity (<code>time:TemporalEntity</code>) with either or both <code>schema:startDate</code> and <code>schema:endDate</code> values which must be <code>xsd:date</code>, <code>xsd:gYearMonth</code> or <code>xsd:gYear</code> literals
+          2.3.19 If a Concept indicates a temporal coverage, it must do so with the predicate <code>schema:temporalCoverage</code> and its range value  <em>MUST</em> be a temporal entity (<code>time:TemporalEntity</code>) with either or both <code>schema:startDate</code> and <code>schema:endDate</code> values which must be <code>xsd:date</code>, <code>xsd:gYearMonth</code> or <code>xsd:gYear</code> literals
         </p>
         <p>To ensure Concepts only link to other concpets in the same vocabulary with <code>broader</code> or <code>narrower</code>:</p>
         <p class="req">
