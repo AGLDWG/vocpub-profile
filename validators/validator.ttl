@@ -507,7 +507,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
     sh:maxCount 1 ;
-    sh:message "Requirement 2.1.15 A vocabulary SHOULD indicate any online version-controlled source code repository storing the vocabulary and related content with the <code>schema:codeRepository</code> predicate and an <code>xsd:anyURI</code> object" ;
+    sh:message "Requirement 2.1.15 A vocabulary SHOULD indicate any online version-controlled source code repository storing the vocabulary and related content with the schema:codeRepository predicate and an xsd:anyURI object" ;
     sh:nodeKind sh:IRI ;
     sh:path schema:codeRepository ;
     schema:name "copyright holder" ;
