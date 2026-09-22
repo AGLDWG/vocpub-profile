@@ -747,16 +747,6 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     schema:name "in scheme" ;
 .
 
-:is-defined-by
-    a sh:PropertyShape ;
-    rdfs:isDefinedBy ont: ;
-    sh:maxCount 1 ;
-    sh:message "Requirement 2.3.02 All Collections and Concepts SHOULD indicate the vocabulary that defines them with the rdfs:isDefinedBy predicate" ;
-    sh:minCount 1 ;
-    sh:path rdfs:isDefinedBy ;
-    schema:name "is defined by" ;
-.
-
 :license
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
@@ -907,29 +897,29 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :temporal-entity-end-date-type
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
+    sh:message "Requirement 2.3.19 If a Temporal Entity (time:TemporalEntity) indicates an start or end date (schema:startDate, schema:endDate) value, it must be an xsd:date, xsd:gYearMonth or xsd:gYear literal" ;
     sh:or (
-
+        
         [
             sh:datatype xsd:dateTime ;
         ]
-
+        
         [
             sh:datatype xsd:date ;
         ]
-
+        
         [
             sh:datatype xsd:dateTimeStamp ;
         ]
-
+        
         [
             sh:datatype xsd:gYearMonth ;
         ]
-
+        
         [
             sh:datatype xsd:gYear ;
         ]
     ) ;
-    sh:message "Requirement 2.3.19 If a Temporal Entity (time:TemporalEntity) indicates an start or end date (schema:startDate, schema:endDate) value, it must be an xsd:date, xsd:gYearMonth or xsd:gYear literal" ;
     sh:path schema:endDate ;
     schema:name "temporal entity end date type" ;
 .
@@ -947,29 +937,29 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :temporal-entity-start-date-type
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
+    sh:message "Requirement 2.3.19 If a Temporal Entity (time:TemporalEntity) indicates an start or end date (schema:startDate, schema:endDate) value, it must be an xsd:date, xsd:gYearMonth or xsd:gYear literal" ;
     sh:or (
-
+        
         [
             sh:datatype xsd:dateTime ;
         ]
-
+        
         [
             sh:datatype xsd:date ;
         ]
-
+        
         [
             sh:datatype xsd:dateTimeStamp ;
         ]
-
+        
         [
             sh:datatype xsd:gYearMonth ;
         ]
-
+        
         [
             sh:datatype xsd:gYear ;
         ]
     ) ;
-    sh:message "Requirement 2.3.19 If a Temporal Entity (time:TemporalEntity) indicates an start or end date (schema:startDate, schema:endDate) value, it must be an xsd:date, xsd:gYearMonth or xsd:gYear literal" ;
     sh:path schema:startDate ;
     schema:name "temporal entity start date type" ;
 .
@@ -1013,6 +1003,16 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sh:path skos:definition ;
     sh:uniqueLang true ;
     schema:name "definition" ;
+.
+
+:is-defined-by
+    a sh:PropertyShape ;
+    rdfs:isDefinedBy ont: ;
+    sh:maxCount 1 ;
+    sh:message "Requirement 2.3.02 All Collections and Concepts SHOULD indicate the vocabulary that defines them with the rdfs:isDefinedBy predicate" ;
+    sh:minCount 1 ;
+    sh:path rdfs:isDefinedBy ;
+    schema:name "is defined by" ;
 .
 
 :prefLabel
