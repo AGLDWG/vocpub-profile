@@ -47,6 +47,12 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:inScheme cs: ;
     skos:prefLabel "Concept 2.1"@en ;
     schema:citation "http://vocabularies.coar-repositories.org/documentation/access_rights/"^^xsd:anyURI ;
+    schema:temporalCoverage
+        [
+            a time:TemporalEntity ;
+            schema:startDate "2024"^^xsd:gYear ;
+            schema:endDate "2025-09"^^xsd:gYearMonth ;
+        ] ;
 .
 
 :c2.2

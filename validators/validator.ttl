@@ -37,7 +37,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :Requirement-2.1.05
     a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    sh:message "Requirement 2.1.05 Each vocabulary MUST have exactly one created date and exactly one modified date indicated using the schema:dateCreated and schema:dateModified or dcterms:created and dcterms:modified predicates respectively that must be either an xsd:date, xsd:dateTime or xsd:dateTimeStamp literal value" ;
+    sh:message "Requirement 2.1.05 Each vocabulary MUST have exactly one created date and exactly one modified date indicated using the schema:dateCreated and schema:dateModified or dcterms:created and dcterms:modified predicates respectively that must be either an xsd:date, xsd:dateTime, xsd:dateTimeStamp, xsd:gYearMonth or xsd:gYear literal value" ;
     sh:property
         :created ,
         :modified ;
@@ -49,7 +49,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :Requirement-2.1.06
     a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    sh:message "Requirement 2.1.06 Each vocabulary MUST have at least one creator, indicated using schema:creator or dcterms:creator predicate and exactly one publisher, indicated using schema:publisher or dcterms:publisher, all of which MUST be IRIs indicating instances of schema:Person, or schema:Organization" ;
+    sh:message "Requirement 2.1.06 Each vocabulary MUST have at least one creator, indicated using schema:creator or dcterms:creator predicate and exactly one publisher, indicated using schema:publisher or dcterms:publisher, all of which MUST be IRIs indicating instances of schema:Person, or schema:Organization. A prov:qualifiedAttribution predicate indicating an Agent with the prov:hadRole predicate indicating the value isorole:originator or isorole:publisher may be used instead of schema:creator &amp; schema:publisher, respectively" ;
     sh:property
         :creator ,
         :publisher ;
@@ -216,10 +216,21 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     schema:name "Requirement 2.2.04" ;
 .
 
+:Requirement-2.2.05
+    a sh:NodeShape ;
+    rdfs:isDefinedBy ont: ;
+    sh:message "Requirement 2.3.2 Each Collection in a vocabulary SHOULD indicate the vocabulary that defines it by use of the rdfs:isDefinedBy predicate indicating a Concept Scheme instance. If no such predicate is given, the Concept Scheme in the file that a Collection is provided in is understood to be the defining Concept Scheme" ;
+    sh:property :is-defined-by ;
+    sh:severity sh:Warning ;
+    sh:targetClass skos:Concept ;
+    schema:description "Requirement 2.3.02" ;
+    schema:name "Requirement 2.3.02" ;
+.
+
 :Requirement-2.3.02
     a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    sh:message "Requirement 2.3.2 Each Concept in a vocabulary MAY indicate the vocabulary that defines it by use of the rdfs:isDefinedBy predicate indicating a Concept Scheme instance. If no such predicate is given, the Concept Scheme in the file that a Concept is provided in is understood to be the defining Concept Scheme" ;
+    sh:message "Requirement 2.3.2 Each Concept in a vocabulary SHOULD indicate the vocabulary that defines it by use of the rdfs:isDefinedBy predicate indicating a Concept Scheme instance. If no such predicate is given, the Concept Scheme in the file that a Concept is provided in is understood to be the defining Concept Scheme" ;
     sh:property :is-defined-by ;
     sh:severity sh:Warning ;
     sh:targetClass skos:Concept ;
@@ -447,7 +458,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
     sh:datatype rdf:langString ;
-    sh:message "Requirement 2.4.2 Each Agent MUST have at least one name indicated with the schema:name predicate, pointing to a literal text value. If multiple names in multiple languages are desired, then multiple schema:name values are permitted with langString literals, but ony one per language" ;
+    sh:message "Requirement 2.4.2 Each Agent MUST have at least one name indicated with the schema:name predicate, pointing to a literal text value. If multiple names in multiple languages are desired, then multiple skos:prefLabel values SHOULD be use with langString literals, but ony one per language" ;
     sh:minCount 1 ;
     sh:path skos:prefLabel ;
     sh:uniqueLang true ;
@@ -459,7 +470,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     rdfs:isDefinedBy ont: ;
     sh:datatype xsd:string ;
     sh:maxCount 1 ;
-    sh:message "Requirement 2.4.2 Each Agent MUST have at least one name indicated with the schema:name predicate, pointing to a literal text value. If multiple names in multiple languages are desired, then multiple schema:name values are permitted with langString literals, but ony one per language" ;
+    sh:message "Requirement 2.4.2 Each Agent MUST have at least one name indicated with the schema:name predicate, pointing to a literal text value. If multiple names in multiple languages are desired, then multiple skos:prefLabel values SHOULD be use with langString literals, but ony one per language" ;
     sh:minCount 1 ;
     sh:path schema:name ;
     schema:name "agent name" ;
@@ -740,7 +751,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
     sh:maxCount 1 ;
-    sh:message "Requirement 2.2.03 All Collections and Concepts SHOULD indicate the vocabulary that defines it with the rdfs:isDefinedBy predicate" ;
+    sh:message "Requirement 2.3.02 All Collections and Concepts SHOULD indicate the vocabulary that defines it with the rdfs:isDefinedBy predicate" ;
     sh:minCount 1 ;
     sh:path rdfs:isDefinedBy ;
     schema:name "is defined by" ;
@@ -820,7 +831,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :notation
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
-    sh:message "Requirement 2.3.10 If a Concept indicates a skos:notation, its range value MUST be a literal. Note that it SHOULD be of a custom datatype" ;
+    sh:message "Requirement 2.3.10 If a Concept indicates a skos:notation, its range value MUST be a literal which SHOULD be of a custom datatype" ;
     sh:nodeKind sh:Literal ;
     sh:path skos:notation ;
     sh:severity sh:Violation ;
@@ -887,7 +898,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
     sh:maxCount 1 ;
-    sh:message "Requirement 2.3.19 A Temporal Entity (time:TemporalEntity) must indicate either or both a start date (schema:startDate) and an end date (schema:endDate) value" ;
+    sh:message "Requirement 2.3.19 If a Temporal Entity (time:TemporalEntity) indicates an start or end date (schema:startDate, schema:endDate) value, it must be an xsd:date, xsd:gYearMonth or xsd:gYear literal" ;
     sh:minCount 1 ;
     sh:path schema:endDate ;
     schema:name "temporal entity end date one" ;
@@ -896,8 +907,29 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :temporal-entity-end-date-type
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
-    sh:datatype xsd:date ;
-    sh:message "Requirement 2.3.19 If a Temporal Entity (time:TemporalEntity) indicates an end date (schema:startDate) value, it must be a literal date (xsd:date)" ;
+    sh:or (
+
+        [
+            sh:datatype xsd:dateTime ;
+        ]
+
+        [
+            sh:datatype xsd:date ;
+        ]
+
+        [
+            sh:datatype xsd:dateTimeStamp ;
+        ]
+
+        [
+            sh:datatype xsd:gYearMonth ;
+        ]
+
+        [
+            sh:datatype xsd:gYear ;
+        ]
+    ) ;
+    sh:message "Requirement 2.3.19 If a Temporal Entity (time:TemporalEntity) indicates an start or end date (schema:startDate, schema:endDate) value, it must be an xsd:date, xsd:gYearMonth or xsd:gYear literal" ;
     sh:path schema:endDate ;
     schema:name "temporal entity end date type" ;
 .
@@ -906,7 +938,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
     sh:maxCount 1 ;
-    sh:message "Requirement 2.3.19 A Temporal Entity (time:TemporalEntity) must indicate either or both a start date (schema:startDate) and an end date (schema:endDate) value" ;
+    sh:message "Requirement 2.3.19 If a Temporal Entity (time:TemporalEntity) indicates an start or end date (schema:startDate, schema:endDate) value, it must be an xsd:date, xsd:gYearMonth or xsd:gYear literal" ;
     sh:minCount 1 ;
     sh:path schema:startDate ;
     schema:name "temporal entity end date one" ;
@@ -915,8 +947,29 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :temporal-entity-start-date-type
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
-    sh:datatype xsd:date ;
-    sh:message "Requirement 2.3.19 If a Temporal Entity (time:TemporalEntity) indicates a start date (schema:startDate) value, it must be a literal date (xsd:date)" ;
+    sh:or (
+
+        [
+            sh:datatype xsd:dateTime ;
+        ]
+
+        [
+            sh:datatype xsd:date ;
+        ]
+
+        [
+            sh:datatype xsd:dateTimeStamp ;
+        ]
+
+        [
+            sh:datatype xsd:gYearMonth ;
+        ]
+
+        [
+            sh:datatype xsd:gYear ;
+        ]
+    ) ;
+    sh:message "Requirement 2.3.19 If a Temporal Entity (time:TemporalEntity) indicates an start or end date (schema:startDate, schema:endDate) value, it must be an xsd:date, xsd:gYearMonth or xsd:gYear literal" ;
     sh:path schema:startDate ;
     schema:name "temporal entity start date type" ;
 .
@@ -924,7 +977,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :theming
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
-    sh:message "Requirement 2.1.12 High-level theming of a vocabulary SHOULD be given by using the schema:keywords predicate indicating Concepts from another vocabulary. Alternatively, dcat:theme MAY be used. Text literal values for either predicate SHOULD NOT be used" ;
+    sh:message "Requirement 2.1.12 High-level theming of a vocabulary SHOULD be given using the schema:keywords predicate indicating Concepts from another vocabulary. Alternatively, dcat:theme MAY be used. Text literal values for either predicate SHOULD NOT be used" ;
     sh:nodeKind sh:IRI ;
     sh:path
         [

@@ -367,14 +367,14 @@ WHERE {
         </p>
         <p class="req">
           <a class="frag" id="2.1.06" href="#2.1.06">&#167;</a>
-          2.1.06 Each vocabulary <em>MUST</em> have at least one creator, indicated using <code>schema:creator</code> or <code>dcterms:creator</code> predicate and exactly one publisher, indicated using <code>schema:publisher</code> or <code>dcterms:publisher</code>, all of which MUST be IRIs indicating instances of <code>schema:Person</code>, or <code>schema:Organization</code>. A <code>prov:qualifiedAttribution</code> predicate indicating an Agent with the <code>prov:hadRole</code> predicate indicating the value <code>isorole:originator</code> or <code>isorole:publisher</code> may be used instead of <code>schema:creator</code> &amp; <code>schema:publisher</code>, respectively
+          2.1.06 Each vocabulary <em>MUST</em> have at least one creator, indicated using <code>schema:creator</code> or <code>dcterms:creator</code> predicate and exactly one publisher, indicated using <code>schema:publisher</code> or <code>dcterms:publisher</code>, all of which <em>MUST</em> be IRIs indicating instances of <code>schema:Person</code>, or <code>schema:Organization</code>. A <code>prov:qualifiedAttribution</code> predicate indicating an Agent with the <code>prov:hadRole</code> predicate indicating the value <code>isorole:originator</code> or <code>isorole:publisher</code> may be used instead of <code>schema:creator</code> &amp; <code>schema:publisher</code>, respectively
         </p>
         <p>
           To be able to link SKOS vocabularies to their non-vocabulary source information:
         </p>
         <p class="req">
           <a class="frag" id="2.1.07" href="#2.1.07">&#167;</a>
-          2.1.07 The origins of a Concept Scheme <em>MUST</em> be indicated by at least one of the following predicates: <code>skos:historyNote</code>, <code>schema:citation</code>, <code>prov:wasDerivedFrom</code>. <code>dcterms:source</code> <em>MAY</em> be used instead of <code>schema:citation</code> and <code>dcterms:provenance</code> <em>MAY</em> be used instead of <code>skos:historyNote</code> but the schema.org and SKOS predicates are preferred.
+          2.1.07 The origins of a Concept Scheme <em>MUST</em> be indicated by at least one of the following predicates: <code>skos:historyNote</code>, <code>schema:citation</code>, <code>prov:wasDerivedFrom</code>. <code>dcterms:source</code> <em>MAY</em> be used instead of <code>schema:citation</code> and <code>dcterms:provenance</code> <em>MAY</em> be used instead of <code>skos:historyNote</code> but the schema.org and SKOS predicates are preferred
         </p>
         <p>
           If a vocabulary is based on another Semantic Web resource, such as an ontology or another vocabulary, <code>prov:wasDerivedFrom</code> should be used to indicate that resource's IRI. If the vocabulary is based on a resource that is identified by a IRI but which is not a Semantic Web resource, <code>schema:citation</code> should be used to indicate the resource's IRI with the <code>xsd:anyURI</code> datatype. If the vocabulary is based on something which cannot be identified by IRI, a statement about the vocabulary's origins should be given in a literal value indicated with the <code>skos:historyNote</code> predicate. If the vocabulary is not based on any other resource or source of information, i.e. this vocabulary is its only expression, this should be communicated by use of the <code>skos:historyNote</code> indicating the phrase "This vocabulary is expressed for the first time here".
@@ -397,12 +397,13 @@ WHERE {
         <p>To communicate the <em>Registry Status</em> of the vocabulary:</p>
         <p class="req">
           <a class="frag" id="2.1.10" href="#2.1.10">&#167;</a>
-          2.1.10 The status of the vocabulary as a whole, according to the Registry Status standard<sup><a href="#iso19135">ref</a></sup>, <em>SHOULD</em> be given with the predicate <code>schema:status</code> (preferred) or <code>reg:status</code> indicating a Concept from the <em>Registry Statuses</em> vocabulary (<a href="https://linked.data.gov.au/def/reg-statuses">https://linked.data.gov.au/def/reg-statuses</a>).
+          2.1.10 The status of a vocabulary or a Concept <em>SHOULD</em> be given with the predicate <code>schema:status</code> and <em>MAY</em> be given with the predicate <code>reg:status</code>. Either, if used, <em>MUST</em> indicate a Concept from the <em>Registry Statuses</em> vocabulary (<a href="https://linked.data.gov.au/def/reg-statuses">https://linked.data.gov.au/def/reg-statuses</a>)
         </p>
         <p>To indicate whether and if so how this vocabulary has been derived from another vocabulary:</p>
         <p class="req">
           <a class="frag" id="2.1.11" href="#2.1.11">&#167;</a>
-          2.1.11 The derivation status of the vocabulary <em>SHOULD</em> be given with the predicate <code>prov:qualifiedDerivation</code> indicating a Blank Node that contains the predicated <code>prov:entity</code>, to indicate the vocabulary derived from and <code>prov:hadRole</code> to indicate the mode of derivation which <em>SHOULD</em> be taken from the <em>Vocabulary Derivation Modes</em> vocabulary (<a href="https://linked.data.gov.au/def/vocdermods">https://linked.data.gov.au/def/vocdermods</a>).
+          2.1.11 The derivation status of the vocabulary <em>SHOULD</em> be given should be given with the predicate <code>prov:qualifiedDerivation</code> indicating a Blank Node that contains the predicated <code>prov:entity</code>, to indicate the vocabulary derived from and <code>prov:hadRole</code> to indicate the mode of derivation which <em>SHOULD</em> be taken from the <em>Vocabulary Derivation Modes</em> vocabulary (<a href="https://linked.data.gov.au/def/vocdermods">https://linked.data.gov.au/def/vocdermods</a>)<br>
+          If a vocabulary has a qualified derivation given, it <em>MUST</em> then give a <code>prove:entity</code> predicate within the derivation, indicating the IRI of the vocabulary it is derived from and it <em>MUST</em> give a <code>prove:hadRole</code> predicate within the derivation, indicating the IRI of the role
         </p>
         <p>Example data for a vocabulary indicating that it is an extension to another vocabulary using the mechanism defined in Requirement 2.1.2 is:</p>
         <pre>
@@ -419,21 +420,21 @@ WHERE {
         <p>To high-level theming of a vocabulary:</p>
         <p class="req">
           <a class="frag" id="2.1.12" href="#2.1.12">&#167;</a>
-          2.1.12 High-level theming of a vocabulary <em>SHOULD</em> be given using the <code>schema:keywords</code> predicate indicating Concepts from another vocabulary. Alternatively, <code>dcat:theme</code> <em>MAY</em> be used. Text literal values for either predicate <em>SHOULD NOT</em> be used.
+          2.1.12 High-level theming of a vocabulary <em>SHOULD</em> be given using the <code>schema:keywords</code> predicate indicating Concepts from another vocabulary. Alternatively, <code>dcat:theme</code> <em>MAY</em> be used. Text literal values for either predicate <em>SHOULD NOT</em> be used
         </p>
         <p>To indicate license, copyright:</p>
         <p class="req">
           <a class="frag" id="2.1.13" href="#2.1.13">&#167;</a>
-          2.1.13 Any licence pertaining to the reuse of a vocabulary's content <em>SHOULD</em> be given using the <code>schema:license</code> predicate preferentially indicating the IRI of a license if in RDF form or a literal URL (datatype <code>xsd:anyURI</code>) if online but not in RDF form. If the licence is expressed in text, a literal text field may be indicated.
+          2.1.13 A vocabulary <em>SHOULD</em> present any licence pertaining to its use using the <code>schema:license</code> predicate preferentially indicating the IRI of a license if in RDF form or a literal URL (datatype <code>xsd:anyURI</code>) if online but not in RDF form. If the licence is expressed in text, a literal text field may be indicated.
         </p>
         <p class="req">
           <a class="frag" id="2.1.14" href="#2.1.14">&#167;</a>
-          2.1.14 The copyright holder for the vocabulary <em>SHOULD</em> be given using the <code>schema:copyrightHolder</code> predicate preferentially indicating the IRI of an Agent or a Blank Node instance of an Agent containing details as per Agent requirements. A <code>prov:qualifiedAttribution</code> predicate indicating an Agent with the <code>prov:hadRole</code> predicate indicating the value <code>isorole:rightsHolder</code> may be used instead of <code>schema:copyrightHolder</code>.
+          2.1.14 The copyright holder for the vocabulary <em>SHOULD</em> be given using the <code>schema:copyrightHolder</code> predicate preferentially indicating the IRI of an Agent or a Blank Node instance of an Agent containing details as per Agent requirements. A <code>prov:qualifiedAttribution</code> predicate indicating an Agent with the <code>prov:hadRole</code> predicate indicating the value <code>isorole:rightsHolder</code> may be used instead of <code>schema:copyrightHolder</code>
         </p>
         <p>To assist users locating additional online resources:</p>
         <p class="req">
           <a class="frag" id="2.1.15" href="#2.1.15">&#167;</a>
-          2.1.15 SKOS vocabularies <em>SHOULD</em> indicate any online version-controlled source code repository storing the vocabulary and related content with the <code>schema:codeRepository</code> predicate and an <code>xsd:anyURI</code> object.
+          2.1.15 A vocabulary <em>SHOULD</em> indicate any online version-controlled source code repository storing the vocabulary and related content with the <code>schema:codeRepository</code> predicate and an <code>xsd:anyURI</code> object
         </p>
         <p><strong>NOTE</strong>: The datatype <code>xsd:anyURI</code> is used instead of an IRI when the object in a triple is a web resource or web address but is not expected to be an RDF node in a graph, as will be the case for non-RDF resources such as code repository locations.</p>
       </section>
@@ -458,18 +459,18 @@ WHERE {
         </p>
         <p class="req">
           <a class="frag" id="2.2.02" href="#2.2.02">&#167;</a>
-          2.2.02 The origins of a Collection, if different from its containing Concept Scheme, <em>SHOULD</em> be indicated by at least one of the following predicates: <code>skos:historyNote</code>, <code>schema:citation</code>, <code>prov:wasDerivedFrom</code>. <code>dcterms:source</code> <em>MAY</em> be used instead of <code>schema:citation</code> and <code>dcterms:provenance</code> <em>MAY</em> be used instead of <code>skos:historyNote</code> but the schema.org and SKOS predicates are preferred.
+          2.2.02 The origins of a Collection, if different from its containing Concept Scheme, <em>SHOULD</em> be indicated by at least one of the following predicates: <code>skos:historyNote</code>, <code>schema:citation</code>, <code>prov:wasDerivedFrom</code>. <code>dcterms:source</code> <em>MAY</em> be used instead of <code>schema:citation</code> and <code>dcterms:provenance</code> <em>MAY</em> be used instead of <code>skos:historyNote</code> but the schema.org and SKOS predicates are preferred
         </p>
         <p><em>For compatability with previous versions of this Specification, <code>dcterms:provenance</code> MAY be used instead of <code>skos:historyNote</code> but the latter is the preferred predicate.</em></p>
         <p>To help list Collections within vocabularies:</p>
         <p class="req">
           <a class="frag" id="2.2.03" href="#2.2.03">&#167;</a>
-          2.2.03 A Collection exists within a vocabulary <em>SHOULD</em> indicate that it is within the vocabulary by use of the <code>skos:inScheme</code> predicate. If it is defined for the first time in the vocabulary, it should also indicate this with the <code>rdfs:isDefinedBy</code> predicate
+          2.2.03 All Collections <em>MUST</em> indicate they are within the Concept Scheme of the vocabulary with the <code>skos:inScheme</code> predicate<br>
         </p>
         <p>To ensure that a Collection isn't empty:</p>
         <p class="req">
           <a class="frag" id="2.2.04" href="#2.2.04">&#167;</a>
-          2.2.04 A Collection <em>MUST</em> indicate at least one Concept instance that is within the collection with use of the <code>skos:member</code> predicate. The Concept need not be defined by the Concept Scheme that defines the Collection
+          2.2.04 Each Collection <em>MUST</em> indicate at least one Concept instance that is within the collection with use of the <code>skos:member</code> predicate. The Concept need not be defined by the Concept Scheme that defines the Collection
         </p>
       </section>
       <section id="concept">
@@ -504,14 +505,14 @@ WHERE {
         </p>
         <p class="req">
           <a class="frag" id="2.3.03" href="#2.3.03">&#167;</a>
-          2.3.03 Each Concept in a vocabulary MUST indicate that it appears within that vocabulary's hierarchy of Concepts either directly by use of the <code>skos:topConceptOf</code> predicate indicating the vocabulary or indirectly by use of one or more <code>skos:broader</code> / <code>skos:narrower</code> predicates placing the Concept within a chain of other Concepts, the end of which is indicated as a top concept of the vocabulary
+          2.3.03 Each Concept in a vocabulary <em>MUST</em> indicate that it appears within that vocabulary's hierarchy of Concepts either directly by use of the <code>skos:topConceptOf</code> predicate indicating the vocabulary or indirectly by use of one or more <code>skos:broader</code> / <code>skos:narrower</code> predicates placing the Concept within a chain of other Concepts, the end of which is indicated as a top concept of the vocabulary
         </p>
         <p>
           If a Concept is derived from an existing resource and that derivation is not already covered by source information for the vocabulary that it is within:
         </p>
         <p class="req">
           <a class="frag" id="2.3.04" href="#2.3.04">&#167;</a>
-          2.3.04 The origins of a Concept, if different from its containing Concept Scheme, <em>SHOULD</em> be indicated by at least one of the following predicates: <code>skos:historyNote</code>, <code>schema:citation</code>, <code>dcterms:source</code> or <code>prov:wasDerivedFrom</code> or <code>dcterms:provenance</code>.
+          2.3.04 The origins of a Concept, if different from its containing Concept Scheme, <em>SHOULD</em> be indicated by at least one of the following predicates: <code>skos:historyNote</code>, <code>schema:citation</code>, <code>prov:wasDerivedFrom</code>. <code>dcterms:source</code> <em>MAY</em> be used instead of <code>schema:citation</code> and <code>dcterms:provenance</code> <em>MAY</em> be used instead of <code>skos:historyNote</code> but the schema.org and SKOS predicates are preferred
         </p>
         <p>
           If a Concept is based on another Semantic Web resource, such as another Concept or other defined object, <code>prov:wasDerivedFrom</code> should be used to indicate that resource's IRI. If the Concept is based on a resource that is identified by a IRI but which is not a Semantic Web resource, <code>dcterms:source</code> should be used to indicate the resource's IRI. If the vocabulary is based on something which cannot be identified by IRI, a statement about the vocabulary's origins should be given in a literal value indicated with the <code>skos:historyNote</code> predicate. If the vocabulary is not based on any other resource or source of information, i.e. this vocabulary is its only expression, this should be communicated by use of the <code>skos:historyNote</code> indicating the phrase "This vocabulary is expressed for the first time here".
@@ -519,62 +520,62 @@ WHERE {
         <p>To communicate the <em>Registry Status</em> of the vocabulary:</p>
         <p class="req">
           <a class="frag" id="2.3.05" href="#2.3.05">&#167;</a>
-          2.3.05 The status of a Concept, according to the Registry Status standard<sup><a href="#iso19135">ref</a></sup>, <em>MAY</em> be given with the predicate <code>schema:status</code> (preferred) or <code>reg:status</code> indicating a Concept from the <em>Registry Statuses</em> vocabulary (<a href="https://linked.data.gov.au/def/reg-statuses">https://linked.data.gov.au/def/reg-statuses</a>).
+          2.3.05 The status of a Concept <em>SHOULD</em> be given with the predicate <code>schema:status</code> and <em>MAY</em> be given with the predicate <code>reg:status</code>. Either, if used, <em>MUST</em> indicate a Concept from the <em>Registry Statuses</em> vocabulary (<a href="https://linked.data.gov.au/def/reg-statuses">https://linked.data.gov.au/def/reg-statuses</a>)
         </p>
         <p>To link a Concept to other things with literal identifiers:</p>
         <p class="req">
           <a class="frag" id="2.3.10" href="#2.3.10">&#167;</a>
-          2.3.10 If a Concept indicates a skos:notation, its range value MUST be a literal. Note that it SHOULD be of a custom datatype
+          2.3.10 If a Concept indicates a <code>skos:notation</code>, its range value <em>MUST</em> be a literal which <em>SHOULD</em> be of a custom datatype
         </p>
         <p>The use of custom datatypes with SKOS <code>notation</code> predicates is explained in <a href="https://www.w3.org/TR/skos-primer/#secnotations">SKOS Primer, Section 4.6 Notations</a>.</p>
         <p>To describe the history of a Concept (it's development):</p>
         <p class="req">
           <a class="frag" id="2.3.11" href="#2.3.11">&#167;</a>
-          2.3.11 If a Concept indicates a skos:historyNote, its range value MUST be a literal. A plain string value (xsd:string) may be used or, if values in multiple languages are desired, then multiple language string literals (rdf:langString) may be used, but ony one per language and plain strings and language strings should not be mixed
+          2.3.11 If a Concept indicates a <code>skos:historyNote</code>, its range value <em>MUST</em> be a literal. A plain string value (<code>xsd:string</code>) may be used or, if values in multiple languages are desired, then multiple language string literals (<code>rdf:langString</code>) may be used, but ony one per language and plain strings and language strings should not be mixed
         </p>
         <p>To indicate another Concept from which a Concept was derived:</p>
         <p class="req">
           <a class="frag" id="2.3.12" href="#2.3.12">&#167;</a>
-          2.3.12 If a Concept indicates was derived from, its range value MUST be an IRI
+          2.3.12 If a Concept indicates was derived from, its range value <em>MUST</em> be an IRI
         </p>
         <p>To indicate another Concept which a Concept is a revision of, revision of being a closer derivation than the more generic was derived from, as above:</p>
         <p class="req">
           <a class="frag" id="2.3.13" href="#2.3.13">&#167;</a>
-          2.3.13 If a Concept indicates revision of, its range value MUST be an IRI
+          2.3.13 If a Concept indicates revision of, its range value <em>MUST</em> be an IRI
         </p>
         <p>To indicate another Concept that a Concept replaces:</p>
         <p class="req">
           <a class="frag" id="2.3.14" href="#2.3.14">&#167;</a>
-          2.3.14 If a Concept indicates replaces, its range value MUST be an IRI
+          2.3.14 If a Concept indicates replaces, its range value <em>MUST</em> be an IRI
         </p>
         <p>To indicate another Concept that a Concept is replaced by, the inverse of replaces above:</p>
         <p class="req">
           <a class="frag" id="2.3.15" href="#2.3.15">&#167;</a>
-          2.3.15 If a Concept indicates is replaced by, its range value MUST be an IRI
+          2.3.15 If a Concept indicates is replaced by, its range value <em>MUST</em> be an IRI
         </p>
         <p>To indicate a version identifier for a Concept:</p>
         <p class="req">
           <a class="frag" id="2.3.16" href="#2.3.16">&#167;</a>
-          2.3.16 If a Concept indicates version, its range value MUST be a plain string (xsd:string)
+          2.3.16 If a Concept indicates version, its range value <em>MUST</em> be a plain string (<code>xsd:string</code>)
         </p>
         <p>To indicate details about when a Concept was created and modified but not when it is applicable for:</p>
         <p class="req">
           <a class="frag" id="2.3.17" href="#2.3.17">&#167;</a>
-          2.3.17 If a Concept indicates a date created, its range value MUST be a date (xsd:date)
+          2.3.17 If a Concept indicates a date created, its range value <em>MUST</em> be a date (<code>xsd:date</code>)
         </p>
         <p class="req">
           <a class="frag" id="2.3.18" href="#2.3.18">&#167;</a>
-          2.3.18 If a Concept indicates a date modified, its range value MUST be a date (xsd:date)
+          2.3.18 If a Concept indicates a date modified, its range value <em>MUST</em> be a date (<code>xsd:date</code>)
         </p>
         <p>To indicate the period of time that a Concept is relevant for:</p>
         <p class="req">
           <a class="frag" id="2.3.19" href="#2.3.19">&#167;</a>
-          2.3.19 If a Concept indicates a temporal coverage, its range value MUST be a temporal entity (time:TemporalEntity) with either or both schema:startDate and schema:endDate values which must be dates (xsd:date)
+          2.3.19 If a Concept indicates a temporal coverage, its range value <em>MUST</em> be a temporal entity (<code>time:TemporalEntity</code>) with either or both <code>schema:startDate</code> and <code>schema:endDate</code> values which must be <code>xsd:date</code>, <code>xsd:gYearMonth</code> or <code>xsd:gYear</code> literals
         </p>
         <p>To ensure Concepts only link to other concpets in the same vocabulary with <code>broader</code> or <code>narrower</code>:</p>
         <p class="req">
           <a class="frag" id="2.3.20" href="#2.3.20">&#167;</a>
-          2.3.20 If a Concept indicates a broader Concept with skos:broader, that Concept must exist in the vocabulary
+          2.3.20 If a Concept indicates a broader Concept with <code>skos:broader</code>, that Concept must exist in the vocabulary
         </p>
       </section>
     </section>
@@ -592,14 +593,15 @@ WHERE {
       </p>
       <p class="req">
         <a class="frag" id="2.4.2" href="#2.4.2">&#167;</a>
-        2.4.2 Each Agent <em>MUST</em> give either exactly one name with the <code>schema:name</code> predicate indicating a plain string text value or at least one <code>skos:prefLabel</code> predicate indicating a language string (e.g. "Nicholas"@en). If multiple language strings are used, the languages must be unique.
+        2.4.2 Each Agent <em>MUST</em> have at least one name indicated with the <code>schema:name</code> predicate, pointing to a literal text value. If multiple names in multiple languages are desired, then multiple <code>skos:prefLabel</code> values SHOULD be use with <code>langString</code> literals, but ony one per language
       </p>
       <p>
         To ensure that Agents are linked to non-Semantic Web forms of identification:
       </p>
       <p class="req">
         <a class="frag" id="2.4.3" href="#2.4.3">&#167;</a>
-        2.4.3 Each Agent <em>MUST</em> indicate either a <code>schema:url</code> (for organizations) or a <code>schema:email</code> (for people) predicate with a URL or email value
+        2.4.3 If a Person indicates an email address with the <code>schema:email</code> predicate, it must point to an <code>xsd:anyURI</code> value<br>
+          If an Organisation indicates a URL address with the <code>schema:url</code> predicate, it must point to an <code>xsd:anyURI</code> value
       </p>
       <p>
         To link to Agent registers using non-Semantic Web identifiers for Agents:
