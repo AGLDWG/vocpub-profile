@@ -21,6 +21,8 @@ Validation using SHACL validators involves applying a [SHACL](https://www.w3.org
 4. **Integrated application validation**
     * use pySHACL or Jena's SHACL tooling within your own scripts or programs
     * See pySHACL's & Jena's documentation
+5. **AI**
+   * If using AI, a CodeX _skill_ is provided in `codes-skill.md` to fix common issues with SKOS ConceptSchemes and report on the results' VocPub validity
 
 ## Expanded data option
 

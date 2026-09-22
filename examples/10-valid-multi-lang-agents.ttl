@@ -131,10 +131,9 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 <https://orcid.org/0000-0002-8742-7730>
     a schema:Person ;
-    schema:email "nick@kurrawong.ai"^^xsd:anyURI ;
     schema:memberOf <https://kurrawong.ai> ;
-    schema:name "Nicholas J. Car"@en ;
-    schema:name "Mikołaj J. Car"@pl ;
+    skos:prefLabel "Nicholas J. Car"@en ;
+    skos:prefLabel "Mikołaj J. Car"@pl ;
 .
 
 :c2
