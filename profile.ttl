@@ -10,7 +10,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a prof:Profile ;
     schema:dateCreated "2020-06-13"^^xsd:date ;
     schema:creator <https://orcid.org/0000-0002-8742-7730> ;
-    schema:dateModified "2024-06-13"^^xsd:date ;
+    schema:dateModified "2026-09-20"^^xsd:date ;
     schema:publisher <https://linked.data.gov.au/org/agldwg> ;
     schema:definition """This is a profile of the taxonomy data model SKOS - i.e. SKOS with additional constraints. It defines some compulsory properties for SKOS's ConceptScheme, Concept and Collection classes and ensures that certain relationships between them are present, e.g. topConceptOf & inScheme linking Concepts to ConceptSchemes. It also requires goes a bit beyond 'pure' SKOS by ensuring that Concepts indicate the ConceptScheme they are defined in, which may be different to the ConceptScheme they re presented in. This allows VocPub-valid SKOS Concepts to be re-used in multiple of vocabularies efficiently.
 
@@ -25,7 +25,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         <https://linked.data.gov.au/def/vocpub/examples/invalid> ,
         <https://linked.data.gov.au/def/vocpub/examples/invalid-2> ,
         <https://linked.data.gov.au/def/vocpub/sdo> ,
-        <https://linked.data.gov.au/def/vocpub/repo> ;
+        <https://linked.data.gov.au/def/vocpub/repo> ,
+        <https://linked.data.gov.au/def/vocpub/skill> ;
     prof:isProfileOf <https://www.w3.org/TR/skos-reference/> ;
 .
 
@@ -83,3 +84,9 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     prof:hasRole role:repository
 .
 
+<https://linked.data.gov.au/def/vocpub/codex-skill>
+    schema:name "CodeX VocPub Validation Skill"@en ;
+    schema:description "A CodeX skill - Markdown file - instructing CodeX to fix common issues found in ConceptSchemes to make them VocPub valid"@en ;
+    prof:hasArtifact "https://linked.data.gov.au/def/vocpub/codex-skill"^^xsd:anyURI ;
+    prof:hasRole role:guidance
+.
