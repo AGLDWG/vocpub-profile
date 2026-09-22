@@ -465,7 +465,7 @@ WHERE {
         <p>To help list Collections within vocabularies:</p>
         <p class="req">
           <a class="frag" id="2.2.03" href="#2.2.03">&#167;</a>
-          2.2.03 All Collections <em>MUST</em> indicate they are within the Concept Scheme of the vocabulary with the <code>skos:inScheme</code> predicate<br>
+          2.2.03 2.2.03 All Collections <em>MUST</em> indicate a Concept Scheme they are within with the <code>skos:inScheme</code> predicate
         </p>
         <p>To ensure that a Collection isn't empty:</p>
         <p class="req">
@@ -497,7 +497,7 @@ WHERE {
         </p>
         <p class="req">
           <a class="frag" id="2.3.02" href="#2.3.02">&#167;</a>
-          2.3.02 Each Concept in a vocabulary <em>MAY</em> indicate the vocabulary that defines it by use of the <code>rdfs:isDefinedBy</code> predicate indicating a Concept Scheme instance. If no such predicate is given, the Concept Scheme in the file that a Concept is provided in is understood to be the defining Concept Scheme
+          2.3.02 All Collections and Concepts <em>SHOULD</em> indicate the vocabulary that defines them with the <code>rdfs:isDefinedBy</code> predicate
         </p>
         <p>Note that the vocabulary that defines a Concept does not have to be the vocabulary in the file being validated. This is to allow for Concept instance reuse across multiple vocabularies.</p>
         <p>

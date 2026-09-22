@@ -741,7 +741,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
     sh:maxCount 1 ;
-    sh:message "Requirement 2.2.03 All Collections MUST indicate they are within the Concept Scheme of the vocabulary with the skos:inScheme predicate" ;
+    sh:message "Requirement 2.2.03 All Collections MUST indicate a Concept Scheme they are within with the skos:inScheme predicate" ;
     sh:minCount 1 ;
     sh:path skos:inScheme ;
     schema:name "in scheme" ;
@@ -751,7 +751,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
     sh:maxCount 1 ;
-    sh:message "Requirement 2.3.02 All Collections and Concepts SHOULD indicate the vocabulary that defines it with the rdfs:isDefinedBy predicate" ;
+    sh:message "Requirement 2.3.02 All Collections and Concepts SHOULD indicate the vocabulary that defines them with the rdfs:isDefinedBy predicate" ;
     sh:minCount 1 ;
     sh:path rdfs:isDefinedBy ;
     schema:name "is defined by" ;
