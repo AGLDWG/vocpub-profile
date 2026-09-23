@@ -529,16 +529,12 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     rdfs:isDefinedBy ont: ;
     sh:class skos:Concept ;
     sh:message "Requirement 2.3.20 If a Concept indicates a broader Concept with skos:broader or a narrower one with skos:narrower, that Concept MUST exist in the same vocabulary" ;
-    sh:or (
-        
-        [
-            sh:path skos:broader ;
-        ]
-        
-        [
-            sh:path skos:narrower ;
-        ]
-    ) ;
+    sh:path [
+        sh:alternativePath (
+            skos:broader
+            skos:narrower
+        )
+    ] ;
     schema:name "broader must be a Concept in same vocab" ;
 .
 
