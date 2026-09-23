@@ -1168,7 +1168,7 @@ ont:
         owl:Ontology ,
         sh:ShapesGraph ;
     owl:versionIRI :5.9 ;
-    owl:versionInfo """5.9 2026-09: Further systematisation of messages and alignment of text in specification with validator
+    owl:versionInfo """5.9 2026-09: Further systematisation of messages and alignment of text in specification with validator; improved text surrounding Reqs in Spec
 
 5.8 2026-09: Aligned error messages in spec and validator; Temporal Entity start/end more literal date types
 
