@@ -304,7 +304,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :Requirement-2.3.11
     a sh:NodeShape ;
     rdfs:isDefinedBy ont: ;
-    sh:message "Requirement 2.3.11 If a Concept indicates a skos:historyNote, its range value MUST be a literal. A plain string value (xsd:string) may be used or, if values in multiple languages are desired, then multiple language string literals (rdf:langString) may be used, but ony one per language and plain strings and language strings should not be mixed" ;
+    sh:message "Requirement 2.3.11 If a Concept indicates a skos:historyNote, its object MUST be a literal. A plain string value (xsd:string) may be used or, if values in multiple languages are desired, then multiple language string literals (rdf:langString) may be used, but ony one per language and plain strings and language strings should not be mixed" ;
     sh:targetClass skos:Concept ;
     sh:xone (
         :concept-historyNote-string
@@ -400,7 +400,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
             ) ;
         ]
     ) ;
-    sh:message "Requirement 2.3.19 If a Concept indicates a temporal coverage, its range value MUST be a temporal entity (time:TemporalEntity) with either or both schema:startDate and schema:endDate values which MUST be dates (xsd:date)" ;
+    sh:message "Requirement 2.3.19 If a Concept indicates a temporal coverage, its object MUST be a temporal entity (time:TemporalEntity) with either or both schema:startDate and schema:endDate values which MUST be dates (xsd:date)" ;
     sh:targetClass time:TemporalEntity ;
     schema:name "Requirement 2.3.19-temporal-entity" ;
 .
@@ -565,7 +565,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
     sh:datatype rdf:langString ;
-    sh:message "Requirement 2.3.11 If a Concept indicates a skos:historyNote, its range value MUST be a literal. A plain string value (xsd:string) may be used or, if values in multiple languages are desired, then multiple language string literals (rdf:langString) may be used, but ony one per language and plain strings and language strings should not be mixed" ;
+    sh:message "Requirement 2.3.11 If a Concept indicates a skos:historyNote, its object MUST be a literal. A plain string value (xsd:string) may be used or, if values in multiple languages are desired, then multiple language string literals (rdf:langString) may be used, but ony one per language and plain strings and language strings should not be mixed" ;
     sh:minCount 1 ;
     sh:path skos:historyNote ;
     sh:uniqueLang true ;
@@ -576,7 +576,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
     sh:maxCount 0 ;
-    sh:message "Requirement 2.3.11 If a Concept indicates a skos:historyNote, its range value MUST be a literal. A plain string value (xsd:string) may be used or, if values in multiple languages are desired, then multiple language string literals (rdf:langString) may be used, but ony one per language and plain strings and language strings should not be mixed" ;
+    sh:message "Requirement 2.3.11 If a Concept indicates a skos:historyNote, its object MUST be a literal. A plain string value (xsd:string) may be used or, if values in multiple languages are desired, then multiple language string literals (rdf:langString) may be used, but ony one per language and plain strings and language strings should not be mixed" ;
     sh:path skos:historyNote ;
     schema:name "concept history note none" ;
 .
@@ -586,7 +586,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     rdfs:isDefinedBy ont: ;
     sh:datatype xsd:string ;
     sh:maxCount 1 ;
-    sh:message "Requirement 2.3.11 If a Concept indicates a skos:historyNote, its range value MUST be a literal. A plain string value (xsd:string) may be used or, if values in multiple languages are desired, then multiple language string literals (rdf:langString) may be used, but ony one per language and plain strings and language strings should not be mixed" ;
+    sh:message "Requirement 2.3.11 If a Concept indicates a skos:historyNote, its object MUST be a literal. A plain string value (xsd:string) may be used or, if values in multiple languages are desired, then multiple language string literals (rdf:langString) may be used, but ony one per language and plain strings and language strings should not be mixed" ;
     sh:minCount 1 ;
     sh:path skos:historyNote ;
     schema:name "concept history note string" ;
@@ -623,7 +623,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
     sh:class time:TemporalEntity ;
-    sh:message "Requirement 2.3.19 If a Concept indicates a temporal coverage, it MUST do so with the predicate schema:temporalCoverage and its range value MUST be a temporal entity (time:TemporalEntity) with either or both schema:startDate and schema:endDate values which MUST be dates (xsd:date)" ;
+    sh:message "Requirement 2.3.19 If a Concept indicates a temporal coverage, it MUST do so with the predicate schema:temporalCoverage and its object MUST be a temporal entity (time:TemporalEntity) with either or both schema:startDate and schema:endDate values which MUST be dates (xsd:date)" ;
     sh:path schema:temporalCoverage ;
     schema:name "concept date modified" ;
 .
@@ -632,7 +632,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
     sh:datatype xsd:string ;
-    sh:message "Requirement 2.3.16 If a Concept is versioned, it SHOULD indicate this with the scehma:version predicate whose range value MUST be a plain string (xsd:string)" ;
+    sh:message "Requirement 2.3.16 If a Concept is versioned, it SHOULD indicate this with the scehma:version predicate whose object MUST be a plain string (xsd:string)" ;
     sh:path schema:version ;
     schema:name "concept version" ;
 .
@@ -640,7 +640,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :concept-wasDerivedFrom
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
-    sh:message "Requirement 2.3.12 If a Concept was derived from another Concept it SHOULD indicate this with the prov:wasDerivedFrom predicate whose range value MUST be the Concept's IRI" ;
+    sh:message "Requirement 2.3.12 If a Concept was derived from another Concept it SHOULD indicate this with the prov:wasDerivedFrom predicate whose object MUST be the Concept's IRI" ;
     sh:nodeKind sh:IRI ;
     sh:path prov:wasDerivedFrom ;
     schema:name "concept was derived from" ;
