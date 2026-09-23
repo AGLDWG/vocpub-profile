@@ -395,7 +395,7 @@ WHERE {
           <a class="frag" id="2.1.09" href="#2.1.09">&#167;</a>
           2.1.09 Each vocabulary's Concept Scheme <em>MUST</em> link to at least one Concept within the vocabulary with the <code>skos:hasTopConcept</code> predicate
         </p>
-        <p>To communicate the <em>Registry Status</em> of the vocabulary:</p>
+        <p>To communicate the stability of a vocabulary within a containing system:</p>
         <p class="req">
           <a class="frag" id="2.1.10" href="#2.1.10">&#167;</a>
           2.1.10 The status of a vocabulary, Collection or a Concept <em>SHOULD</em> be given with the predicate <code>schema:status</code> and <em>MAY</em> be given with the predicate <code>reg:status</code>. Either, if used, <em>MUST</em> indicate a Concept from the <em>Registry Statuses</em> vocabulary (<a href="https://linked.data.gov.au/def/reg-statuses">https://linked.data.gov.au/def/reg-statuses</a>)
@@ -403,9 +403,7 @@ WHERE {
         <p>To indicate whether and if so how this vocabulary has been derived from another vocabulary:</p>
         <p class="req">
           <a class="frag" id="2.1.11" href="#2.1.11">&#167;</a>
-          2.1.11 The derivation status of the vocabulary <em>SHOULD</em> be given should be given with the predicate <code>prov:qualifiedDerivation</code> indicating a Blank Node that contains the predicated <code>prov:entity</code>, to indicate the vocabulary derived from and <code>prov:hadRole</code> to indicate the mode of derivation which <em>SHOULD</em> be taken from the <em>Vocabulary Derivation Modes</em> vocabulary (<a href="https://linked.data.gov.au/def/vocdermods">https://linked.data.gov.au/def/vocdermods</a>)<br>
-          If a vocabulary has a qualified derivation indicated with <code>prov:qualifiedDerivation</code>, it then <em>MUST</em> give a <code>prov:entity</code> predicate within the derivation whose object is the IRI of the vocabulary it is derived from<br>
-          If a vocabulary has a qualified derivation indicated with <code>prov:qualifiedDerivation</code>, it then <em>MUST</em> give a <code>prov:hadRole</code> predicate within the derivation whose object is the IRI of the role
+          2.1.11 The derivation status of the vocabulary <em>SHOULD</em> be given should be given with the predicate <code>prov:qualifiedDerivation</code> indicating a Blank Node. If it does, that Blank Node MUST contain the predicated <code>prov:entity</code>, to indicate the vocabulary derived from and <code>prov:hadRole</code> to indicate the mode of derivation which <em>SHOULD</em> be taken from the <em>Vocabulary Derivation Modes</em> vocabulary (<a href="https://linked.data.gov.au/def/vocdermods">https://linked.data.gov.au/def/vocdermods</a>)
         </p>
         <p>Example data for a vocabulary indicating that it is an extension to another vocabulary using the mechanism defined in Requirement 2.1.2 is:</p>
         <pre>
@@ -419,12 +417,12 @@ WHERE {
         prov:hadRole &lt;https://linked.data.gov.au/def/vocdermods/extension> ;
     ] ;
 .</pre>
-        <p>To high-level theming of a vocabulary:</p>
+        <p>To allow for the management of multiple vocabularies in catalogues/registers:</p>
         <p class="req">
           <a class="frag" id="2.1.12" href="#2.1.12">&#167;</a>
           2.1.12 High-level theming of a vocabulary <em>SHOULD</em> be given using the <code>schema:keywords</code> predicate indicating Concepts from another vocabulary. Alternatively, <code>dcat:theme</code> <em>MAY</em> be used. Text literal values for either predicate <em>SHOULD NOT</em> be used
         </p>
-        <p>To indicate license, copyright:</p>
+        <p>To make conditions of use understood:</p>
         <p class="req">
           <a class="frag" id="2.1.13" href="#2.1.13">&#167;</a>
           2.1.13 A vocabulary <em>SHOULD</em> present any licence pertaining to its use using the <code>schema:license</code> predicate preferentially indicating the IRI of a license if in RDF form or a literal URL (datatype <code>xsd:anyURI</code>) if online but not in RDF form. If the licence is expressed in text, a literal text field may be indicated.
@@ -433,7 +431,7 @@ WHERE {
           <a class="frag" id="2.1.14" href="#2.1.14">&#167;</a>
           2.1.14 The copyright holder for the vocabulary <em>SHOULD</em> be given using the <code>schema:copyrightHolder</code> predicate preferentially indicating the IRI of an Agent or a Blank Node instance of an Agent containing details as per Agent requirements. A <code>prov:qualifiedAttribution</code> predicate indicating an Agent with the <code>prov:hadRole</code> predicate indicating the value <code>isorole:rightsHolder</code> may be used instead of <code>schema:copyrightHolder</code>
         </p>
-        <p>To assist users locating additional online resources:</p>
+        <p>To assist users with locating additional technical resources for the vocabulary:</p>
         <p class="req">
           <a class="frag" id="2.1.15" href="#2.1.15">&#167;</a>
           2.1.15 A vocabulary <em>SHOULD</em> indicate a online version-controlled source code repository storing the vocabulary and related content with the <code>schema:codeRepository</code> predicate and if it does, the object indicated <em>MUST</em> be an <code>xsd:anyURI</code>
@@ -474,10 +472,12 @@ WHERE {
           <a class="frag" id="2.2.04" href="#2.2.04">&#167;</a>
           2.2.04 Each Collection <em>MUST</em> indicate at least one Concept instance that is within the collection with use of the <code>skos:member</code> predicate. The Concept need not be defined by the Concept Scheme that defines the Collection
         </p>
+        <p>To ensure that, in systems containing multiple vocabularies and Collections, Collections' relations to vocabularies are known:</p>
         <p class="req">
           <a class="frag" id="2.2.05" href="#2.2.05">&#167;</a>
           2.2.05 Each Collection in a vocabulary <em>SHOULD</em> indicate the vocabulary that defines it by use of the <code>rdfs:isDefinedBy</code> predicate indicating a Concept Scheme instance. If no such predicate is given, the Concept Scheme in the file that a Collection is provided in is understood to be the defining Concept Scheme
         </p>
+        <p>To assist users to know the stability of a Collection within a vocabulary:</p>
         <p class="req">
           <a class="frag" id="2.2.06" href="#2.2.06">&#167;</a>
           2.2.06 The status of a vocabulary, Collection or a Concept <em>SHOULD</em> be given with the predicate <code>schema:status</code> and <em>MAY</em> be given with the predicate <code>reg:status</code>. Either, if used, <em>MUST</em> indicate a Concept from the <em>Registry Statuses</em> vocabulary (<a href="https://linked.data.gov.au/def/reg-statuses">https://linked.data.gov.au/def/reg-statuses</a>)
@@ -527,12 +527,12 @@ WHERE {
         <p>
           If a Concept is based on another Semantic Web resource, such as another Concept or other defined object, <code>prov:wasDerivedFrom</code> should be used to indicate that resource's IRI. If the Concept is based on a resource that is identified by a IRI but which is not a Semantic Web resource, <code>dcterms:source</code> should be used to indicate the resource's IRI. If the vocabulary is based on something which cannot be identified by IRI, a statement about the vocabulary's origins should be given in a literal value indicated with the <code>skos:historyNote</code> predicate. If the vocabulary is not based on any other resource or source of information, i.e. this vocabulary is its only expression, this should be communicated by use of the <code>skos:historyNote</code> indicating the phrase "This vocabulary is expressed for the first time here".
         </p>
-        <p>To communicate the <em>Registry Status</em> of the vocabulary:</p>
+        <p>To communicate the stability of a Concept within a vocabulary:</p>
         <p class="req">
           <a class="frag" id="2.3.05" href="#2.3.05">&#167;</a>
           2.3.05 The status of a vocabulary, Collection or a Concept <em>SHOULD</em> be given with the predicate <code>schema:status</code> and <em>MAY</em> be given with the predicate <code>reg:status</code>. Either, if used, <em>MUST</em> indicate a Concept from the <em>Registry Statuses</em> vocabulary (<a href="https://linked.data.gov.au/def/reg-statuses">https://linked.data.gov.au/def/reg-statuses</a>)
         </p>
-        <p>To link a Concept to other things with literal identifiers:</p>
+        <p>To identify a Concept with literal identifiers (as opposed to its IRI):</p>
         <p class="req">
           <a class="frag" id="2.3.10" href="#2.3.10">&#167;</a>
           2.3.10 If a Concept indicates a <code>skos:notation</code>, its object <em>MUST</em> be a literal which <em>SHOULD</em> be of a custom datatype
@@ -546,7 +546,7 @@ WHERE {
         <p>To indicate another Concept from which a Concept was derived:</p>
         <p class="req">
           <a class="frag" id="2.3.12" href="#2.3.12">&#167;</a>
-          2.3.12 If a Concept was derived from another Concept it <em>SHOULD</em> indicate this with the <code>prov:wasDerivedFrom</code> predicate whose object <em>MUST</em> be the Concept's IRI
+          2.3.12 If a Concept was derived from another Concept it <em>SHOULD</em> indicate this with the <code>prov:wasDerivedFrom</code> predicate whose object <em>MUST</em> be the other Concept's IRI
         </p>
         <p>To indicate another Concept which a Concept is a revision of, revision of being a closer derivation than the more generic was derived from, as above:</p>
         <p class="req">
@@ -580,14 +580,14 @@ WHERE {
         <p>To indicate the period of time that a Concept is relevant for:</p>
         <p class="req">
           <a class="frag" id="2.3.19" href="#2.3.19">&#167;</a>
-          2.3.19 If a Concept indicates a temporal coverage, it <em>MUST</em> do so with the predicate <code>schema:temporalCoverage</code> and its object <em>MUST</em> be a temporal entity (<code>time:TemporalEntity</code>) with either or both <code>schema:startDate</code> and <code>schema:endDate</code> values which <em>MUST</em> be dates (<code>xsd:date</code>)<br>
-          If a Temporal Entity (<code>time:TemporalEntity</code>) indicates a start or end date (<code>schema:startDate</code>, <code>schema:endDate</code>) value, it <em>MUST</em> be an <code>xsd:date</code>, <code>xsd:gYearMonth</code> or <code>xsd:gYear</code> literal
+          2.3.19 If a Concept indicates a temporal coverage, it <em>MUST</em> do so with the predicate <code>schema:temporalCoverage</code> and its object <em>MUST</em> be a temporal entity (<code>time:TemporalEntity</code>) with either or both <code>schema:startDate</code> and <code>schema:endDate</code> values which <em>MUST</em> be dates (<code>xsd:date</code>)<br />
         </p>
-        <p>To ensure Concepts only link to other concpets in the same vocabulary with <code>broader</code> or <code>narrower</code>:</p>
+        <p>To ensure Concepts only link to other Concepts in the same vocabulary with <code>broader</code> or <code>narrower</code>:</p>
         <p class="req">
           <a class="frag" id="2.3.20" href="#2.3.20">&#167;</a>
-          2.3.20 If a Concept indicates a broader Concept with <code>skos:broader</code>, that Concept <em>MUST</em> exist in the same vocabulary
+          2.3.20 If a Concept indicates a broader Concept with <code>skos:broader</code> or a narrower one with <code>skos:narrower</code>, that Concept <em>MUST</em> exist in the same vocabulary
         </p>
+        <p>If a Concept should be linked to Concepts in other vocabularies, <code>skos:braodMatch</code> and other SKOS mapping relations should be used, as per <a href="https://www.w3.org/TR/skos-reference/#mapping">SKOS Reference, Section 10 Mapping Properties</a></p>
       </section>
     </section>
     <section id="agent">
@@ -611,7 +611,7 @@ WHERE {
       </p>
       <p class="req">
         <a class="frag" id="2.4.3" href="#2.4.3">&#167;</a>
-        2.4.3 If a Person indicates an email address with the <code>schema:email</code> predicate, it <em>MUST</em> point to an <code>xsd:anyURI</code> value<br>
+        2.4.3 If a Person indicates an email address with the <code>schema:email</code> predicate, it <em>MUST</em> point to an <code>xsd:anyURI</code> value<br />
           If an Organisation indicates a URL address with the <code>schema:url</code> predicate, it <em>MUST</em> point to an <code>xsd:anyURI</code> value
       </p>
       <p>

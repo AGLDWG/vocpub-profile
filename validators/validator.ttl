@@ -528,8 +528,11 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
     sh:class skos:Concept ;
-    sh:message "Requirement 2.3.20 If a Concept indicates a broader Concept with skos:broader, that Concept MUST exist in the same vocabulary" ;
-    sh:path skos:broader ;
+    sh:message "Requirement 2.3.20 If a Concept indicates a broader Concept with skos:broader or a narrower one with skos:narrower, that Concept MUST exist in the same vocabulary" ;
+    sh:or (
+        [ sh:path skos:broader ]
+        [ sh:path skos:narrower ]
+    ) ;
     schema:name "broader must be a Concept in same vocab" ;
 .
 
@@ -640,7 +643,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 :concept-wasDerivedFrom
     a sh:PropertyShape ;
     rdfs:isDefinedBy ont: ;
-    sh:message "Requirement 2.3.12 If a Concept was derived from another Concept it SHOULD indicate this with the prov:wasDerivedFrom predicate whose object MUST be the Concept's IRI" ;
+    sh:message "Requirement 2.3.12 If a Concept was derived from another Concept it SHOULD indicate this with the prov:wasDerivedFrom predicate whose object MUST be the other Concept's IRI" ;
     sh:nodeKind sh:IRI ;
     sh:path prov:wasDerivedFrom ;
     schema:name "concept was derived from" ;
