@@ -438,6 +438,12 @@ WHERE {
           2.1.15 A vocabulary <em>SHOULD</em> indicate a online version-controlled source code repository storing the vocabulary and related content with the <code>schema:codeRepository</code> predicate and if it does, the object indicated <em>MUST</em> be an <code>xsd:anyURI</code>
         </p>
         <p><strong>NOTE</strong>: The datatype <code>xsd:anyURI</code> is used instead of an IRI when the object in a triple is a web resource or web address but is not expected to be an RDF node in a graph, as will be the case for non-RDF resources such as code repository locations.</p>
+        <p>To record the vocabulary's issued date where known:</p>
+        <p class="req">
+          <a class="frag" id="2.1.16" href="#2.1.16">&#167;</a>
+          2.1.16 Each vocabulary <em>SHOULD</em> have exactly one issued date indicated using <code>schema:dateIssued</code> with an <code>xsd:date</code>, <code>xsd:dateTime</code> or <code>xsd:dateTimeStamp</code> literal value. Issued-date constraint results are reported as warnings.
+        </p>
+        <p>Maintainers may know when an artefact was published without knowing a distinct issued date. Issued-date metadata is therefore recommended, and its absence or invalidity produces a warning rather than a blocking violation.</p>
       </section>
       <section id="collection">
         <h3>2.2 Collection</h3>

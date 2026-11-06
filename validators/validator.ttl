@@ -166,6 +166,15 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     schema:name "Requirement 2.1.15" ;
 .
 
+:Requirement-2.1.16
+    a sh:NodeShape ;
+    rdfs:isDefinedBy sg: ;
+    sh:property :issued ;
+    sh:targetClass skos:ConceptScheme ;
+    schema:description "Requirement 2.1.16" ;
+    schema:name "Requirement 2.1.16" ;
+.
+
 :Requirement-2.2.01
     a sh:NodeShape ;
     rdfs:isDefinedBy sg: ;
@@ -778,6 +787,22 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     schema:name "in scheme" ;
 .
 
+:issued
+    a sh:PropertyShape ;
+    rdfs:isDefinedBy sg: ;
+    sh:message "Requirement 2.1.16: Each vocabulary SHOULD have exactly one issued date indicated using schema:dateIssued with an xsd:date, xsd:dateTime or xsd:dateTimeStamp literal value." ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:or (
+        [ sh:datatype xsd:date ]
+        [ sh:datatype xsd:dateTime ]
+        [ sh:datatype xsd:dateTimeStamp ]
+    ) ;
+    sh:path schema:dateIssued ;
+    sh:severity sh:Warning ;
+    schema:name "issued" ;
+.
+
 :license
     a sh:PropertyShape ;
     rdfs:isDefinedBy sg: ;
@@ -1181,6 +1206,7 @@ sg:
         :Requirement-2.1.13 ,
         :Requirement-2.1.14 ,
         :Requirement-2.1.15 ,
+        :Requirement-2.1.16 ,
         :Requirement-2.2.01 ,
         :Requirement-2.2.02 ,
         :Requirement-2.2.03 ,
@@ -1232,6 +1258,7 @@ sg:
         :in-hierarchy ,
         :in-scheme ,
         :is-defined-by ,
+        :issued ,
         :license ,
         :member ,
         :modified ,
